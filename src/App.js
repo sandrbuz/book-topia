@@ -14,7 +14,7 @@ const App = () => {
       <Header />
       <Navbar />
       <Profile />
-      <div>bla</div>
+      <div>blabla</div>
     </div>
   );
 }
