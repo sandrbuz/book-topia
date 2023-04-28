@@ -29,11 +29,14 @@ import Message from './Message/Message.jsx';
 
 
 const Dialogs = (props) => {
-    return (
+    let dialogsElements = props.arrDialogs.map(d => <DialogItem name={d.name} id={d.id}/>);
 
+    let messagesElements = props.arrMessages.map(m => <Message message={m.message}/>);
+
+    return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                {props.arrDialogs }
+                {dialogsElements}
                 {/* {dialogsElements} */}
                 {/* <DialogItem name={dialogs[0].name} id={dialogs[0].id}/>
                 <DialogItem name={dialogs[1].name} id={dialogs[1].id}/>
@@ -44,7 +47,7 @@ const Dialogs = (props) => {
             </div>
           
             <div className={s.messages}>
-                {props.arrMessages}
+                {messagesElements}
                 {/* {messagesElements} */}
                 {/* <Message message={messages0[0].message}/>
                 <Message message={messages0[1].message}/>

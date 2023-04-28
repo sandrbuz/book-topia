@@ -6,8 +6,6 @@ import Post from "./Post/Post.jsx"
 
 const MyPosts = (props) => {
 
- 
-
    // let posts = [
    //    {id: 1, message: 'Hi, how are you?', likesCount: 12},
    //    {id: 2, message: 'It\'s my first page', likesCount: 11},
@@ -15,8 +13,9 @@ const MyPosts = (props) => {
    //    {id: 2, message: 'Blabla', likesCount: 1},
    // ];
   
-   // let postsElements = posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
+   let postsElements = props.arrPosts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
 
+   
 
     return  (
     <div className={s.postsBlock}>
@@ -26,7 +25,7 @@ const MyPosts = (props) => {
        <div><button>Add post</button></div>
       </div>
       <div className={s.posts}>
-         { props.arrPosts}
+        {postsElements}
          {/* <Post message={posts[0].message} likesCount={posts[0].likesCount}/>
          <Post message={posts[1].message} likesCount={posts[1].likesCount}/> */}
       </div>
