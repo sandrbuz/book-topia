@@ -1,0 +1,16 @@
+img.friendImg{
+    width: 64px; 
+    height: 64px;
+    border-radius: 100px;
+}
+.item{
+    /* width: 55px; */
+    display:inline;
+    float:left;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    /* width: 33%; */
+    margin-right: 20px;
+    margin-bottom: 10px;
+}

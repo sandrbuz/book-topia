@@ -6,4 +6,18 @@
 .header{
       grid-area: h;
       background-color: #7EA7D8;
+      display: grid;
+      grid-template-areas: 
+      "l lt"
+      ;
+  grid-template-columns: 1fr 18fr;
+ }
+ .logo{
+  grid-area: l;
+ }
+ .logoText {
+  grid-area: lt;
+  font-family: 'Dancing Script', cursive;
+  color: #EAEAEA;
+  margin-top: 17px;
  }

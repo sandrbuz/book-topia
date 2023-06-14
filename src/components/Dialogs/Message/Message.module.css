@@ -1,3 +1,22 @@
 .message{
     /* color: black; */
 }
+.right{
+    /* text-align: right; */
+    align-self: flex-end;
+    background-color: #a4c4eb;
+
+}
+.left{
+    /* text-align: left; */
+    align-self: flex-start;
+    background-color: white;
+
+}
+
+.item{
+    /* max-width: 500px; */
+    padding: 10px;
+    margin: 7px 0;
+    border-radius: 20px;
+}

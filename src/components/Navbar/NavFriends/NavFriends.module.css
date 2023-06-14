@@ -1,0 +1,17 @@
+.navFriends{
+    /* margin-top: 100px; */
+    /* grid-area: f; */
+    background-color: #7EA7D8;
+    padding: 20px 0px 20px 20px;
+    /* align-self: start; */
+/* min-height: 200px; */
+}
+.head{
+    margin-top: 0px;
+    font-size: 30px;
+    font-weight: 400;
+   color: white;
+
+}
+.friends{
+}

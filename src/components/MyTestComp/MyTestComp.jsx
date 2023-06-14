@@ -1,12 +1,14 @@
 import React from 'react';
 import s from './MyTestComp.module.css'
 
-const MyTestComp = () => {
+const MyTestComp = (props) => {
     return (
 
-        <div>BlaBla</div>
+        <div>BlaBla{props.teext}</div>
+        
     )
 
 }
+
 
 export default MyTestComp;

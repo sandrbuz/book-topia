@@ -2,21 +2,43 @@
   /* text-align: center; */
 }
 .app-wrapper{
-  width: 1300px;
-  margin: 0 auto;
+  /* max-width: 1300px; */
+  /* margin: 0 auto; */
+  margin: 10px;
   display: grid;
 
   grid-template-areas: 
   "h h"
   "n c"
+  "f c"
   ;
-  grid-template-rows: 60px 1fr;
+  grid-template-rows: 60px auto 1fr;
   grid-template-columns: 2fr 10fr;
+  /* grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr; */
   grid-gap: 10px;
 }
 .app-wrapper-content{
   grid-area: c;
   background-color: #EAEAEA;
+}
+@media (max-width: 480px){
+  .app-wrapper{
+    max-width: 480px; 
+
+    grid-template-areas: 
+    "h"
+    "n" 
+    "f" /*удалить при исправлении навбара */
+    "c"
+
+    ;
+    /* grid-template-rows: 60px 1fr;
+    grid-template-columns: 2fr 10fr; */
+    grid-template-rows:60px  1fr ;
+    grid-template-columns: 1fr;
+    grid-gap: 10px;
+  }
 }
 
 

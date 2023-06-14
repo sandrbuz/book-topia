@@ -3,6 +3,7 @@ import s from "./Dialogs.module.css";
 import { NavLink } from "react-router-dom";
 import DialogItem from './DialogItem/DialogItem.jsx';
 import Message from './Message/Message.jsx';
+import { sendMessageActionCreator, onMessageChangeActionCreator } from "../../redux/dialogs-reducer";
 
 // let dialogs = [
 //     {name: 'Dimych', id: 1},
@@ -29,9 +30,28 @@ import Message from './Message/Message.jsx';
 
 
 const Dialogs = (props) => {
-    let dialogsElements = props.arrDialogs.map(d => <DialogItem name={d.name} id={d.id}/>);
+    let dialogsElements = props.stateDialogsPage.dialogs.map(d => <DialogItem imgURL={d.imgURL} name={d.name} id={d.id} />);
 
-    let messagesElements = props.arrMessages.map(m => <Message message={m.message}/>);
+    let messagesElements = props.stateDialogsPage.messages.map(m => <Message whose={m.whoseMess} message={m.message} />);
+
+let newMessageElement = React.createRef();
+
+
+
+let sendMessage = () => {
+    // let text = newMessageElement.current.value;
+    // props.addMessage();
+    //props.stateDialogsPage.newMessageText=""; //(dont need)did it in state.js
+    props.dispatch(sendMessageActionCreator());
+}
+
+
+
+let onMessageChange = () => {
+    let newMessageBody = newMessageElement.current.value;
+    // props.updateNewMessageText(text);
+    props.dispatch(onMessageChangeActionCreator(newMessageBody));
+}
 
     return (
         <div className={s.dialogs}>
@@ -45,7 +65,7 @@ const Dialogs = (props) => {
                 <DialogItem name={dialogs[4].name} id={dialogs[4].id}/>
                 <DialogItem name={dialogs[5].name} id={dialogs[5].id}/> */}
             </div>
-          
+
             <div className={s.messages}>
                 {messagesElements}
                 {/* {messagesElements} */}
@@ -55,6 +75,12 @@ const Dialogs = (props) => {
                 <Message message={messages0[3].message}/>
             <Message message={messages0[4].message}/> */}
             </div>
+
+            <div className={s.addNewMessage}>
+                <textarea ref={ newMessageElement } value={props.stateDialogsPage.newMessageText} onChange={ onMessageChange }/>
+                <button onClick={ sendMessage }>Send message</button>
+            </div>
+
         </div>
 
     )

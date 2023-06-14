@@ -3,41 +3,60 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+// import state, { subscribe } from './redux/state'; 
+import store from './redux/state'; 
+// import {addPost} from './redux/state';
+import { BrowserRouter } from 'react-router-dom';
+// import { updateNewPostText } from './redux/state';
+// import { addMessage } from './redux/state';
+// import { updateNewMessageText } from './redux/state';
 
 
-let posts = [
-  {id: 1, message: 'Hi, how are you?', likesCount: 12},
-  {id: 2, message: 'It\'s my first page', likesCount: 11},
-  {id: 2, message: 'Blabla', likesCount: 10},
-  {id: 2, message: 'Blabla', likesCount: 1},
-];
+// let posts = [
+//   {id: 1, message: 'Hi, how are you?', likesCount: 12},
+//   {id: 2, message: 'It\'s my first page', likesCount: 11},
+//   {id: 2, message: 'Blabla', likesCount: 10},
+//   {id: 2, message: 'Blabla', likesCount: 1},
+// ];
 
-let dialogs = [
-  {name: 'Dimych', id: 1},
-  {name: 'Andrey', id: 2},
-  {name: 'Sveta', id: 3},
-  {name: 'Sasha', id: 4},
-  {name: 'Viktor', id: 5},
-  {name: 'Valera', id: 6},
- ];
+// let dialogs = [
+//   {name: 'Dimych', id: 1},
+//   {name: 'Andrey', id: 2},
+//   {name: 'Sveta', id: 3},
+//   {name: 'Sasha', id: 4},
+//   {name: 'Viktor', id: 5},
+//   {name: 'Valera', id: 6},
+//  ];
 
-let messages = [
-  {message: 'Hi'},
-  {message: 'How is your mood'},
-  {message: 'Yo'},
-  {message: 'Yo'},
-  {message: 'Yo'},
-]; 
+// let messages = [
+//   {message: 'Hi'},
+//   {message: 'How is your mood'},
+//   {message: 'Yo'},
+//   {message: 'Yo'},
+//   {message: 'Yo'},
+// ]; 
 
+// addPost();
+const root = ReactDOM.createRoot(document.getElementById('root')); //in lesson 34, I removed this variable from the rerenderEntireTree function, because in the textarea in the MyPosts file, after entering each letter, the page was reloaded
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+let rerenderEntireTree = (state) => {
 root.render(
   <React.StrictMode>
-    <App arrPosts={posts} arrMessages={messages} arrDialogs={dialogs}/>
+    <BrowserRouter >
+    <App dispatch={store.dispatch.bind(store)} state={state} /* addPost={store.addPost.bind(store)} updateNewPostText={store.updateNewPostText.bind(store)} addMessage={store.addMessage.bind(store)} updateNewMessageText={store.updateNewMessageText.bind(store)}*//> 
+    </BrowserRouter>
   </React.StrictMode>
 );
+
+}
+// console.log(store.addPost);
+
+rerenderEntireTree(store.getState());
+
+store.subscribe(rerenderEntireTree);
+ 
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+reportWebVitals(); 

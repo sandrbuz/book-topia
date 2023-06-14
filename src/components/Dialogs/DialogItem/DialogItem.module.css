@@ -1,9 +1,24 @@
+
 .dialog{
-    color: black;
+    /* color: black; */
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
 }
 .dialog a {
     text-decoration: none;
+    margin-left: 4px;
 }
 .active {
     color: #7EA7D8;
+}
+
+.dialogLink{
+    color: black;
+}
+
+.dialogAva{
+    height: 30px;
+    width: 30px;
+    border-radius: 100px;
 }

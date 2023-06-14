@@ -19,7 +19,13 @@ const Profile = (props) => {
   return (
     <div className={s.content}>
       <ProfileInfo />
-      <MyPosts arrPosts = {props.arrPosts}/>
+      <MyPosts dispatch={props.dispatch}   
+               stateProfilePage = {props.stateProfilePage}
+              /*  stateProfilePagePosts = {props.stateProfilePage.posts}*/
+               //addPost={props.addPost}
+              /*  stateProfilePageNewPostText={props.stateProfilePage.newPostText}*/
+               //updateNewPostText={props.updateNewPostText}
+                              />
     </div>
   )
 }

@@ -13,6 +13,7 @@ import MyTestComp from './components/MyTestComp/MyTestComp';
 import DialogItem from './components/Dialogs/DialogItem/DialogItem';
 import Message from './components/Dialogs/Message/Message';
 import Post from './components/Profile/MyPosts/Post/Post';
+import NavFriends from './components/Navbar/NavFriends/NavFriends';
 
 // let dialogs = [
 //   {name: 'Dimych', id: 1},
@@ -52,26 +53,35 @@ const App = (props) => {
 
 
   return (
-    <BrowserRouter>
+    // <BrowserRouter>
       <div className='app-wrapper'>
         <Header />
-        <Navbar />
+        <Navbar state={props.state}/>
+
 
         <div className="app-wrapper-content">
           <Routes>
-            <Route path="/" element={<Profile arrPosts={props.arrPosts}/>} />
-            <Route path="/profile/" element={<Profile arrPosts={props.arrPosts}/>} />
-            <Route exact path="/dialogs/*" element={<Dialogs arrMessages={props.arrMessages} arrDialogs={props.arrDialogs}/>} />
+            {/* <Route path="/" element={<Profile stateProfilePage={props.state.profilePage} addPost={props.addPost}/>} /> */}
+            <Route path="/profile/" element={<Profile dispatch={props.dispatch} stateProfilePage={props.state.profilePage} /*addPost={props.addPost} updateNewPostText={props.updateNewPostText}*//>}  />
+            <Route exact path="/dialogs/*" element={<Dialogs dispatch={props.dispatch} stateDialogsPage={props.state.dialogsPage}  
+               //addMessage={props.addMessage} 
+               //updateNewMessageText={props.updateNewMessageText}
+               />} />
             <Route path="/news" element={<News />} />
             <Route path="/music" element={<Music />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/settings" element={<Settings />} />
+            {/* <Route path="/test1" element={<MyTestComp teext="gggg"/>} /> */}
           </Routes>
-
-
         </div>
+
+         <NavFriends state={props.state}/> {/* used to be invested in navbar */}
+
       </div>
-    </BrowserRouter>
+    // </BrowserRouter>
   );
 }
+
+
 
 export default App;

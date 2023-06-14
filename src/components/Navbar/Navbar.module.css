@@ -1,19 +1,30 @@
 .nav{
     grid-area: n;
     background-color: #7EA7D8;
-    padding: 20px;
+    padding: 20px;  
     /* height: 200px; */
+    /* align-self: start; */
   }
-.item a{
+  .links{
+    background-color: #7EA7D8;
+  }
+.item a{ 
   color: white;
   text-decoration: none;
 }
 .item a.active {
   color: gold;
 }
-.red{
+/* .active{
   color: red;
+} */
+
+/* .dialogLink:focus{
+ color: gold;
 }
+.profileLink:focus{
+ color: gold;
+} */
 /* .item a:focus {
   color: gold;
 } */
