@@ -13,7 +13,7 @@ import MyTestComp from './components/MyTestComp/MyTestComp';
 import DialogItem from './components/Dialogs/DialogItem/DialogItem';
 import Message from './components/Dialogs/Message/Message';
 import Post from './components/Profile/MyPosts/Post/Post';
-import NavFriends from './components/Navbar/NavFriends/NavFriends';
+import NavFriends from './components/NavFriends/NavFriends';
 
 // let dialogs = [
 //   {name: 'Dimych', id: 1},

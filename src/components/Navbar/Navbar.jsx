@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, useLocation} from 'react-router-dom';
 import s from "./Navbar.module.css"
-import NavFriends from './NavFriends/NavFriends';
+// import NavFriends from './NavFriends/NavFriends';
 
 
 const Navbar = (props) => {

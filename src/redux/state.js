@@ -91,9 +91,9 @@ let store = {
     // },
     dispatch(action) {
        
-           profileReducer(this._state.profilePage, action);
-           dialogsReducer(this._state.dialogsPage, action);
-           sidebarReducer(this._state.navbarPage, action)
+           profileReducer(this.getState().profilePage, action);
+           dialogsReducer(this.getState().dialogsPage, action);
+           sidebarReducer(this.getState().navbarPage, action)
 
            this._callSubscriber(this._state);
             
