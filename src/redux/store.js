@@ -36,7 +36,7 @@ let store = {
             newMessageText: ""
 
         },
-        navbarPage: {
+        sidebarPage: {
             friends: [
                 { name: "Andrew", imgUrl: "https://android-obzor.com/wp-content/uploads/2022/02/1-9.jpg" },
                 { name: "Sasha", imgUrl: "https://klike.net/uploads/posts/2018-06/1528374055_2.jpg" },
@@ -91,11 +91,11 @@ let store = {
     // },
     dispatch(action) {
        
-           profileReducer(this.getState().profilePage, action);
-           dialogsReducer(this.getState().dialogsPage, action);
-           sidebarReducer(this.getState().navbarPage, action)
+           this._state.profilePage =  profileReducer(this._state.profilePage, action);
+           this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+           this._state.navbarPage = sidebarReducer(this._state.navbarPage, action)
 
-           this._callSubscriber(this._state);
+           this._callSubscriber(this.getState());
             
         }
       

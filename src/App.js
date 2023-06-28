@@ -49,7 +49,6 @@ import NavFriends from './components/NavFriends/NavFriends';
 
 
 const App = (props) => {
-  
 
 
   return (

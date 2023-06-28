@@ -4,12 +4,13 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 // import state, { subscribe } from './redux/state'; 
-import store from './redux/state'; 
+import store from './redux/redux-store'; 
 // import {addPost} from './redux/state';
 import { BrowserRouter } from 'react-router-dom';
 // import { updateNewPostText } from './redux/state';
 // import { addMessage } from './redux/state';
 // import { updateNewMessageText } from './redux/state';
+
 
 
 // let posts = [
@@ -40,6 +41,7 @@ import { BrowserRouter } from 'react-router-dom';
 const root = ReactDOM.createRoot(document.getElementById('root')); //in lesson 34, I removed this variable from the rerenderEntireTree function, because in the textarea in the MyPosts file, after entering each letter, the page was reloaded
 
 let rerenderEntireTree = (state) => {
+
 root.render(
   <React.StrictMode>
     <BrowserRouter >
@@ -53,7 +55,10 @@ root.render(
 
 rerenderEntireTree(store.getState());
 
-store.subscribe(rerenderEntireTree);
+store.subscribe(() => {
+  let state = store.getState();
+  rerenderEntireTree(state);
+});
  
 
 // If you want to start measuring performance in your app, pass a function
