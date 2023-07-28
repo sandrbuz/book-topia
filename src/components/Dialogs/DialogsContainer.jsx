@@ -5,6 +5,8 @@ import { NavLink } from "react-router-dom";
 // import Message from './Message/Message.jsx';
 import { sendMessageActionCreator, onMessageChangeActionCreator } from "../../redux/dialogs-reducer";
 import Dialogs from "./Dialogs";
+// import StoreContext from "../../StoreContext";
+import { connect } from "react-redux";
 
 // let dialogs = [
 //     {name: 'Dimych', id: 1},
@@ -30,26 +32,63 @@ import Dialogs from "./Dialogs";
 
 
 
-const DialogsContainer = (props) => {
-    let state = props.store.getState();
-let sendMessage = () => {
-    // let text = newMessageElement.current.value;
-    // props.addMessage();
-    //props.stateDialogsPage.newMessageText=""; //(dont need)did it in state.js
-    props.store.dispatch(sendMessageActionCreator());
-}
-let newMessageChange = (body) => {
-    // let newMessageBody = newMessageElement.current.value;
-    // props.updateNewMessageText(text);
-    props.store.dispatch(onMessageChangeActionCreator(body));
-}
-    return (
-       <Dialogs sendMessage={sendMessage}
-                newMessageChange={newMessageChange}
-                dialogs={state.dialogsPage.dialogs} 
-                messages={state.dialogsPage.messages}
-                newMessageText={state.dialogsPage.newMessageText}/>
-    )
+// const DialogsContainer = () => {
+
+//     return (
+
+//         <StoreContext.Consumer>
+//             {(store) => {
+
+//                 let state = store.getState();
+
+//                 let sendMessage = () => {
+//                     // let text = newMessageElement.current.value;
+//                     // props.addMessage();
+//                     //props.stateDialogsPage.newMessageText=""; //(dont need)did it in state.js
+//                     store.dispatch(sendMessageActionCreator());
+//                 }
+
+//                 let newMessageChange = (body) => {
+//                     // let newMessageBody = newMessageElement.current.value;
+//                     // props.updateNewMessageText(text);
+//                     store.dispatch(onMessageChangeActionCreator(body));
+//                 }
+
+
+//                 return (
+//                     <Dialogs sendMessage={sendMessage}
+//                         newMessageChange={newMessageChange}
+//                         dialogs={state.dialogsPage.dialogs}
+//                         messages={state.dialogsPage.messages}
+//                         newMessageText={state.dialogsPage.newMessageText} />
+//                 )
+//             }
+
+//             }
+//         </StoreContext.Consumer >
+//     )
+// }
+
+let mapStateToProps = (state) => {    
+return{
+    dialogs: state.dialogsPage.dialogs,
+    messages: state.dialogsPage.messages,
+    newMessageText: state.dialogsPage.newMessageText
 }
 
-export default DialogsContainer;
+}
+let mapDispatchToProps = (dispatch) => {    
+ return {
+    sendMessage: () => {
+        dispatch(sendMessageActionCreator());
+
+    },
+    newMessageChange: (body) => {
+        dispatch(onMessageChangeActionCreator(body));
+    }
+ }
+}
+
+let SuperDialogsContainer = connect(mapStateToProps, mapDispatchToProps)(Dialogs);
+
+export default SuperDialogsContainer;

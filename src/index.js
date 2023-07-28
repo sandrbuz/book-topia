@@ -10,6 +10,9 @@ import { BrowserRouter } from 'react-router-dom';
 // import { updateNewPostText } from './redux/state';
 // import { addMessage } from './redux/state';
 // import { updateNewMessageText } from './redux/state';
+import StoreContext from './StoreContext';
+// import { Provider } from './StoreContext';
+import { Provider } from 'react-redux';
 
 
 
@@ -45,7 +48,9 @@ let rerenderEntireTree = (state) => {
 root.render(
   <React.StrictMode>
     <BrowserRouter >
+    <Provider store={store}>
     <App dispatch={store.dispatch.bind(store)} state={state} store={store}/* addPost={store.addPost.bind(store)} updateNewPostText={store.updateNewPostText.bind(store)} addMessage={store.addMessage.bind(store)} updateNewMessageText={store.updateNewMessageText.bind(store)}*//> 
+    </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );

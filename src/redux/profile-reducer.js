@@ -24,6 +24,7 @@ let initialState = {
 }
 
 const profileReducer = (state = initialState, action) => {
+
     if (action.type === ADD_POST) {
         //debugger; //в devtools f11 войти в метод
         let newPost = {

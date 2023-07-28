@@ -8,7 +8,7 @@ import DialogsContainer from './components/Dialogs/DialogsContainer';
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import MyTestComp from './components/MyTestComp/MyTestComp';
 import DialogItem from './components/Dialogs/DialogItem/DialogItem';
 import Message from './components/Dialogs/Message/Message';
@@ -61,8 +61,9 @@ const App = (props) => {
         <div className="app-wrapper-content">
           <Routes>
             {/* <Route path="/" element={<Profile stateProfilePage={props.state.profilePage} addPost={props.addPost}/>} /> */}
-            <Route path="/profile/" element={<Profile store={props.store} /* dispatch={props.dispatch} */ /*stateProfilePage={props.state.profilePage}*/ /*addPost={props.addPost} updateNewPostText={props.updateNewPostText}*//>}  />
-            <Route exact path="/dialogs/*" element={<DialogsContainer store={props.store}
+            <Route path="/profile/" element={<Profile /*store={props.store}*/ /* dispatch={props.dispatch} */ /*stateProfilePage={props.state.profilePage}*/ /*addPost={props.addPost} updateNewPostText={props.updateNewPostText}*//>}  />
+            <Route exact path="/dialogs/*" element={<DialogsContainer 
+               /*store={props.store}*/
             // dispatch={props.dispatch} stateDialogsPage={props.state.dialogsPage}  
                //addMessage={props.addMessage} 
                //updateNewMessageText={props.updateNewMessageText}

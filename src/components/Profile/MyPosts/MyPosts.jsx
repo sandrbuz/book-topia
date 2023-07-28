@@ -1,7 +1,6 @@
 import React from 'react';
 import s from "./MyPosts.module.css"
 import Post from "./Post/Post.jsx"
-import { addPostActionCreator, onPostChangeActionCreator } from '../../../redux/profile-reducer';
 
 
 
@@ -56,3 +55,20 @@ const MyPosts = (props) => {
 }
 
 export default MyPosts;
+
+
+
+let a = {
+  name: 'Sasha',
+  age: 25,
+  skills: {
+    js: 5,
+    ts: 4
+  }
+}
+
+let b = a;
+
+console.log(b === a)
+
+console.log(b.skills === a.skills)

@@ -3,7 +3,6 @@ import s from "./Dialogs.module.css";
 import { NavLink } from "react-router-dom";
 import DialogItem from './DialogItem/DialogItem.jsx';
 import Message from './Message/Message.jsx';
-import { sendMessageActionCreator, onMessageChangeActionCreator } from "../../redux/dialogs-reducer";
 
 // let dialogs = [
 //     {name: 'Dimych', id: 1},
