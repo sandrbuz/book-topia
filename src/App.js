@@ -14,6 +14,7 @@ import DialogItem from './components/Dialogs/DialogItem/DialogItem';
 import Message from './components/Dialogs/Message/Message';
 import Post from './components/Profile/MyPosts/Post/Post';
 import NavFriends from './components/NavFriends/NavFriends';
+import NavFriendsContainer from './components/NavFriends/NavFriendsContainer';
 
 // let dialogs = [
 //   {name: 'Dimych', id: 1},
@@ -76,7 +77,7 @@ const App = (props) => {
           </Routes>
         </div>
 
-         <NavFriends state={props.state}/> {/* used to be invested in navbar */}
+         <NavFriendsContainer/> {/* used to be invested in navbar */}
 
       </div>
     // </BrowserRouter>

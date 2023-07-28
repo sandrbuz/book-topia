@@ -43,27 +43,22 @@ import { Provider } from 'react-redux';
 // addPost();
 const root = ReactDOM.createRoot(document.getElementById('root')); //in lesson 34, I removed this variable from the rerenderEntireTree function, because in the textarea in the MyPosts file, after entering each letter, the page was reloaded
 
-let rerenderEntireTree = (state) => {
+
 
 root.render(
   <React.StrictMode>
     <BrowserRouter >
     <Provider store={store}>
-    <App dispatch={store.dispatch.bind(store)} state={state} store={store}/* addPost={store.addPost.bind(store)} updateNewPostText={store.updateNewPostText.bind(store)} addMessage={store.addMessage.bind(store)} updateNewMessageText={store.updateNewMessageText.bind(store)}*//> 
+    <App /*dispatch={store.dispatch.bind(store)}*/ /*state={state}*/ /*store={store}*/ /* addPost={store.addPost.bind(store)} updateNewPostText={store.updateNewPostText.bind(store)} addMessage={store.addMessage.bind(store)} updateNewMessageText={store.updateNewMessageText.bind(store)}*//> 
     </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );
 
-}
+
 // console.log(store.addPost);
 
-rerenderEntireTree(store.getState());
 
-store.subscribe(() => {
-  let state = store.getState();
-  rerenderEntireTree(state);
-});
  
 
 // If you want to start measuring performance in your app, pass a function

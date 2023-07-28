@@ -14,7 +14,7 @@ import Friend from './Friend/Friend';
 
 const NavFriends = (props) => {
 
-    let friendsElements = props.state.sidebar.friends.map( f => <Friend name={f.name} imgUrl={f.imgUrl}/>)
+    let friendsElements = props.friends.map( f => <Friend name={f.name} imgUrl={f.imgUrl}/>)
 
     return (
         <div className={s.navFriends}>
