@@ -10,7 +10,7 @@ import { BrowserRouter } from 'react-router-dom';
 // import { updateNewPostText } from './redux/state';
 // import { addMessage } from './redux/state';
 // import { updateNewMessageText } from './redux/state';
-import StoreContext from './StoreContext';
+// import StoreContext from './StoreContext';
 // import { Provider } from './StoreContext';
 import { Provider } from 'react-redux';
 
@@ -44,7 +44,7 @@ import { Provider } from 'react-redux';
 const root = ReactDOM.createRoot(document.getElementById('root')); //in lesson 34, I removed this variable from the rerenderEntireTree function, because in the textarea in the MyPosts file, after entering each letter, the page was reloaded
 
 
-
+// let rerenderEntireTree = (state) => {
 root.render(
   <React.StrictMode>
     <BrowserRouter >
@@ -54,10 +54,15 @@ root.render(
     </BrowserRouter>
   </React.StrictMode>
 );
-
+// }
 
 // console.log(store.addPost);
+// rerenderEntireTree(store.getState());
 
+// store.subscribe(() => {
+//   let state = store.getState();
+//   rerenderEntireTree(state);
+// });
 
  
 
