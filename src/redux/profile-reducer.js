@@ -25,25 +25,30 @@ let initialState = {
 
 const profileReducer = (state = initialState, action) => {
 
-    if (action.type === ADD_POST) {
-        //debugger; //в devtools f11 войти в метод
-        let newPost = {
-            id: state.posts[state.posts.length - 1].id + 1,
-            // id: 5,
-            message: state.newPostText,
-            likesCount: 0
-        };
-        let stateCopy = {...state};
-        stateCopy.posts = [...state.posts];
-        stateCopy.posts.push(newPost);   //add a post
-        stateCopy.newPostText = '';
-        return stateCopy;
+    let stateCopy = { ...state };
 
-    } else if (action.type === UPDATE_NEW_POST_TEXT) {
-        let stateCopy = {...state};
-        stateCopy.newPostText = action.newText;
-        return stateCopy;
+
+    switch (action.type) {
+        //debugger; //в devtools f11 войти в метод
+        case ADD_POST: 
+            let newPost = {
+                id: state.posts[state.posts.length - 1].id + 1,
+                // id: 5,
+                message: state.newPostText,
+                likesCount: 0
+            };
+            stateCopy.posts = [...state.posts];
+            stateCopy.posts.push(newPost);   //add a post
+            stateCopy.newPostText = '';
+            return stateCopy;
+        
+
+        case UPDATE_NEW_POST_TEXT:
+            stateCopy.newPostText = action.newText;
+            return stateCopy;
+
+        default: return state
     }
-    return state;
+    // return state;
 }
 export default profileReducer;
