@@ -14,7 +14,7 @@ const MyPosts = (props) => {
    //    {id: 2, message: 'Blabla', likesCount: 1},
    // ];
   
-   let postsElements = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>) //!
+   let postsElements = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount} key={p.key}/>) //!
    
    let newPostElement = React.createRef();
 
@@ -69,6 +69,10 @@ let a = {
 
 let b = a;
 
-console.log(b === a)
+console.log(b === a, "тренеровка в файле MyPosts 46 урок")
 
 console.log(b.skills === a.skills)
+
+let c = {...a};
+
+console.log(c === a)

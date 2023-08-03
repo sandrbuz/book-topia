@@ -14,10 +14,10 @@ export const onPostChangeActionCreator = (text) => {
 
 let initialState = {
     posts: [
-        { id: 1, message: 'Hi, how are you?', likesCount: 12 },
-        { id: 2, message: 'It\'s my first page', likesCount: 11 },
-        { id: 3, message: 'Blabla', likesCount: 10 },
-        { id: 4, message: 'Blabla', likesCount: 1 },
+        { id: 1, message: 'Hi, how are you?', likesCount: 12, key: 1 },
+        { id: 2, message: 'It\'s my first page', likesCount: 11, key: 2 },
+        { id: 3, message: 'Blabla', likesCount: 10, key: 3 },
+        { id: 4, message: 'Blabla', likesCount: 1, key: 4 },
     ],
     newPostText: ""
 
@@ -35,7 +35,8 @@ const profileReducer = (state = initialState, action) => {
                 id: state.posts[state.posts.length - 1].id + 1,
                 // id: 5,
                 message: state.newPostText,
-                likesCount: 0
+                likesCount: 0,
+                key: state.posts[state.posts.length - 1].key + 1
             };
             // stateCopy.posts = [...state.posts];
             // stateCopy.posts.push(newPost);   //add a post
