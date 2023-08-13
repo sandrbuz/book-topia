@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 // import state, { subscribe } from './redux/state'; 
 import store from './redux/redux-store'; 
 // import {addPost} from './redux/state';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Routes } from 'react-router-dom';
 // import { updateNewPostText } from './redux/state';
 // import { addMessage } from './redux/state';
 // import { updateNewMessageText } from './redux/state';

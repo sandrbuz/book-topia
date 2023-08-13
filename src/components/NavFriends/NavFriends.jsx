@@ -14,7 +14,7 @@ import Friend from './Friend/Friend';
 
 const NavFriends = (props) => {
 
-    let friendsElements = props.friends.map( f => <Friend name={f.name} imgUrl={f.imgUrl} key={f.key}/>)
+    let friendsElements = props.friends.map( f => <Friend name={f.name} imgUrl={f.imgUrl} id={f.id} key={f.id}/>)
 
     return (
         <div className={s.navFriends}>

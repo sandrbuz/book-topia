@@ -36,7 +36,7 @@ let initialState = {
 
 const dialogsReducer = (state = initialState, action) => {
 
-    let stateCopy = { ...state };
+    // let stateCopy = { ...state };
 
 
     switch (action.type) {
@@ -45,7 +45,7 @@ const dialogsReducer = (state = initialState, action) => {
                 message: state.newMessageText,
                 whoseMess: "s.right",
                 id: state.messages[state.messages.length - 1].id + 1,
-                key: state.messages[state.messages.length - 1].key + 1
+                key: state.messages[state.messages.length - 1].id + 1
             };
             // stateCopy.messages = [...state.messages];
             // stateCopy.messages.push(newMessage);

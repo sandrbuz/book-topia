@@ -15,6 +15,7 @@ import Message from './components/Dialogs/Message/Message';
 import Post from './components/Profile/MyPosts/Post/Post';
 import NavFriends from './components/NavFriends/NavFriends';
 import NavFriendsContainer from './components/NavFriends/NavFriendsContainer';
+import UsersContainer from './components/Users/UsersContainer';
 
 // let dialogs = [
 //   {name: 'Dimych', id: 1},
@@ -73,6 +74,7 @@ const App = (props) => {
             <Route path="/music" element={<Music />} />
             <Route path="/settings" element={<Settings />} />
             <Route path="/settings" element={<Settings />} />
+            <Route path="/users" element={<UsersContainer />} />
             {/* <Route path="/test1" element={<MyTestComp teext="gggg"/>} /> */}
           </Routes>
         </div>

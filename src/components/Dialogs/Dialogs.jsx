@@ -29,7 +29,7 @@ import Message from './Message/Message.jsx';
 
 
 const Dialogs = (props) => {
-    let dialogsElements = props.dialogs.map(d => <DialogItem imgURL={d.imgURL} key={d.key} name={d.name} id={d.id} />);
+    let dialogsElements = props.dialogs.map(d => <DialogItem imgURL={d.imgURL} key={d.id} name={d.name} id={d.id} />);
 
     let messagesElements = props.messages.map(m => <Message whose={m.whoseMess} key={m.id} message={m.message} id={m.id}/>);
 
