@@ -1,5 +1,5 @@
 import React from "react";
-import Users from "./Users";
+import UsersC from "./UsersC";
 import finalPropsSelectorFactory from "react-redux/es/connect/selectorFactory";
 import { followActionCreator, setUsersActionCreator, unfollowActionCreator } from "../../redux/users-reducer";
 import { connect } from "react-redux";
@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 }
 const mapDispatchToProps = (dispatch) => {
     return {
-      
+
        follow: (userId) => {
          dispatch(followActionCreator(userId))
        },
@@ -27,6 +27,7 @@ const mapDispatchToProps = (dispatch) => {
 
 
 
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(Users);
+const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UsersC);
 
 export default UsersContainer;
+
