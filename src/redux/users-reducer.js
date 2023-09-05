@@ -1,6 +1,8 @@
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 
 export const followActionCreator = (userId) => {
     return {
@@ -18,6 +20,16 @@ export const setUsersActionCreator = (users) => {
         type: SET_USERS, users
     }
 }
+export const setTotalUsersCountAC = (totalUsersCount) => {
+    return {
+        type: SET_TOTAL_USERS_COUNT, count: totalUsersCount
+    }
+}
+export const setCurrentPageAC = (pageNumber) => {
+    return {
+        type: SET_CURRENT_PAGE, pageNumber
+    }
+}
 
 let initialState = {
     users: [
@@ -25,6 +37,9 @@ let initialState = {
         //     { photoUrl: 'https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/44906d04-547a-45ef-a232-1b2e41d6b5df/220x330', id: 2, fullname: 'Sasha', status: "I am a boss too", location: { city: 'Moscow', country: 'Russia' }, followed: true },
         //     { photoUrl: 'https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/44906d04-547a-45ef-a232-1b2e41d6b5df/220x330', id: 3, fullname: 'Andrew', status: "I am a boss too", location: { city: 'Kiev', country: 'Ukraina' }, followed: false },
     ],
+    pageSize: 10,
+    totalUsersCount: 0,
+    currentPage: 1
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -78,6 +93,20 @@ const usersReducer = (state = initialState, action) => {
                 // users: [...state.users, ...action.users]  //так сказано написать на уроке, но так пользователи дублируются //в комментах к видео (49 урок) также пишут удалить reactStrictMode, но это делать не нужно, так как в дальнейшем исправится само
                 ...state,
                 users: action.users
+            }
+        case SET_TOTAL_USERS_COUNT: 
+            return {  
+                // ...state, 
+                // users: [...state.users, ...action.users]  //так сказано написать на уроке, но так пользователи дублируются //в комментах к видео (49 урок) также пишут удалить reactStrictMode, но это делать не нужно, так как в дальнейшем исправится само
+                ...state,
+                totalUsersCount: action.count
+            }
+        case SET_CURRENT_PAGE: 
+            return {  
+                // ...state, 
+                // users: [...state.users, ...action.users]  //так сказано написать на уроке, но так пользователи дублируются //в комментах к видео (49 урок) также пишут удалить reactStrictMode, но это делать не нужно, так как в дальнейшем исправится само
+                ...state,
+                currentPage: action.pageNumber
             }
     
         

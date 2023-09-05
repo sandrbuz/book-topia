@@ -1,4 +1,24 @@
-.userPhoto{
+.userPhoto {
     width: 100px;
     height: 100px;
+}
+
+.hide {
+    display: none;
+}
+
+.visible {
+    display: inline;
+    /* display: unset; */ 
+}
+
+.btnPaggination {
+    border: 1px solid black;
+    padding: 2px;
+    margin: 2px;
+}
+
+.currPage {
+    font-weight: bold;
+    border: 2px solid black;
 }
