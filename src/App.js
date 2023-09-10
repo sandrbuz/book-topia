@@ -16,7 +16,7 @@ import Post from './components/Profile/MyPosts/Post/Post';
 import NavFriends from './components/NavFriends/NavFriends';
 import NavFriendsContainer from './components/NavFriends/NavFriendsContainer';
 import UsersContainer from './components/Users/UsersContainer';
-import UsersC from './components/Users/UsersC';
+// import UsersC from './components/Users/UsersC';
 
 // let dialogs = [
 //   {name: 'Dimych', id: 1},
