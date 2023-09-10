@@ -3,6 +3,7 @@ const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET_USERS';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 
 export const followActionCreator = (userId) => {
     return {
@@ -30,6 +31,11 @@ export const setCurrentPageAC = (pageNumber) => {
         type: SET_CURRENT_PAGE, pageNumber
     }
 }
+export const toggleIsFetchingAC = (isFetching) => {
+    return {
+        type: TOGGLE_IS_FETCHING, isFetching
+    }
+}
 
 let initialState = {
     users: [
@@ -39,7 +45,8 @@ let initialState = {
     ],
     pageSize: 10,
     totalUsersCount: 0,
-    currentPage: 1
+    currentPage: 1,
+    isFetching: false
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -107,6 +114,13 @@ const usersReducer = (state = initialState, action) => {
                 // users: [...state.users, ...action.users]  //так сказано написать на уроке, но так пользователи дублируются //в комментах к видео (49 урок) также пишут удалить reactStrictMode, но это делать не нужно, так как в дальнейшем исправится само
                 ...state,
                 currentPage: action.pageNumber
+            }
+        case TOGGLE_IS_FETCHING: 
+            return {  
+                // ...state, 
+                // users: [...state.users, ...action.users]  //так сказано написать на уроке, но так пользователи дублируются //в комментах к видео (49 урок) также пишут удалить reactStrictMode, но это делать не нужно, так как в дальнейшем исправится само
+                ...state,
+                isFetching: action.isFetching
             }
     
         

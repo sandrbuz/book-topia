@@ -1,5 +1,5 @@
 import React from 'react';
-import s from "./Header.module.css"
+import s from './Header.module.css';
 
 // http://svgur.com/i/sx9.svg более светлый логотип
 const Header = () => {

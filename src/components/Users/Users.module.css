@@ -17,8 +17,13 @@
     padding: 2px;
     margin: 2px;
 }
+.btnPaggination:active {
+background-color: #7EA7D8;
+}
 
 .currPage {
     font-weight: bold;
     border: 2px solid black;
 }
+
+

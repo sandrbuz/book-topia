@@ -1,6 +1,6 @@
 import React from 'react';
-// import s from "./MyPosts.module.css"
-// import Post from "./Post/Post.jsx"
+// import s from './MyPosts.module.css'
+// import Post from './Post/Post.jsx'
 import { addPostActionCreator, onPostChangeActionCreator } from '../../../redux/profile-reducer';
 import MyPosts from './MyPosts';
 // import StoreContext from '../../../StoreContext';
