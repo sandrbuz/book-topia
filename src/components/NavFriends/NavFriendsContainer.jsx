@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
 
 
 
-
 let mapStateToProps = (state) => {
     return {
        friends: state.sidebar.friends

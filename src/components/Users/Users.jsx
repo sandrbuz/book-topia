@@ -24,7 +24,7 @@ const Users = (props) => {
 
                 {props.currentPage < pages.length && <span>...</span>}
             </div>
-            {props.isFetching &&  <Preloader />}
+            {props.isFetching && <Preloader />} {/*css preloader, and in the lesson there was svg */}
 
             {props.users.map(u => <div key={u.id}>
                 <span>
@@ -34,8 +34,12 @@ const Users = (props) => {
                         {u.followed
                             ? <button onClick={() => { props.unfollow(u.id) }}>Unfollow</button>
                             : <button onClick={() => { props.follow(u.id) }}>Follow</button>}
-
                     </div>
+                    {/* learned stopPropagation */}
+                    {/* <div onClick={()=>{console.log('container clicked')}} style={{backgroundColor: 'blue'}}>
+                      <button onClick={(e)=>{console.log('btn clicked');
+                    e.stopPropagation();}}>test</button>
+                    </div> */}
                     <br />
                     <br />
                 </span>
