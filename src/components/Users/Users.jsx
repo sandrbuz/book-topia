@@ -2,6 +2,7 @@ import React from 'react';
 import userImg from '../../assets/images/userImg.png';
 import styles from './Users.module.css';
 import Preloader from '../common/Preloader/Preloader';
+import { NavLink } from 'react-router-dom';
 // import preloader from '../../assets/images/preloader.svg'
 
 
@@ -28,7 +29,8 @@ const Users = (props) => {
 
             {props.users.map(u => <div key={u.id}>
                 <span>
-                    <div><img src={u.photos.small != null ? u.photos.small : userImg} className={styles.userPhoto} /></div>
+                    <NavLink to='/profile/2'><img src={u.photos.small != null ? u.photos.small : userImg} className={styles.userPhoto} /></NavLink>
+
                     <div>
                         {/* <button onClick={() => {u.followed ? props.unfollow(u.id) : props.follow(u.id)}} >{u.followed ? "Follow" : "Unfollow"}</button> */}
                         {u.followed

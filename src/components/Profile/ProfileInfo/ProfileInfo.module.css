@@ -1,8 +1,37 @@
 
-.profImg{
+.profImgHead{
    width: 100%;
    height: 300px;
 }
+.profileImage {
+   max-width: 200px;
+   border-radius: 30px;
+   }
 .descriptionBlock{
+   display: flex; 
+   align-items: center;
    padding: 20px;
+}
+
+.profileImageWrapper{
+   display: inline-block;
+   max-width: 200px;
+}
+.infoWrapper{
+   /* text-transform: capitalize; */ /*for first capital letter*/
+   padding: 20px;
+   display: inline-block;
+   max-width: 300px;
+}
+
+
+@media (max-width: 620px) {
+   .descriptionBlock {
+     flex-direction: column; 
+     align-items: flex-start;
+   }
+ 
+   .infoWrapper {
+     margin-top: 20px; 
+ }
 }

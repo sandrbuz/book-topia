@@ -16,6 +16,7 @@ import Post from './components/Profile/MyPosts/Post/Post';
 import NavFriends from './components/NavFriends/NavFriends';
 import NavFriendsContainer from './components/NavFriends/NavFriendsContainer';
 import UsersContainer from './components/Users/UsersContainer';
+import ProfileContainer from './components/Profile/ProfileContainer';
 // import UsersC from './components/Users/UsersC';
 
 // let dialogs = [
@@ -64,7 +65,7 @@ const App = (props) => {
         <div className="app-wrapper-content">
           <Routes>
             {/* <Route path="/" element={<Profile stateProfilePage={props.state.profilePage} addPost={props.addPost}/>} /> */}
-            <Route path="/profile/" element={<Profile /*store={props.store}*/ /* dispatch={props.dispatch} */ /*stateProfilePage={props.state.profilePage}*/ /*addPost={props.addPost} updateNewPostText={props.updateNewPostText}*//>}  />
+            <Route path="/profile/*" element={<ProfileContainer /*store={props.store}*/ /* dispatch={props.dispatch} */ /*stateProfilePage={props.state.profilePage}*/ /*addPost={props.addPost} updateNewPostText={props.updateNewPostText}*//>}  />
             <Route exact path="/dialogs/*" element={<DialogsContainer 
                /*store={props.store}*/
             // dispatch={props.dispatch} stateDialogsPage={props.state.dialogsPage}  
