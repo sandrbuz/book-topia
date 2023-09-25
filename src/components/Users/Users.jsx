@@ -16,7 +16,7 @@ const Users = (props) => {
     }
     return (
         <div className={styles.wrapper}>
-            <div>
+            <div className={styles.btnsWrapper}>
                 {/* solution as in lesson 55 */}
                 {/* {pages.map(p => <span onClick={()=>{this.onPageChanged(p)}} className={this.props.currentPage == p && styles.currPage} key={p}>{p}</span>)} */}
                 {/* modified solution */}
@@ -25,11 +25,12 @@ const Users = (props) => {
 
                 {props.currentPage < pages.length && <span>...</span>}
             </div>
+            
             {props.isFetching && <Preloader />} {/*css preloader, and in the lesson there was svg */}
 
-            {props.users.map(u => <div key={u.id}>
+            {props.users.map(u => <div className={styles.userWrapper} key={u.id}>
                 <span>
-                    <NavLink to='/profile/2'><img src={u.photos.small != null ? u.photos.small : userImg} className={styles.userPhoto} /></NavLink>
+                    <NavLink to={'/profile/' + u.id}><img src={u.photos.small != null ? u.photos.small : userImg} className={styles.userPhoto} /></NavLink>
 
                     <div>
                         {/* <button onClick={() => {u.followed ? props.unfollow(u.id) : props.follow(u.id)}} >{u.followed ? "Follow" : "Unfollow"}</button> */}
@@ -42,8 +43,7 @@ const Users = (props) => {
                       <button onClick={(e)=>{console.log('btn clicked');
                     e.stopPropagation();}}>test</button>
                     </div> */}
-                    <br />
-                    <br />
+
                 </span>
                 <span>
                     <span>
@@ -55,6 +55,7 @@ const Users = (props) => {
                         <div>{'u.location.city'}</div>
                     </span>
                 </span>
+                <br />
             </div>)}
         </div>
     )

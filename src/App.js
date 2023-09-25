@@ -57,33 +57,42 @@ const App = (props) => {
 
   return (
     // <BrowserRouter>
-      <div className='app-wrapper'>
-        <Header />
-        <Navbar state={props.state}/>
+    <div className='app-wrapper'>
+      <Header />
+      <Navbar state={props.state} />
 
 
-        <div className="app-wrapper-content">
-          <Routes>
-            {/* <Route path="/" element={<Profile stateProfilePage={props.state.profilePage} addPost={props.addPost}/>} /> */}
-            <Route path="/profile/*" element={<ProfileContainer /*store={props.store}*/ /* dispatch={props.dispatch} */ /*stateProfilePage={props.state.profilePage}*/ /*addPost={props.addPost} updateNewPostText={props.updateNewPostText}*//>}  />
-            <Route exact path="/dialogs/*" element={<DialogsContainer 
-               /*store={props.store}*/
-            // dispatch={props.dispatch} stateDialogsPage={props.state.dialogsPage}  
-               //addMessage={props.addMessage} 
-               //updateNewMessageText={props.updateNewMessageText}
-               />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/music" element={<Music />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/users" element={<UsersContainer />} />
-            {/* <Route path="/test1" element={<MyTestComp teext="gggg"/>} /> */}
-          </Routes>
-        </div>
+      <div className="app-wrapper-content">
+        <Routes>
+        <Route index element={<ProfileContainer />}/> 
 
-         <NavFriendsContainer/> {/* used to be invested in navbar */}
+          {/* <Route path="/" element={<Profile stateProfilePage={props.state.profilePage} addPost={props.addPost}/>} /> */}
+          {/* <Route path="/profile/*" element={<ProfileContainer /*store={props.store}*/ /* dispatch={props.dispatch} */ /*stateProfilePage={props.state.profilePage}*/ /*addPost={props.addPost} updateNewPostText={props.updateNewPostText} />} /> */}
+          <Route path="/profile/:userId?" element={<ProfileContainer />} />
+          {/* <Route path="/profile/" element={<ProfileContainer />}>
+            <Route path=":userId" element={<ProfileContainer />} />
+          </Route> */}
 
+          <Route exact path="/dialogs/*" element={<DialogsContainer
+          /*store={props.store}*/
+          // dispatch={props.dispatch} stateDialogsPage={props.state.dialogsPage}  
+          //addMessage={props.addMessage} 
+          //updateNewMessageText={props.updateNewMessageText}
+          />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/music" element={<Music />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/users" element={<UsersContainer />} />
+          <Route path="*" element={<h2>Not found</h2>} />
+          {/* <Route path="/" element={<ProfileContainer />} /> */}
+          {/* <Route path="/test1" element={<MyTestComp teext="gggg"/>} /> */}
+        </Routes>
       </div>
+
+      <NavFriendsContainer /> {/* used to be invested in navbar */}
+
+    </div>
     // </BrowserRouter>
   );
 }

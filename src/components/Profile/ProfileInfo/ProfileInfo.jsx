@@ -1,10 +1,14 @@
 import React from "react";
 import styles from "./ProfileInfo.module.css";
 import userImg from '../../../assets/images/userImg.png'
+import Preloader from "../../common/Preloader/Preloader";
 
 
 
 const ProfileInfo = (props) => {
+    if(!props.profile){
+        return <Preloader/>
+    }
     return (
         <div>
             <div>

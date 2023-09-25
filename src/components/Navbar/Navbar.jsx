@@ -1,31 +1,31 @@
 import React from 'react';
-import { NavLink, useLocation} from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import s from './Navbar.module.css'
-// import NavFriends from './NavFriends/NavFriends';
+
+// import { useNavigate } from 'react-router-dom'; (60 lesson)
+// import { useEffect } from 'react';(60 lesson)
 
 
 const Navbar = (props) => {
 
-//   let profileLink = document.querySelector('.profileLink');
+//  _______________________________________________________________ We check if the current path is the root path ('/') using window.location.pathname. If it is, we programmatically navigate to the /profile path using navigate('/profile')(60 lesson).
+// (in your own words, if path = 'http://localhost:3000/' , then profile NavLink is automatically clicked)
 
-//   const location = useLocation();
+// const navigate = useNavigate();
 
-//   const isFirstLinkActive = location.pathname === '/profile';
-//   const isSecondLinkActive = location.pathname === '/dialogs';
-
-//  let def = [];
-//   if(location.pathname === '/dialogs' == false && location.pathname === '/news' == false && location.pathname === '/music' == false && location.pathname === '/settings' == false){
-//     def.push('s.active')
-//   } else {
-//     def.shift();
-//   }
+//   useEffect(() => {
+//     if (window.location.pathname === '/') {
+//       navigate('/profile');
+//     }
+//   }, [navigate]);
+// _______________________________________________________________
 
   
   return (
     <nav className={s.nav}>
       <div className={s.links}>
       <div className={s.item + " " + s.item1}>
-        <NavLink to='/profile' className={({ isActive }) => isActive ? s.active : s.item}>Profile</NavLink>
+        <NavLink   to='/profile'  className={({ isActive }) => isActive ? s.active : s.item}>Profile</NavLink>
       </div>
       <div className={s.item}>
         <NavLink  to='/dialogs' className={({ isActive }) => isActive ? s.active : s.item}>Messages</NavLink>
