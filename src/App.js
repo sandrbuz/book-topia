@@ -17,6 +17,7 @@ import NavFriends from './components/NavFriends/NavFriends';
 import NavFriendsContainer from './components/NavFriends/NavFriendsContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
+import HeaderContainer from './components/Header/HeaderContainer';
 // import UsersC from './components/Users/UsersC';
 
 // let dialogs = [
@@ -58,8 +59,9 @@ const App = (props) => {
   return (
     // <BrowserRouter>
     <div className='app-wrapper'>
-      <Header />
-      <Navbar state={props.state} />
+      {/* <Header /> */}
+      <HeaderContainer />
+      <Navbar  />
 
 
       <div className="app-wrapper-content">

@@ -28,3 +28,6 @@
 /* .item a:focus {
   color: gold;
 } */
+.item a:hover{ 
+  text-decoration: underline;
+}

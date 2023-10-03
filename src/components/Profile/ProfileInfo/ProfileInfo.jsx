@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./ProfileInfo.module.css";
-import userImg from '../../../assets/images/userImg.png'
+import defaultUserImg from '../../../assets/images/userImg.png'
 import Preloader from "../../common/Preloader/Preloader";
 
 
@@ -17,7 +17,7 @@ const ProfileInfo = (props) => {
             <div className={styles.descriptionBlock}>
 
                 <div className={styles.profileImageWrapper}>
-                    <img className={styles.profileImage} src={props.profile.photos.large ? props.profile.photos.large : userImg} alt="profile image" />
+                    <img className={styles.profileImage} src={props.profile.photos.large ? props.profile.photos.large : defaultUserImg} alt="profile image" />
                 </div>
                 <div className={styles.infoWrapper}>
                     <div className={styles.fullname}>{props.profile.fullName}</div>
