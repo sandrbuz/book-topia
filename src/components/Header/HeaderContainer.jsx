@@ -12,7 +12,7 @@ class HeaderContainer extends React.Component {
     componentDidMount() {
         this.props.toggleIsFetching(true);
         axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-         withCredentials: true // отправить ли куки вместе с кроссдоменным запросом ? да
+         withCredentials: true // should cookies be sent along with a cross-domain request? Yes
     })
             .then(response => {
                 if(response.data.resultCode === 0) {

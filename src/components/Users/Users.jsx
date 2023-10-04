@@ -3,8 +3,7 @@ import userImg from '../../assets/images/userImg.png';
 import styles from './Users.module.css';
 import Preloader from '../common/Preloader/Preloader';
 import { NavLink } from 'react-router-dom';
-// import preloader from '../../assets/images/preloader.svg'
-
+import axios from 'axios';
 
 
 
@@ -25,8 +24,8 @@ const Users = (props) => {
 
                 {props.currentPage < pages.length && <span>...</span>}
             </div>
-            
-            {props.isFetching && <Preloader />} {/*css preloader, and in the lesson there was svg */}
+
+            {props.isFetching && <Preloader />}
 
             {props.users.map(u => <div className={styles.userWrapper} key={u.id}>
                 <span>
@@ -35,8 +34,32 @@ const Users = (props) => {
                     <div>
                         {/* <button onClick={() => {u.followed ? props.unfollow(u.id) : props.follow(u.id)}} >{u.followed ? "Follow" : "Unfollow"}</button> */}
                         {u.followed
-                            ? <button onClick={() => { props.unfollow(u.id) }}>Unfollow</button>
-                            : <button onClick={() => { props.follow(u.id) }}>Follow</button>}
+                            ? <button onClick={() => {
+                                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{
+                                withCredentials: true,
+                                // Lesson 62, everything works fine without a header (I don’t know why it’s needed).
+                                headers: {
+                                    "API-KEY" : "59f84030-c446-4a6c-adc2-2bc5e3751fd7"
+                                }
+                            })
+                                .then(response => {
+                                   if(response.data.resultCode === 0){props.unfollow(u.id)}
+                                })                               
+                            }}>Unfollow</button>
+                    
+
+                            : <button onClick={() => {
+                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{},{
+                                withCredentials: true,
+                                // Lesson 62, everything works fine without a header (I don’t know why it’s needed).
+                                headers: {
+                                    "API-KEY" : "59f84030-c446-4a6c-adc2-2bc5e3751fd7"
+                                }
+                            })
+                                .then(response => {
+                                   if(response.data.resultCode === 0){props.follow(u.id)}
+                                })   
+                            }}>Follow</button>}
                     </div>
                     {/* learned stopPropagation */}
                     {/* <div onClick={()=>{console.log('container clicked')}} style={{backgroundColor: 'blue'}}>
