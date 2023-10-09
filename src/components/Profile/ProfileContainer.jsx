@@ -12,6 +12,7 @@ import {
     useParams,
 } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
+import { profileAPI } from "../../api/api";
 // export function withRouter(Children) {
 //     return (props) => {
 
@@ -46,9 +47,9 @@ class ProfileContainer extends React.Component {
             userId = 2
         }
 
-        axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
-            .then(response => {
-                return this.props.setUserProfile(response.data)
+        profileAPI.getProfile(userId)
+            .then(data => {
+                return this.props.setUserProfile(data)
             })
     }
 
@@ -60,9 +61,9 @@ class ProfileContainer extends React.Component {
                 userId = 2
             }
     
-            axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + userId)
-                .then(response => {
-                    return this.props.setUserProfile(response.data)
+            profileAPI.getProfile(userId)
+                .then(data => {
+                    return this.props.setUserProfile(data)
                 })
         }
 

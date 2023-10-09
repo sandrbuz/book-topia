@@ -4,6 +4,7 @@ import styles from './Users.module.css';
 import Preloader from '../common/Preloader/Preloader';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
+import { followUnfollowAPI } from '../../api/api';
 
 
 
@@ -35,30 +36,18 @@ const Users = (props) => {
                         {/* <button onClick={() => {u.followed ? props.unfollow(u.id) : props.follow(u.id)}} >{u.followed ? "Follow" : "Unfollow"}</button> */}
                         {u.followed
                             ? <button onClick={() => {
-                                axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{
-                                withCredentials: true,
-                                // Lesson 62, everything works fine without a header (I don’t know why it’s needed).
-                                headers: {
-                                    "API-KEY" : "59f84030-c446-4a6c-adc2-2bc5e3751fd7"
-                                }
-                            })
-                                .then(response => {
-                                   if(response.data.resultCode === 0){props.unfollow(u.id)}
-                                })                               
+                                followUnfollowAPI.setUnfollow(u.id)
+                                    .then(data => {
+                                        if (data.resultCode === 0) { props.unfollow(u.id) }
+                                    })
                             }}>Unfollow</button>
-                    
+
 
                             : <button onClick={() => {
-                                axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${u.id}`,{},{
-                                withCredentials: true,
-                                // Lesson 62, everything works fine without a header (I don’t know why it’s needed).
-                                headers: {
-                                    "API-KEY" : "59f84030-c446-4a6c-adc2-2bc5e3751fd7"
-                                }
-                            })
-                                .then(response => {
-                                   if(response.data.resultCode === 0){props.follow(u.id)}
-                                })   
+                                followUnfollowAPI.setFollow(u.id)
+                                    .then(data => {
+                                        if (data.resultCode === 0) { props.follow(u.id) }
+                                    })
                             }}>Follow</button>}
                     </div>
                     {/* learned stopPropagation */}

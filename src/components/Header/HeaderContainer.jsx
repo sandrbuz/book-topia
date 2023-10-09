@@ -5,58 +5,57 @@ import { connect } from 'react-redux';
 import { setAuthUserData } from '../../redux/auth-reducer';
 import { setAuthUserAvatar } from '../../redux/auth-reducer';
 import { toggleIsFetching } from '../../redux/auth-reducer';
+import { authAPI, profileAPI } from '../../api/api';
 
 class HeaderContainer extends React.Component {
 
-    
+
     componentDidMount() {
         this.props.toggleIsFetching(true);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
-         withCredentials: true // should cookies be sent along with a cross-domain request? Yes
-    })
-            .then(response => {
-                if(response.data.resultCode === 0) {
-                    let {id,email,login} = response.data.data;
+        authAPI.getAuth()
+            .then(data => {
+                if (data.resultCode === 0) {
+                    let { id, email, login } = data.data;
                     this.props.setAuthUserData(id, email, login)
                     // request for additional data (for user photo)
-                    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/` + id)
-                    .then(response => {
-                        return this.props.setAuthUserAvatar(response.data.photos.small)
-                    })
+                    profileAPI.getProfile(id)
+                        .then(data => {
+                            return this.props.setAuthUserAvatar(data.photos.small)
+                        })
                     this.props.toggleIsFetching(false)
 
- 
+
                 }
             })
 
     }
 
-render() {
+    render() {
 
-return (
-    
-    <Header {...this.props}  />
-    
-    )
+        return (
 
-}
+            <Header {...this.props} />
+
+        )
+
+    }
 
 }
 
 
 const mapStateToProps = (state) => {
-   return {
-    isAuth: state.auth.isAuth,
-    login: state.auth.login,
-    // email: state.auth.email
-    avatarSmall: state.auth.avatarSmall,
-    isFetching: state.auth.isFetching
-}
+    return {
+        isAuth: state.auth.isAuth,
+        login: state.auth.login,
+        // email: state.auth.email
+        avatarSmall: state.auth.avatarSmall,
+        isFetching: state.auth.isFetching
+    }
 }
 
 export default connect(mapStateToProps, {
     setAuthUserData,
     setAuthUserAvatar,
     toggleIsFetching
-    
+
 })(HeaderContainer);
