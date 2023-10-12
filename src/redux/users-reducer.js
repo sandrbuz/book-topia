@@ -4,6 +4,7 @@ const SET_USERS = 'SET_USERS';
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
+const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS';
 
 export const follow = (userId) => {
     return {
@@ -36,6 +37,11 @@ export const toggleIsFetching = (isFetching) => {
         type: TOGGLE_IS_FETCHING, isFetching
     }
 }
+export const toggleFollowingProgress = (isFetching, userId) => {
+    return {
+        type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId
+    }
+}
 
 let initialState = {
     users: [
@@ -46,15 +52,16 @@ let initialState = {
     pageSize: 7,
     totalUsersCount: 0,
     currentPage: 1,
-    isFetching: false
+    isFetching: false,
+    followingInProgress: []
 }
 
 const usersReducer = (state = initialState, action) => {
 
     // let stateCopy = { ...state };
     // stateCopy.users = [...state.users];
- 
-    
+
+
 
 
     switch (action.type) {
@@ -65,8 +72,8 @@ const usersReducer = (state = initialState, action) => {
             // return stateCopy
             return {
                 ...state,
-                users: state.users.map( u => {
-                    if(u.id === action.userId){
+                users: state.users.map(u => {
+                    if (u.id === action.userId) {
                         return {
                             ...u,
                             followed: true
@@ -83,8 +90,8 @@ const usersReducer = (state = initialState, action) => {
             // return stateCopy
             return {
                 ...state,
-                users: state.users.map( u => {
-                    if(u.id === action.userId){
+                users: state.users.map(u => {
+                    if (u.id === action.userId) {
                         return {
                             ...u,
                             followed: false
@@ -94,36 +101,44 @@ const usersReducer = (state = initialState, action) => {
                     }
                 })
             }
-        case SET_USERS: 
-            return {  
+        case SET_USERS:
+            return {
                 // ...state, 
                 // users: [...state.users, ...action.users]  //так сказано написать на уроке, но так пользователи дублируются //в комментах к видео (49 урок) также пишут удалить reactStrictMode, но это делать не нужно, так как в дальнейшем исправится само
                 ...state,
                 users: action.users
             }
-        case SET_TOTAL_USERS_COUNT: 
-            return {  
+        case SET_TOTAL_USERS_COUNT:
+            return {
                 // ...state, 
                 // users: [...state.users, ...action.users]  //так сказано написать на уроке, но так пользователи дублируются //в комментах к видео (49 урок) также пишут удалить reactStrictMode, но это делать не нужно, так как в дальнейшем исправится само
                 ...state,
                 totalUsersCount: action.count
             }
-        case SET_CURRENT_PAGE: 
-            return {  
+        case SET_CURRENT_PAGE:
+            return {
                 // ...state, 
                 // users: [...state.users, ...action.users]  //так сказано написать на уроке, но так пользователи дублируются //в комментах к видео (49 урок) также пишут удалить reactStrictMode, но это делать не нужно, так как в дальнейшем исправится само
                 ...state,
                 currentPage: action.pageNumber
             }
-        case TOGGLE_IS_FETCHING: 
-            return {  
+        case TOGGLE_IS_FETCHING:
+            return {
                 // ...state, 
                 // users: [...state.users, ...action.users]  //так сказано написать на уроке, но так пользователи дублируются //в комментах к видео (49 урок) также пишут удалить reactStrictMode, но это делать не нужно, так как в дальнейшем исправится само
                 ...state,
                 isFetching: action.isFetching
             }
-    
-        
+        case TOGGLE_IS_FOLLOWING_PROGRESS:
+            
+            return {
+                ...state,
+                followingInProgress: action.isFetching
+                    ? [...state.followingInProgress, action.userId]
+                    : state.followingInProgress.filter(id => id != action.userId)
+            }
+
+
 
         default:
             return state

@@ -5,7 +5,7 @@
 }
 .profileImage {
    max-width: 200px;
-   border-radius: 30px;
+   border-radius: 100px;
    }
 .descriptionBlock{
    display: flex; 
