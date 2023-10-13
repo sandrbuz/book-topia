@@ -12,7 +12,7 @@ import {
     useParams,
 } from "react-router-dom";
 import { useHistory } from 'react-router-dom';
-import { profileAPI } from "../../api/api";
+import { usersAPI } from "../../api/api";
 // export function withRouter(Children) {
 //     return (props) => {
 
@@ -47,7 +47,7 @@ class ProfileContainer extends React.Component {
             userId = 2
         }
 
-        profileAPI.getProfile(userId)
+        usersAPI.getProfile(userId)
             .then(data => {
                 return this.props.setUserProfile(data)
             })
@@ -61,7 +61,7 @@ class ProfileContainer extends React.Component {
                 userId = 2
             }
     
-            profileAPI.getProfile(userId)
+            usersAPI.getProfile(userId)
                 .then(data => {
                     return this.props.setUserProfile(data)
                 })

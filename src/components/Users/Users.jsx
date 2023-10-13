@@ -4,7 +4,7 @@ import styles from './Users.module.css';
 import Preloader from '../common/Preloader/Preloader';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
-import { followUnfollowAPI } from '../../api/api';
+import { usersAPI } from '../../api/api';
 import { toggleFollowingProgress } from '../../redux/users-reducer';
 
 
@@ -39,7 +39,7 @@ const Users = (props) => {
                             ? <button disabled={props.followingInProgress.some(id=>id===u.id)} onClick={() => {
                                  props.toggleFollowingProgress(true,u.id) 
                                  console.log()  
-                                followUnfollowAPI.setUnfollow(u.id)
+                                usersAPI.unfollow(u.id)
                                     .then(data => {
                                         if (data.resultCode === 0) { props.unfollow(u.id) }
                                         props.toggleFollowingProgress(false,u.id)
@@ -50,7 +50,7 @@ const Users = (props) => {
                             : <button disabled={props.followingInProgress.some(id=>id===u.id)} onClick={() => {
                                 props.toggleFollowingProgress(true,u.id)
                                 console.log()
-                                followUnfollowAPI.setFollow(u.id)
+                                usersAPI.follow(u.id)
                                     .then(data => {
                                         if (data.resultCode === 0) { props.follow(u.id) }
                                         props.toggleFollowingProgress(false,u.id)

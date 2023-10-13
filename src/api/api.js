@@ -16,31 +16,24 @@ export const usersAPI = {
     getUsers(currentPage = 1, pageSize = 10) {
         return axiosInstance.get(`users?page=${currentPage}&count=${pageSize}`)
             .then(response => { return response.data })
-    }
-}
-
-export const followUnfollowAPI = {
-    setFollow(userId) {
-        return axiosInstance.post(`follow/${userId}`)
-            .then(response => {return response.data})
     },
-    setUnfollow(userId) {
+    follow(userId) {                                        
+        return axiosInstance.post(`follow/${userId}`)
+            .then(response => { return response.data })
+    },
+    unfollow(userId) {                                       
         return axiosInstance.delete(`follow/${userId}`)
-            .then(response => {return response.data})
-    }
-
-}
-export const profileAPI = {
-    getProfile(userId){
+            .then(response => { return response.data })
+    },
+    getProfile(userId) {
         return axiosInstance.get(`profile/` + userId)
-               .then(response => {return response.data})
+            .then(response => { return response.data })
     }
 }
-
 export const authAPI = {
-    getAuth(){
+    me() {              
         return axiosInstance.get(`auth/me`)
-            .then(response => { return response.data})
+            .then(response => { return response.data })              
     }
 }
 

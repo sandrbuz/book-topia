@@ -70,7 +70,7 @@ const App = (props) => {
 
           {/* <Route path="/" element={<Profile stateProfilePage={props.state.profilePage} addPost={props.addPost}/>} /> */}
           {/* <Route path="/profile/*" element={<ProfileContainer /*store={props.store}*/ /* dispatch={props.dispatch} */ /*stateProfilePage={props.state.profilePage}*/ /*addPost={props.addPost} updateNewPostText={props.updateNewPostText} />} /> */}
-          <Route path="/profile/:userId?" element={<ProfileContainer />} />
+          <Route path="/profile/:userId?/" element={<ProfileContainer />} />
           {/* <Route path="/profile/" element={<ProfileContainer />}>
             <Route path=":userId" element={<ProfileContainer />} />
           </Route> */}
