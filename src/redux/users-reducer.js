@@ -44,7 +44,7 @@ export const toggleFollowingProgress = (isFetching, userId) => {
         type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId
     }
 }
-//thunks
+//thunk creators
 export const getUsers = (currentPage, pageSize) => {
     return (dispatch) => {
         dispatch(toggleIsFetching(true));

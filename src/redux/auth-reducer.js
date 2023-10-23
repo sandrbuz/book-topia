@@ -1,4 +1,4 @@
-
+import { authAPI, usersAPI} from "../api/api";
 const SET_AUTH_USER_DATA = 'SET_AUTH_USER_DATA';
 const SET_AUTH_USER_AVATAR = 'SET_AUTH_USER_AVATAR';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
@@ -20,6 +20,25 @@ export const toggleIsFetching = (isFetching) => {
     return {
         type: TOGGLE_IS_FETCHING, isFetching
     }
+}
+// thunk creators
+export const getAuthUserData = () => (dispatch) => {
+    dispatch(toggleIsFetching(true));
+    authAPI.me()
+        .then(data => {
+            if (data.resultCode === 0) {
+                let { id, email, login } = data.data;
+                dispatch(setAuthUserData(id, email, login))
+                // request for additional data (for user photo)
+                usersAPI.getProfile(id)
+                    .then(data => {
+                        return dispatch(setAuthUserAvatar(data.photos.small))
+                    })
+                dispatch(toggleIsFetching(false))
+
+
+            }
+        })
 }
 
 let initialState = {
