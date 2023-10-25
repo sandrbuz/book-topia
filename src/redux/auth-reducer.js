@@ -35,10 +35,10 @@ export const getAuthUserData = () => (dispatch) => {
                         return dispatch(setAuthUserAvatar(data.photos.small))
                     })
                 dispatch(toggleIsFetching(false))
-
-
             }
         })
+        dispatch(toggleIsFetching(false))
+
 }
 
 let initialState = {

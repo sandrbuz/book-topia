@@ -18,6 +18,10 @@ import NavFriendsContainer from './components/NavFriends/NavFriendsContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
+import LoginPage from './components/login/Login';
+import { getAuthUserData } from './redux/auth-reducer';
+import { useEffect } from 'react';
+
 // import UsersC from './components/Users/UsersC';
 
 // let dialogs = [
@@ -54,7 +58,7 @@ import HeaderContainer from './components/Header/HeaderContainer';
 
 
 const App = (props) => {
-
+ 
 
   return (
     // <BrowserRouter>
@@ -87,6 +91,7 @@ const App = (props) => {
           <Route path="/settings" element={<Settings />} />
           <Route path="/users" element={<UsersContainer />} />
           <Route path="*" element={<h2>Not found</h2>} />
+          <Route path="/login" element={<LoginPage/>} />
           {/* <Route path="/" element={<ProfileContainer />} /> */}
           {/* <Route path="/test1" element={<MyTestComp teext="gggg"/>} /> */}
         </Routes>

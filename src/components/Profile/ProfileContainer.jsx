@@ -6,11 +6,12 @@ import { setUserProfile, getUserProfile } from "../../redux/profile-reducer";
 import Preloader from "../common/Preloader/Preloader";
 // import { withRouter } from 'react-router-dom'; 
 import {
+    Navigate,
     useLocation,
     useNavigate,
     useParams,
 } from "react-router-dom";
-import { useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom'; //now userNavigate instead
 import { usersAPI } from "../../api/api";
 // export function withRouter(Children) {
 //     return (props) => {
@@ -50,9 +51,11 @@ class ProfileContainer extends React.Component {
         //     .then(data => {
         //         return this.props.setUserProfile(data)
         //     })
+
     }
 
     componentDidUpdate(prevProps) {
+
         if (this.props.router.params.userId !== prevProps.router.params.userId) {
             // The code in our componentDidUpdate method is duplicated in componentDidMount, so we can move the repeating logic into a separate function, we can call it fetchUserProfile()
             let userId = this.props.router.params.userId;
@@ -66,13 +69,18 @@ class ProfileContainer extends React.Component {
             //     })
         }
 
+
     }
 
 
 
     render() {
+
+        if(this.props.isAuth===false){return <Navigate to='/login'/>}
+        
         return (<>
             {/* {!this.props.profile ? <Preloader /> : <Profile {...this.props} />} */}
+            {/* {this.props.isAuth===false?<Navigate to='/login'/>:<Profile {...this.props} />} */}
             <Profile {...this.props} />
         </>
         )
@@ -81,7 +89,8 @@ class ProfileContainer extends React.Component {
 }
 const mapStateToProps = (state) => {
     return {
-        profile: state.profilePage.profile
+        profile: state.profilePage.profile,
+        isAuth: state.auth.isAuth
     }
 }
 
@@ -97,6 +106,6 @@ let WithUrlDataContainerComponent = withRouter(ProfileContainer);
 
 export default connect(mapStateToProps, {
     setUserProfile,
-    getUserProfile
+    getUserProfile,
 })(WithUrlDataContainerComponent);
 

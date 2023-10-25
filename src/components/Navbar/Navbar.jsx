@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Navigate } from 'react-router-dom';
 import s from './Navbar.module.css'
 
 // import { useNavigate } from 'react-router-dom'; (60 lesson)
@@ -19,7 +19,6 @@ const Navbar = (props) => {
 //     }
 //   }, [navigate]);
 // _______________________________________________________________
-
 
   
   return (

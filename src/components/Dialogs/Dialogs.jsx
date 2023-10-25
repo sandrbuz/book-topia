@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './Dialogs.module.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Navigate } from 'react-router-dom';
 import DialogItem from './DialogItem/DialogItem.jsx';
 import Message from './Message/Message.jsx';
 
@@ -51,6 +51,8 @@ let onNewMessageChange = () => {
     props.newMessageChange(newMessageBody);
     // props.dispatch(onMessageChangeActionCreator(newMessageBody));
 }
+
+   if(props.isAuth === false){ return <Navigate to='/login'/>}
 
     return (
         <div className={s.dialogs}>
