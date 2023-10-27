@@ -19,8 +19,6 @@ import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import LoginPage from './components/login/Login';
-import { getAuthUserData } from './redux/auth-reducer';
-import { useEffect } from 'react';
 
 // import UsersC from './components/Users/UsersC';
 
@@ -58,7 +56,7 @@ import { useEffect } from 'react';
 
 
 const App = (props) => {
- 
+
 
   return (
     // <BrowserRouter>

@@ -2,7 +2,7 @@ import { authAPI, usersAPI} from "../api/api";
 const SET_AUTH_USER_DATA = 'SET_AUTH_USER_DATA';
 const SET_AUTH_USER_AVATAR = 'SET_AUTH_USER_AVATAR';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
-
+const SET_IS_AUTH_FALSE = 'SET_IS_AUTH_FALSE';
 
 export const setAuthUserData = (id, email, login) => {
     return {
@@ -21,6 +21,11 @@ export const toggleIsFetching = (isFetching) => {
         type: TOGGLE_IS_FETCHING, isFetching
     }
 }
+// export const setIsAuthFalse = (isAuth) => {
+//     return {
+//         type: SET_IS_AUTH_FALSE, isAuth
+//     }
+// }
 // thunk creators
 export const getAuthUserData = () => (dispatch) => {
     dispatch(toggleIsFetching(true));
@@ -35,7 +40,7 @@ export const getAuthUserData = () => (dispatch) => {
                         return dispatch(setAuthUserAvatar(data.photos.small))
                     })
                 dispatch(toggleIsFetching(false))
-            }
+            } //else {dispatch(setIsAuthFalse(false))}
         })
         dispatch(toggleIsFetching(false))
 
@@ -45,7 +50,7 @@ let initialState = {
     email: null,
     id: null,
     login: null,
-    isAuth: false,
+    isAuth: false, //can be changed to true
     // isFetching: false 
     avatarSmall: null,
     isFetching: false
@@ -71,6 +76,11 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 isFetching: action.isFetching
             }
+        // case SET_IS_AUTH_FALSE:
+        //     return {
+        //         ...state,
+        //         isAuth: action.isAuth
+        //     }
 
         default: return state;
 
