@@ -52,7 +52,6 @@ let onNewMessageChange = () => {
     // props.dispatch(onMessageChangeActionCreator(newMessageBody));
 }
 
-   if(props.isAuth === false){ return <Navigate to='/login'/>}
 
     return (
         <div className={s.dialogs}>

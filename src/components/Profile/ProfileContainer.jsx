@@ -13,6 +13,8 @@ import {
 } from "react-router-dom";
 import { useHistory } from 'react-router-dom'; //now userNavigate instead
 import { usersAPI } from "../../api/api";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
+import { getAuthUserData } from "../../redux/auth-reducer";
 // export function withRouter(Children) {
 //     return (props) => {
 
@@ -39,14 +41,14 @@ export function withRouter(Component) {
 
 class ProfileContainer extends React.Component {
 
-     
+
 
     componentDidMount() {
         let userId = this.props.router.params.userId;
         if (!userId) {
             userId = 2
         }
-       this.props.getUserProfile(userId)
+        this.props.getUserProfile(userId)
         // usersAPI.getProfile(userId)
         //     .then(data => {
         //         return this.props.setUserProfile(data)
@@ -55,7 +57,8 @@ class ProfileContainer extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-
+        // this.props.getAuthUserData();
+        
         if (this.props.router.params.userId !== prevProps.router.params.userId) {
             // The code in our componentDidUpdate method is duplicated in componentDidMount, so we can move the repeating logic into a separate function, we can call it fetchUserProfile()
             let userId = this.props.router.params.userId;
@@ -67,6 +70,7 @@ class ProfileContainer extends React.Component {
             //     .then(data => {
             //         return this.props.setUserProfile(data)
             //     })
+
         }
 
 
@@ -75,9 +79,6 @@ class ProfileContainer extends React.Component {
 
 
     render() {
-
-        if(this.props.isAuth===false){return <Navigate to='/login'/>}
-        
         return (<>
             {/* {!this.props.profile ? <Preloader /> : <Profile {...this.props} />} */}
             {/* {this.props.isAuth===false?<Navigate to='/login'/>:<Profile {...this.props} />} */}
@@ -87,10 +88,16 @@ class ProfileContainer extends React.Component {
     }
 
 }
+
+// let authRedirectComponent = (props) => {
+//     if (!props.isAuth) { return <Navigate to='/login' /> }
+//     return <ProfileContainer {...props} />
+// }
+
 const mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
-        isAuth: state.auth.isAuth
+        isAuth: state.auth.isAuth //not necessary (available in withRedirect hoc)
     }
 }
 
@@ -102,10 +109,13 @@ const mapStateToProps = (state) => {
 //     }
 // }
 
-let WithUrlDataContainerComponent = withRouter(ProfileContainer);
+let AuthRedirectComponent = withAuthRedirect(ProfileContainer)
+
+let WithUrlDataContainerComponent = withRouter(AuthRedirectComponent);
 
 export default connect(mapStateToProps, {
     setUserProfile,
     getUserProfile,
+    getAuthUserData
 })(WithUrlDataContainerComponent);
 

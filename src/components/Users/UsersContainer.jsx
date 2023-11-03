@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import Users from './Users';
 import { usersAPI } from '../../api/api';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 
 
 
@@ -118,7 +119,10 @@ const mapStateToProps = (state) => {
 // })(UsersContainer);
 
 
-export default connect(mapStateToProps, {
+
+
+
+export default withAuthRedirect(connect(mapStateToProps, {
 
     followSuccess,
     unfollowSuccess,
@@ -130,7 +134,7 @@ export default connect(mapStateToProps, {
     getUsers,
     follow,
     unfollow
-})(UsersContainer);
+})(UsersContainer));
 
 // export default UsersContainer;
 

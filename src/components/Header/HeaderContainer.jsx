@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import { connect } from 'react-redux';
-import { setAuthUserData,setAuthUserAvatar, toggleIsFetching, getAuthUserData} from '../../redux/auth-reducer';
+import { setAuthUserData, setAuthUserAvatar, toggleIsFetching, getAuthUserData } from '../../redux/auth-reducer';
 
 class HeaderContainer extends React.Component {
 
@@ -26,13 +26,17 @@ class HeaderContainer extends React.Component {
         //     })
 
     }
+    // componentDidUpdate(prevProps){
+    // console.log('didUpdate')
+    // }
+   
+
 
     render() {
-
         return (
-
-            <Header {...this.props} />
-
+            <>
+                <Header {...this.props} />
+            </>
         )
 
     }
