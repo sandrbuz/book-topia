@@ -15,6 +15,7 @@ import { useHistory } from 'react-router-dom'; //now userNavigate instead
 import { usersAPI } from "../../api/api";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { getAuthUserData } from "../../redux/auth-reducer";
+import { compose } from "redux";
 // export function withRouter(Children) {
 //     return (props) => {
 
@@ -109,13 +110,23 @@ const mapStateToProps = (state) => {
 //     }
 // }
 
-let AuthRedirectComponent = withAuthRedirect(ProfileContainer)
+// let AuthRedirectComponent = withAuthRedirect(ProfileContainer)
 
-let WithUrlDataContainerComponent = withRouter(AuthRedirectComponent);
+// let WithUrlDataContainerComponent = withRouter(AuthRedirectComponent);
 
-export default connect(mapStateToProps, {
-    setUserProfile,
-    getUserProfile,
-    getAuthUserData
-})(WithUrlDataContainerComponent);
+// export default connect(mapStateToProps, {
+//     setUserProfile,
+//     getUserProfile,
+//     getAuthUserData
+// })(WithUrlDataContainerComponent);
+
+export default compose(
+    connect(mapStateToProps, {
+        setUserProfile,
+        getUserProfile,
+        getAuthUserData
+    }),
+    withRouter,
+    withAuthRedirect
+    )(ProfileContainer)
 

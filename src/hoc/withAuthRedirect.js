@@ -1,6 +1,7 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 import { connect } from "react-redux";
+import { setAuthUserData } from "../redux/auth-reducer";
 
 const mapStateToProps = (state) => {
     return {
@@ -21,17 +22,32 @@ export const withAuthRedirect = (Component) => {
 
 return connectedRedirectComponent;
 
-// return connect(mapStateToProps,{})(redirectComponent)  //could be so
+//return connect(mapStateToProps,{})(redirectComponent)  //could be so
 
 }
 
 
+
+
+
+
+// -----------------------------------------------------------------------
+// functional option (69 lesson)
+
 // export const withAuthRedirect = (Component) => {
-//     let redirectComponent = (props) => {
+//     let RedirectComponent = (props) => {
+
 //         if (!props.isAuth) { return <Navigate to='/login' /> }
+
+
 //         return <Component {...props} />
 //     }
-//     let connectedRedirectComponent = connect(mapStateToProps, {})(redirectComponent);
+//     let connectedRedirectComponent = connect(mapStateToProps, {setAuthUserData})(RedirectComponent);
 //     return connectedRedirectComponent;
 
 // }
+
+// functional option (69 lesson)
+// ------------------------------------------------------------------------
+
+

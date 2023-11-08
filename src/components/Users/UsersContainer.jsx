@@ -7,6 +7,7 @@ import axios from 'axios';
 import Users from './Users';
 import { usersAPI } from '../../api/api';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { compose } from 'redux';
 
 
 
@@ -122,8 +123,22 @@ const mapStateToProps = (state) => {
 
 
 
-export default withAuthRedirect(connect(mapStateToProps, {
+// export default withAuthRedirect(connect(mapStateToProps, {
 
+//     followSuccess,
+//     unfollowSuccess,
+//     setUsers,
+//     setTotalUsersCount,
+//     setCurrentPage,
+//     toggleIsFetching,
+//     toggleFollowingProgress,
+//     getUsers,
+//     follow,
+//     unfollow
+// })(UsersContainer));
+
+export default compose(
+    connect(mapStateToProps, {
     followSuccess,
     unfollowSuccess,
     setUsers,
@@ -134,7 +149,9 @@ export default withAuthRedirect(connect(mapStateToProps, {
     getUsers,
     follow,
     unfollow
-})(UsersContainer));
+}),
+withAuthRedirect
+)(UsersContainer)
 
 // export default UsersContainer;
 
