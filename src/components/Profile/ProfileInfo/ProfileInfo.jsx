@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./ProfileInfo.module.css";
 import defaultUserImg from '../../../assets/images/userImg.png'
 import Preloader from "../../common/Preloader/Preloader";
+import ProfileStatus from "./ProfileStatus";
 
 
 
@@ -23,7 +24,9 @@ const ProfileInfo = (props) => {
                     <div className={styles.fullname}>{props.profile.fullName}</div>
                     <div  className={styles.workStatus}>{props.profile.lookingForAJob ? `Looking for a job 😃` :'Not looking for a job 😐'}</div>
                 </div>
-
+            </div>
+            <div className={styles.status}>
+                <ProfileStatus status="This is my status"/>
             </div>
         </div>
     )

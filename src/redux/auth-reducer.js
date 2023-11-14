@@ -43,7 +43,6 @@ export const getAuthUserData = () => (dispatch) => {
             } //else {dispatch(setIsAuthFalse(false))}
         })
         dispatch(toggleIsFetching(false))
-console.log('1')
 }
 
 let initialState = {
