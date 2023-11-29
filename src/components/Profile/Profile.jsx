@@ -26,7 +26,7 @@ const Profile = (props) => {
         <Route path="*" element={<MyTestComp />} />
       </Routes> */}
       {/* {!props.profile ? <Preloader/> : <ProfileInfo profile={props.profile} /> } */}
-      <ProfileInfo profile={props.profile} />
+      <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus} />
       <MyPostsContainer />
 
 
