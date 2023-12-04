@@ -5,7 +5,6 @@ import { updateStatus } from "../../../redux/profile-reducer";
 
 class ProfileStatus extends React.Component {
     // 
-
     state = {
         editMode: false,
         status: this.props.status
@@ -13,10 +12,11 @@ class ProfileStatus extends React.Component {
     activateEditMode = () => { //for the arrow function ".bind(this)" is not necessary
         //console.log('This:', this) //for 72 lesson
         this.setState({
-            editMode: true
+            editMode: true,
+            // status: this.props.status //instead of componentDidUpdate (74 lesson)
         })
     }
-    deactivateEditMode = () => {  //for this function ".bind(this)" is  necessary
+    deactivateEditMode = () => {
         this.setState({
             editMode: false
         });
@@ -27,6 +27,16 @@ class ProfileStatus extends React.Component {
         this.setState({
             status: e.currentTarget.value
         })
+    }
+    componentDidUpdate(prevProps, prevState) {  //componentShouldUpdate
+        // debugger
+        // let pr = this.props.status
+        // let st = this.state.status
+        if (prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status
+            })
+        }
     }
 
 

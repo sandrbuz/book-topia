@@ -73,10 +73,8 @@ class ProfileContainer extends React.Component {
             //     .then(data => {
             //         return this.props.setUserProfile(data)
             //     })
-            // getStatus(userId);
-            // profileAPI.updateStatus('bla')
             this.props.getStatus(userId);
-
+           
 
         }
 
@@ -139,4 +137,6 @@ export default compose(
     withRouter,
     withAuthRedirect
 )(ProfileContainer)
+
+
 
