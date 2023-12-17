@@ -1,7 +1,7 @@
 import React from 'react';
 // import s from './MyPosts.module.css'
 // import Post from './Post/Post.jsx'
-import { addPost, onPostChange } from '../../../redux/profile-reducer';
+import { addPost } from '../../../redux/profile-reducer';
 import MyPosts from './MyPosts';
 // import StoreContext from '../../../StoreContext';
 import { connect } from 'react-redux';
@@ -70,7 +70,6 @@ let mapStateToProps = (state) => {
 
  let SuperMyPostsContainer = connect(mapStateToProps,{
    addPost,
-   onPostChange
 })(MyPosts);
 
 

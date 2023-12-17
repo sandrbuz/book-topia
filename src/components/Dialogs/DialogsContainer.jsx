@@ -3,7 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 // import DialogItem from './DialogItem/DialogItem.jsx';
 // import Message from './Message/Message.jsx';
-import { sendMessageActionCreator, onMessageChangeActionCreator } from '../../redux/dialogs-reducer';
+import { sendMessageActionCreator} from '../../redux/dialogs-reducer';
 import Dialogs from './Dialogs';
 // import StoreContext from '../../StoreContext';
 import { connect } from 'react-redux';
@@ -82,7 +82,6 @@ let mapStateToProps = (state) => {
 return{
     dialogs: state.dialogsPage.dialogs,
     messages: state.dialogsPage.messages,
-    newMessageText: state.dialogsPage.newMessageText,
     isAuth: state.auth.isAuth //not necessary (available in withRedirect hoc)
 
 }
@@ -90,12 +89,9 @@ return{
 }
 let mapDispatchToProps = (dispatch) => {    
  return {
-    sendMessage: () => {
-        dispatch(sendMessageActionCreator());
+    sendMessage: (newMessageText) => {
+        dispatch(sendMessageActionCreator(newMessageText));
 
-    },
-    newMessageChange: (body) => {
-        dispatch(onMessageChangeActionCreator(body));
     }
  }
 }

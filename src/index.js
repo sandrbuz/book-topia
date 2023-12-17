@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 // import state, { subscribe } from './redux/state'; 
-import store from './redux/redux-store'; 
+import store from './redux/redux-store';
 // import {addPost} from './redux/state';
 import { BrowserRouter, Routes } from 'react-router-dom';
 // import { updateNewPostText } from './redux/state';
@@ -48,9 +48,9 @@ const root = ReactDOM.createRoot(document.getElementById('root')); //in lesson 3
 root.render(
   <React.StrictMode>
     <BrowserRouter >
-    <Provider store={store}>
-    <App /*dispatch={store.dispatch.bind(store)}*/ /*state={state}*/ /*store={store}*/ /* addPost={store.addPost.bind(store)} updateNewPostText={store.updateNewPostText.bind(store)} addMessage={store.addMessage.bind(store)} updateNewMessageText={store.updateNewMessageText.bind(store)}*//> 
-    </Provider>
+      <Provider store={store}>
+        <App /*dispatch={store.dispatch.bind(store)}*/ /*state={state}*/ /*store={store}*/ /* addPost={store.addPost.bind(store)} updateNewPostText={store.updateNewPostText.bind(store)} addMessage={store.addMessage.bind(store)} updateNewMessageText={store.updateNewMessageText.bind(store)}*/ />
+      </Provider>
     </BrowserRouter>
   </React.StrictMode>
 );
@@ -64,7 +64,7 @@ root.render(
 //   rerenderEntireTree(state);
 // });
 
- 
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
