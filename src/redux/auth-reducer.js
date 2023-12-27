@@ -1,5 +1,6 @@
 import { authAPI, usersAPI } from "../api/api";
-import { Location } from "react-router-dom";
+import { stopSubmit } from "redux-form";
+
 
 const SET_AUTH_USER_DATA = 'SET_AUTH_USER_DATA';
 const SET_AUTH_USER_AVATAR = 'SET_AUTH_USER_AVATAR';
@@ -49,24 +50,27 @@ export const getAuthUserData = () => (dispatch) => {
 export const login = (email, password, rememberMe) => (dispatch) => {
     authAPI.login(email, password, rememberMe)
         .then(response => {
-            if (response.resultCode === 0) {
+            if (response.data.resultCode === 0) {
                 dispatch(getAuthUserData())
+            } else {
+                let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
+                dispatch(stopSubmit('login', { _error: message }));
             }
         })
-        .then(() => { //added by myself
-            window.location.reload();
-        })
+    // .then(() => { 
+    //     window.location.reload();
+    // })  //added by myself on 78 lesson. --- in lesson 79 I understood why the redirect (or page refresh) does not occur. Because in thunks "login" and "logout" it was necessary to refer not to "respose.resultCode" but to "response.data.resultCode"
 }
 export const logout = () => (dispatch) => {
     authAPI.logout()
         .then(response => {
-            if (response.resultCode === 0) {
+            if (response.data.resultCode === 0) {
                 dispatch(setAuthUserData(null, null, null, false))
             }
         })
-        .then(() => { //added by myself
-            window.location.reload();
-        })
+        // .then(() => { //added by myself
+        //     window.location.reload();
+        // })
 }
 
 let initialState = {

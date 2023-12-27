@@ -48,7 +48,7 @@ class ProfileContainer extends React.Component {
     componentDidMount() {
         let userId = this.props.router.params.userId;
         if (!userId) {
-            userId = 29816 //2 (Dymich)
+            userId = this.props.authorizedUserId//2 (Dymich) //29816 my
         }
         this.props.getUserProfile(userId)
         // usersAPI.getProfile(userId)
@@ -66,7 +66,7 @@ class ProfileContainer extends React.Component {
             // The code in our componentDidUpdate method is duplicated in componentDidMount, so we can move the repeating logic into a separate function, we can call it fetchUserProfile()
             let userId = this.props.router.params.userId;
             if (!userId) {
-                userId = 29816 //2 (Dymich)
+                userId = this.props.authorizedUserId //2 (Dymich)
             }
             this.props.getUserProfile(userId)
             // usersAPI.getProfile(userId)
@@ -74,7 +74,7 @@ class ProfileContainer extends React.Component {
             //         return this.props.setUserProfile(data)
             //     })
             this.props.getStatus(userId);
-           
+ 
 
         }
 
@@ -102,8 +102,11 @@ class ProfileContainer extends React.Component {
 const mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
-        isAuth: state.auth.isAuth, //not necessary (available in withRedirect hoc)
-        status: state.profilePage.status
+        status: state.profilePage.status,
+        authorizedUserId: state.auth.id,
+        isAuth: state.auth.isAuth
+
+
     }
 }
 
@@ -135,7 +138,7 @@ export default compose(
         updateStatus
     }),
     withRouter,
-    withAuthRedirect //it’s not entirely correct if it won’t let you into other profiles if you’re not authorized
+    //withAuthRedirect //it’s not entirely correct if it won’t let you into other profiles if you’re not authorized
 )(ProfileContainer)
 
 
