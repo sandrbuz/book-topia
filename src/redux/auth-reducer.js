@@ -1,13 +1,15 @@
-import { authAPI, usersAPI} from "../api/api";
+import { authAPI, usersAPI } from "../api/api";
+import { Location } from "react-router-dom";
+
 const SET_AUTH_USER_DATA = 'SET_AUTH_USER_DATA';
 const SET_AUTH_USER_AVATAR = 'SET_AUTH_USER_AVATAR';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const SET_IS_AUTH_FALSE = 'SET_IS_AUTH_FALSE';
 
-export const setAuthUserData = (id, email, login) => {
+export const setAuthUserData = (id, email, login, isAuth) => {
     return {
         type: SET_AUTH_USER_DATA,
-        data: { id, email, login }
+        payload: { id, email, login, isAuth } //"payload" used to be called "data"
     }
 }
 export const setAuthUserAvatar = (avatar) => {
@@ -33,7 +35,7 @@ export const getAuthUserData = () => (dispatch) => {
         .then(data => {
             if (data.resultCode === 0) {
                 let { id, email, login } = data.data;
-                dispatch(setAuthUserData(id, email, login))
+                dispatch(setAuthUserData(id, email, login, true))
                 // request for additional data (for user photo)
                 usersAPI.getProfile(id)
                     .then(data => {
@@ -42,7 +44,29 @@ export const getAuthUserData = () => (dispatch) => {
                 dispatch(toggleIsFetching(false))
             } //else {dispatch(setIsAuthFalse(false))}
         })
-        dispatch(toggleIsFetching(false))
+    dispatch(toggleIsFetching(false))
+}
+export const login = (email, password, rememberMe) => (dispatch) => {
+    authAPI.login(email, password, rememberMe)
+        .then(response => {
+            if (response.resultCode === 0) {
+                dispatch(getAuthUserData())
+            }
+        })
+        .then(() => { //added by myself
+            window.location.reload();
+        })
+}
+export const logout = () => (dispatch) => {
+    authAPI.logout()
+        .then(response => {
+            if (response.resultCode === 0) {
+                dispatch(setAuthUserData(null, null, null, false))
+            }
+        })
+        .then(() => { //added by myself
+            window.location.reload();
+        })
 }
 
 let initialState = {
@@ -62,8 +86,8 @@ const authReducer = (state = initialState, action) => {
         case SET_AUTH_USER_DATA:
             return {
                 ...state,
-                ...action.data,
-                isAuth: true
+                ...action.payload,   //"payload" used to be called "data"
+                // isAuth: true
             };
         case SET_AUTH_USER_AVATAR:
             return {

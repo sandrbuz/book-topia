@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from './Header';
 import { connect } from 'react-redux';
-import { setAuthUserData, setAuthUserAvatar, toggleIsFetching, getAuthUserData } from '../../redux/auth-reducer';
+import { setAuthUserData, setAuthUserAvatar, toggleIsFetching, getAuthUserData, logout } from '../../redux/auth-reducer';
 
 class HeaderContainer extends React.Component {
 
@@ -58,6 +58,8 @@ export default connect(mapStateToProps, {
     setAuthUserData,
     setAuthUserAvatar,
     toggleIsFetching,
-    getAuthUserData
+    getAuthUserData,
+    logout
+
 
 })(HeaderContainer);

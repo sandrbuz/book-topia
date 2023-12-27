@@ -135,7 +135,7 @@ export default compose(
         updateStatus
     }),
     withRouter,
-    withAuthRedirect
+    withAuthRedirect //it’s not entirely correct if it won’t let you into other profiles if you’re not authorized
 )(ProfileContainer)
 
 

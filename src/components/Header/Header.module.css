@@ -43,6 +43,17 @@
   align-items: center;
 }
 
+.avaAndLogin img {
+    width: 30px;
+}
+.avaAndLogin span {
+    margin-right: 5px;
+}
+.avaAndLogin img {
+    width: 30px;
+    cursor: pointer;
+}
+
 .loginBlock a {
   color: white;
   text-decoration: none;
