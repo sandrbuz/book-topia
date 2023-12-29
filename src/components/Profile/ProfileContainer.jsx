@@ -49,6 +49,9 @@ class ProfileContainer extends React.Component {
         let userId = this.props.router.params.userId;
         if (!userId) {
             userId = this.props.authorizedUserId//2 (Dymich) //29816 my
+            if(!userId) {
+                this.props.router.navigate('/login')
+            }
         }
         this.props.getUserProfile(userId)
         // usersAPI.getProfile(userId)
@@ -67,6 +70,9 @@ class ProfileContainer extends React.Component {
             let userId = this.props.router.params.userId;
             if (!userId) {
                 userId = this.props.authorizedUserId //2 (Dymich)
+                if(!userId) {
+                    this.props.router.navigate('/login')
+                }
             }
             this.props.getUserProfile(userId)
             // usersAPI.getProfile(userId)

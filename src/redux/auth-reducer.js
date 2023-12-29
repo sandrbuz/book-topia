@@ -32,7 +32,7 @@ export const toggleIsFetching = (isFetching) => {
 // thunk creators
 export const getAuthUserData = () => (dispatch) => {
     dispatch(toggleIsFetching(true));
-    authAPI.me()
+    return authAPI.me()
         .then(data => {
             if (data.resultCode === 0) {
                 let { id, email, login } = data.data;
@@ -45,7 +45,8 @@ export const getAuthUserData = () => (dispatch) => {
                 dispatch(toggleIsFetching(false))
             } //else {dispatch(setIsAuthFalse(false))}
         })
-    dispatch(toggleIsFetching(false))
+        .then(()=>{dispatch(toggleIsFetching(false))})
+    // dispatch(toggleIsFetching(false))
 }
 export const login = (email, password, rememberMe) => (dispatch) => {
     authAPI.login(email, password, rememberMe)

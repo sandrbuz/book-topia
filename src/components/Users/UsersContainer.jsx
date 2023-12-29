@@ -150,7 +150,7 @@ export default compose(
     follow,
     unfollow
 }),
-withAuthRedirect
+// withAuthRedirect
 )(UsersContainer)
 
 // export default UsersContainer;
