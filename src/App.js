@@ -14,7 +14,7 @@ import LoginPage from './components/login/Login';
 import { getAuthUserData } from './redux/auth-reducer';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
-import { initializeApp } from './redux/app-reducer copy';
+import { initializeApp } from './redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
 
 // import UsersC from './components/Users/UsersC';
