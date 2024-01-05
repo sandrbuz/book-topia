@@ -43,6 +43,9 @@ import { Provider } from 'react-redux';
 // addPost();
 const root = ReactDOM.createRoot(document.getElementById('root')); //in lesson 34, I removed this variable from the rerenderEntireTree function, because in the textarea in the MyPosts file, after entering each letter, the page was reloaded
 
+// setInterval(()=>{
+//    store.dispatch({type: "FAKE"})
+// },1000)
 
 // let rerenderEntireTree = (state) => {
 root.render(
