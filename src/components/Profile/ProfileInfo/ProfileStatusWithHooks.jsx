@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { updateStatus } from "../../../redux/profile-reducer";
+import React, { useEffect,memo, useState } from "react";
 
-
-
-const ProfileStatus = (props) => {
+const ProfileStatus = React.memo((props) => {
 
     let [editMode, setEditMode] = useState(false);
     let [status, setStatus] = useState(props.status)
@@ -41,6 +38,6 @@ const ProfileStatus = (props) => {
     )
 
 
-}
+})
 
 export default ProfileStatus;
