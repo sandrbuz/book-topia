@@ -30,45 +30,45 @@ export const toggleIsFetching = (isFetching) => {
 //     }
 // }
 // thunk creators
-export const getAuthUserData = () => (dispatch) => {
+export const getAuthUserData = () => async (dispatch) => {
     dispatch(toggleIsFetching(true));
-    return authAPI.me()
-        .then(data => {
-            if (data.resultCode === 0) {
-                let { id, email, login } = data.data;
+    let response = await authAPI.me()
+    
+            if (response.resultCode === 0) {
+                let { id, email, login } = response.data;
                 dispatch(setAuthUserData(id, email, login, true))
                 // request for additional data (for user photo)
-                usersAPI.getProfile(id)
-                    .then(data => {
+                let data = await usersAPI.getProfile(id)
+                
                         return dispatch(setAuthUserAvatar(data.photos.small))
-                    })
+                    
                 dispatch(toggleIsFetching(false))
             } //else {dispatch(setIsAuthFalse(false))}
-        })
-        .then(()=>{dispatch(toggleIsFetching(false))})
+        
+    dispatch(toggleIsFetching(false))
     // dispatch(toggleIsFetching(false))
 }
-export const login = (email, password, rememberMe) => (dispatch) => {
-    authAPI.login(email, password, rememberMe)
-        .then(response => {
+export const login = (email, password, rememberMe) => async (dispatch) => {
+    let response = await authAPI.login(email, password, rememberMe)
+        
             if (response.data.resultCode === 0) {
                 dispatch(getAuthUserData())
             } else {
                 let message = response.data.messages.length > 0 ? response.data.messages[0] : "Some error";
                 dispatch(stopSubmit('login', { _error: message }));
             }
-        })
+        
     // .then(() => { 
     //     window.location.reload();
     // })  //added by myself on 78 lesson. --- in lesson 79 I understood why the redirect (or page refresh) does not occur. Because in thunks "login" and "logout" it was necessary to refer not to "respose.resultCode" but to "response.data.resultCode"
 }
-export const logout = () => (dispatch) => {
-    authAPI.logout()
-        .then(response => {
+export const logout = () => async (dispatch) => {
+    let response = await authAPI.logout()
+        
             if (response.data.resultCode === 0) {
                 dispatch(setAuthUserData(null, null, null, false))
             }
-        })
+        
         // .then(() => { //added by myself
         //     window.location.reload();
         // })

@@ -16,6 +16,7 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { initializeApp } from './redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
+import { Navigate } from 'react-router-dom';
 
 // import UsersC from './components/Users/UsersC';
 
@@ -87,7 +88,10 @@ class App extends React.Component {
 
         <div className="app-wrapper-content">
           <Routes>
-            <Route index element={<ProfileContainer />}/> 
+            {/* <Route path="/" element={<Navigate to='/profile' /> }/> 
+            <Route path="/profile" element={<ProfileContainer />} /> */}
+            <Route index element={<ProfileContainer />}/>
+
 
             {/* <Route path="/" element={<Profile stateProfilePage={props.state.profilePage} addPost={props.addPost}/>} /> */}
             {/* <Route path="/profile/*" element={<ProfileContainer /*store={props.store}*/ /* dispatch={props.dispatch} */ /*stateProfilePage={props.state.profilePage}*/ /*addPost={props.addPost} updateNewPostText={props.updateNewPostText} />} /> */}

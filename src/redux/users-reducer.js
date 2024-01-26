@@ -46,14 +46,13 @@ export const toggleFollowingProgress = (isFetching, userId) => {
 }
 //thunk creators
 export const requestUsers = (page, pageSize) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleIsFetching(true));
         // dispatch(setCurrentPage(currentPage));
-        usersAPI.getUsers(page, pageSize).then(data => {
-            return dispatch(setUsers(data.items)),
-                dispatch(setTotalUsersCount(data.totalCount)),
+        let response = await usersAPI.getUsers(page, pageSize)
+            return dispatch(setUsers(response.items)),
+                dispatch(setTotalUsersCount(response.totalCount)),
                 dispatch(toggleIsFetching(false))
-        })
     }
 }
 export const follow = (userId) => {
@@ -67,13 +66,11 @@ export const follow = (userId) => {
     }
 }
 export const unfollow = (userId) => {
-    return (dispatch) => {
+    return async (dispatch) => {
         dispatch(toggleFollowingProgress(true, userId))
-        usersAPI.unfollow(userId)
-            .then(data => {
-                if (data.resultCode === 0) { dispatch(unfollowSuccess(userId)) }
+        let response = await usersAPI.unfollow(userId)
+                if (response.resultCode === 0) { dispatch(unfollowSuccess(userId)) }
                 dispatch(toggleFollowingProgress(false, userId))
-            })
     }
 }
 
