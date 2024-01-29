@@ -18,14 +18,14 @@ import { Route, Routes } from 'react-router-dom';
 
 
 const Profile = (props) => {
-
+console.log(props)
   return (
     <div className={s.content}>
       {/* <Routes>
         <Route path="*" element={<MyTestComp />} />
       </Routes> */}
       {/* {!props.profile ? <Preloader/> : <ProfileInfo profile={props.profile} /> } */}
-      <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus} />
+      <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus} isAuth={props.isAuth} authorizedUserId={props.authorizedUserId}/>
       <MyPostsContainer />
 
 

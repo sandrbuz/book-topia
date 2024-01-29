@@ -43,8 +43,6 @@ export function withRouter(Component) {
 
 class ProfileContainer extends React.Component {
 
-
-
     componentDidMount() {
         let userId = this.props.router.params.userId;
         if (!userId) {
@@ -92,7 +90,7 @@ class ProfileContainer extends React.Component {
         return (<>
             {/* {!this.props.profile ? <Preloader /> : <Profile {...this.props} />} */}
             {/* {this.props.isAuth===false?<Navigate to='/login'/>:<Profile {...this.props} />} */}
-            <Profile {...this.props} />
+            <Profile {...this.props}/>
         </>
         )
     }

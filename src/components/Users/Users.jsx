@@ -19,6 +19,7 @@ const Users = ({currentPage, totalUsersCount, pageSize, onPageChanged,...props})
                                         key={u.id}
                                         unfollow={props.unfollow}
                                         follow={props.follow}
+                                        isAuth={props.isAuth}
             />)}
             </div>
         </div>

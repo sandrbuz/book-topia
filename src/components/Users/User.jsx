@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 
 
-const User = ({user, followingInProgress, unfollow, follow}) => {
+const User = ({user, followingInProgress, unfollow, follow,...props}) => {
   let u = user;
     return (
             <div className={styles.userWrapper} key={u.id}>
@@ -16,7 +16,7 @@ const User = ({user, followingInProgress, unfollow, follow}) => {
                         {/* <button onClick={() => {u.followed ? props.unfollow(u.id) : props.follow(u.id)}} >{u.followed ? "Follow" : "Unfollow"}</button> */}
                         {u.followed
                             ? <button disabled={followingInProgress.some(id=>id===u.id)} onClick={() => {
-                                unfollow(u.id)
+                                unfollow(u.id, props.isAuth)
                                 //  props.toggleFollowingProgress(true,u.id) 
                                 // usersAPI.unfollow(u.id)
                                 //     .then(data => {
@@ -27,7 +27,7 @@ const User = ({user, followingInProgress, unfollow, follow}) => {
 
 
                             : <button disabled={followingInProgress.some(id=>id===u.id)} onClick={() => {
-                                follow(u.id)
+                                follow(u.id,props.isAuth)
                                 // props.toggleFollowingProgress(true,u.id)
                                 // usersAPI.follow(u.id)
                                 //     .then(data => {

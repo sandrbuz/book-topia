@@ -17,22 +17,26 @@ export const setUserProfile = (profile) => {
 export const setStatus = (status) => {
     return {
         type: SET_STATUS, status
-    } 
+    }
 }
 // thunk creators
-export const getUserProfile = (userId) =>  async (dispatch) => {
-    let response = await usersAPI.getProfile(userId)     
-            dispatch(setUserProfile(response))
+export const getUserProfile = (userId) => async (dispatch) => {
+    if (userId) {
+        let response = await usersAPI.getProfile(userId)
+        dispatch(setUserProfile(response))
+    }
 }
 export const getStatus = (userId) => async (dispatch) => {
-    let response = await profileAPI.getStatus(userId)
-            dispatch(setStatus(response))
+    if (userId) {
+        let response = await profileAPI.getStatus(userId)
+        dispatch(setStatus(response))
+    }
 }
 export const updateStatus = (status) => async (dispatch) => {
     let response = await profileAPI.updateStatus(status)
-            if (response.data.resultCode === 0) {
-                dispatch(setStatus(status)) //response.data.data
-            }
+    if (response.data.resultCode === 0) {
+        dispatch(setStatus(status)) //response.data.data
+    }
 }
 
 let initialState = {
@@ -50,7 +54,6 @@ let initialState = {
 const profileReducer = (state = initialState, action) => {
 
     // let stateCopy = { ...state };
-
 
     switch (action.type) {
         //debugger; //в devtools f11 войти в метод
@@ -81,7 +84,7 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 status: action.status,
             }
-            
+
 
         default: return state
     }
