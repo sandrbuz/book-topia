@@ -40,7 +40,7 @@ export const getAuthUserData = () => async (dispatch) => {
                 // request for additional data (for user photo)
                 let data = await usersAPI.getProfile(id)
                 
-                        return dispatch(setAuthUserAvatar(data.photos.small))
+                dispatch(setAuthUserAvatar(data.photos.small))
                     
                 dispatch(toggleIsFetching(false))
             } //else {dispatch(setIsAuthFalse(false))}
