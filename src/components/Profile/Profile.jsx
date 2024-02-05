@@ -18,7 +18,6 @@ import { Route, Routes } from 'react-router-dom';
 
 
 const Profile = (props) => {
-console.log(props)
   return (
     <div className={s.content}>
       {/* <Routes>

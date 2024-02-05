@@ -6,7 +6,7 @@ import { Field } from "redux-form";
 
 
 
-export const FormControl = ({ input, meta:{touched, error}, children }) => {
+export const FormControl = ({ input, meta: { touched, error }, children }) => {
 
     const hasError = touched && error;
     return (
@@ -21,20 +21,22 @@ export const FormControl = ({ input, meta:{touched, error}, children }) => {
 
 
 export const Textarea = (props) => {
-       const {input, meta, child, ...restProps} = props;
-       return <FormControl {...props}> <textarea  {...input} {...restProps} /> </FormControl>
+    const { input, meta, child, ...restProps } = props;
+    return <FormControl {...props}> <textarea  {...input} {...restProps} /> </FormControl>
 }
 export const Input = (props) => {
-       const {input, meta, child, ...restProps} = props;
-       return <FormControl {...props}> <input  {...input} {...restProps} /> </FormControl>
+    const { input, meta, child, ...restProps } = props;
+    return <FormControl {...props}> <input  {...input} {...restProps} /> </FormControl>
 }
 
-export const createField = (placeholder, name, validators, component, props={}, text="") => (
-                                   <div>
-                                     <Field placeholder={placeholder} name={name}
-                                     validate={validators}
-                                     component={component}
-                                     {...props}
-                                     /> {text}
-                                     </div>
+export const createField = (placeholder, name, validators, component, props = {}, text = "") => (
+    <div className={styles.createField}>
+        <label className={styles.checkboxLabel}>
+            <Field className={styles.field} placeholder={placeholder} name={name}
+                validate={validators}
+                component={component}
+                {...props}
+            /> {text}
+        </label>
+    </div>
 )

@@ -47,7 +47,9 @@ class ProfileContainer extends React.Component {
         let userId = this.props.router.params.userId;
         if (!userId) {
             userId = this.props.authorizedUserId//2 (Dymich) //29816 my
-            if(!userId) {
+            //this.props.router.navigate(`/profile/${userId}`)  //in order to see your profile number in the URL,
+
+            if (!userId) {
                 this.props.router.navigate('/login')
             }
         }
@@ -57,6 +59,7 @@ class ProfileContainer extends React.Component {
         //         return this.props.setUserProfile(data)
         //     })
         this.props.getStatus(userId);
+
     }
 
     componentDidUpdate(prevProps) {
@@ -67,7 +70,8 @@ class ProfileContainer extends React.Component {
             let userId = this.props.router.params.userId;
             if (!userId) {
                 userId = this.props.authorizedUserId //2 (Dymich)
-                if(!userId) {
+                //this.props.router.navigate(`/profile/${userId}`)  //in order to see your profile number in the URL,
+                if (!userId) {
                     this.props.router.navigate('/login')
                 }
             }
@@ -77,7 +81,7 @@ class ProfileContainer extends React.Component {
             //         return this.props.setUserProfile(data)
             //     })
             this.props.getStatus(userId);
- 
+
 
         }
 
@@ -90,7 +94,7 @@ class ProfileContainer extends React.Component {
         return (<>
             {/* {!this.props.profile ? <Preloader /> : <Profile {...this.props} />} */}
             {/* {this.props.isAuth===false?<Navigate to='/login'/>:<Profile {...this.props} />} */}
-            <Profile {...this.props}/>
+            <Profile {...this.props} />
         </>
         )
     }

@@ -5,7 +5,7 @@ import DialogsContainer from './components/Dialogs/DialogsContainer';
 import News from "./components/News/News";
 import Music from "./components/Music/Music";
 import Settings from "./components/Settings/Settings";
-import { Route, Routes, useParams,useLocation,useNavigate } from 'react-router-dom';
+import { Route, Routes, useParams, useLocation, useNavigate } from 'react-router-dom';
 import NavFriendsContainer from './components/NavFriends/NavFriendsContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
@@ -17,6 +17,7 @@ import { compose } from 'redux';
 import { initializeApp } from './redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
 import { Navigate } from 'react-router-dom';
+import LoginFooter from './components/LoginFooter/LoginFooter';
 
 // import UsersC from './components/Users/UsersC';
 
@@ -52,16 +53,16 @@ import { Navigate } from 'react-router-dom';
 // let postsElements = posts.map(p => <Post message={p.message} likesCount={p.likesCount}/>)
 export function withRouter(Component) {
   function ComponentWithRouterProp(props) {
-      let location = useLocation();
-      let navigate = useNavigate();
-      let params = useParams();
-      // let history = useHistory(); 
-      return (
-          <Component
-              {...props}
-              router={{ location, navigate, params }}
-          />
-      );
+    let location = useLocation();
+    let navigate = useNavigate();
+    let params = useParams();
+    // let history = useHistory(); 
+    return (
+      <Component
+        {...props}
+        router={{ location, navigate, params }}
+      />
+    );
   }
 
   return ComponentWithRouterProp;
@@ -71,26 +72,36 @@ export function withRouter(Component) {
 class App extends React.Component {
   componentDidMount() {
     this.props.initializeApp();
-}
+  }
 
 
   render() {
-    if(!this.props.initialized){
-        return <Preloader/>
+    if (!this.props.initialized) {
+      return <Preloader />
     }
+    
+
+
+    let appWrapperContentStyle = (this.props.router.location.pathname === "/login") ? { textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center'} : {}
+
+
+    
+
+
+
     return (
       // <BrowserRouter>
-      <div className='app-wrapper'>
+      <div className='app-wrapper' >
         {/* <Header /> */}
         <HeaderContainer />
         <Navbar />
 
 
-        <div className="app-wrapper-content">
+        <div className="app-wrapper-content" style={appWrapperContentStyle}>
           <Routes>
             {/* <Route path="/" element={<Navigate to='/profile' /> }/> 
             <Route path="/profile" element={<ProfileContainer />} /> */}
-            <Route index element={<ProfileContainer />}/>
+            <Route index element={<ProfileContainer />} />
 
 
             {/* <Route path="/" element={<Profile stateProfilePage={props.state.profilePage} addPost={props.addPost}/>} /> */}
@@ -117,9 +128,8 @@ class App extends React.Component {
             {/* <Route path="/test1" element={<MyTestComp teext="gggg"/>} /> */}
           </Routes>
         </div>
-
         <NavFriendsContainer /> {/* used to be invested in navbar */}
-
+        <LoginFooter/>
       </div>
       // </BrowserRouter>
     );
@@ -127,11 +137,11 @@ class App extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-    initialized: state.app.initialized
+  initialized: state.app.initialized
 })
 
 export default compose(
   withRouter, //wrapped in WithRouter as in the video. Although I have no problems without it
-  connect(mapStateToProps, {initializeApp})
-  )(App)
+  connect(mapStateToProps, { initializeApp })
+)(App)
 

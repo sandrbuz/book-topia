@@ -1,0 +1,18 @@
+.loginWrapper {
+    /* text-align: center;
+    margin-top: 70px; */
+}
+    
+
+.loginBody{
+    /* align-items: center; */
+/* text-align: center; */
+
+}
+
+@media (max-width: 480px){
+    .loginWrapper{
+        margin-bottom: 20px;
+    }
+}
+

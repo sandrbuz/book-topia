@@ -1,0 +1,13 @@
+.loginFooter{
+    background-color:#51504F;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    line-height: 2px;
+    font-size: 15px;
+    min-height: 50px;
+}
+.footerText{
+    margin-top: 23px;
+    font-size: 13px;
+}
