@@ -3,6 +3,7 @@ import { profileAPI, usersAPI } from "../api/api";
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
+const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS';
 
 export const addPost = (newPostText) => {
     return {
@@ -17,6 +18,11 @@ export const setUserProfile = (profile) => {
 export const setStatus = (status) => {
     return {
         type: SET_STATUS, status
+    }
+}
+export const savePhotoSuccess = (photos) => {
+    return {
+        type: SAVE_PHOTO_SUCCESS, photos
     }
 }
 // thunk creators
@@ -36,6 +42,12 @@ export const updateStatus = (status) => async (dispatch) => {
     let response = await profileAPI.updateStatus(status)
     if (response.data.resultCode === 0) {
         dispatch(setStatus(status)) //response.data.data
+    }
+}
+export const savePhoto = (file) => async (dispatch) => {
+    let response = await profileAPI.savePhoto(file)
+    if (response.data.resultCode === 0) {
+        dispatch(savePhotoSuccess(response.data.data.photos)) //response.data.data
     }
 }
 
@@ -83,6 +95,11 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 status: action.status,
+            };
+        case SAVE_PHOTO_SUCCESS:
+            return {
+                ...state,
+                profile: {...state.profile, photos: action.photos},
             }
 
 

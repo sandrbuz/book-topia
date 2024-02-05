@@ -17,11 +17,11 @@ export const usersAPI = {
         return axiosInstance.get(`users?page=${currentPage}&count=${pageSize}`)
             .then(response => { return response.data })
     },
-    follow(userId) {                                        
+    follow(userId) {
         return axiosInstance.post(`follow/${userId}`)
             .then(response => { return response.data })
     },
-    unfollow(userId) {                                       
+    unfollow(userId) {
         return axiosInstance.delete(`follow/${userId}`)
             .then(response => { return response.data })
     },
@@ -36,22 +36,31 @@ export const profileAPI = {
         return axiosInstance.get(`profile/` + userId)
             .then(response => { return response.data })
     },
-    getStatus(userId){
-       return axiosInstance.get(`profile/status/` + userId)
-       .then(response => { return response.data})
+    getStatus(userId) {
+        return axiosInstance.get(`profile/status/` + userId)
+            .then(response => { return response.data })
     },
-    updateStatus(status){
-       return axiosInstance.put('profile/status', {status: status})
+    updateStatus(status) {
+        return axiosInstance.put('profile/status', { status: status })
+    },
+    savePhoto(photoFile) {
+        const formData = new FormData();
+        formData.append('image', photoFile)
+        return axiosInstance.put('profile/photo', formData, {
+            headers: {
+                "Content-Type": "multipart/form-data"
+            }
+        })
     }
 }
 
 export const authAPI = {
-    me() {              
+    me() {
         return axiosInstance.get(`auth/me`)
-            .then(response => { return response.data })              
+            .then(response => { return response.data })
     },
     login(email, password, rememberMe = false) {
-        return axiosInstance.post('auth/login', {email, password, rememberMe})
+        return axiosInstance.post('auth/login', { email, password, rememberMe })
     },
     logout() {
         return axiosInstance.delete('auth/login')

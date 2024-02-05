@@ -2,7 +2,7 @@ import React from "react";
 import Profile from "./Profile";
 import { connect } from "react-redux";
 import axios from "axios";
-import { setUserProfile, getUserProfile, getStatus, updateStatus } from "../../redux/profile-reducer";
+import { setUserProfile, getUserProfile, getStatus, updateStatus, savePhoto } from "../../redux/profile-reducer";
 import Preloader from "../common/Preloader/Preloader";
 // import { withRouter } from 'react-router-dom'; 
 import {
@@ -94,7 +94,7 @@ class ProfileContainer extends React.Component {
         return (<>
             {/* {!this.props.profile ? <Preloader /> : <Profile {...this.props} />} */}
             {/* {this.props.isAuth===false?<Navigate to='/login'/>:<Profile {...this.props} />} */}
-            <Profile {...this.props} />
+            <Profile  userId={this.props.router.params.userId} savePhoto={this.props.savePhoto} {...this.props}/>
         </>
         )
     }
@@ -142,7 +142,8 @@ export default compose(
         getAuthUserData,
         setStatus,
         getStatus,
-        updateStatus
+        updateStatus,
+        savePhoto
     }),
     withRouter,
     //withAuthRedirect //it’s not entirely correct if it won’t let you into other profiles if you’re not authorized

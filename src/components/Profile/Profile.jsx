@@ -24,7 +24,7 @@ const Profile = (props) => {
         <Route path="*" element={<MyTestComp />} />
       </Routes> */}
       {/* {!props.profile ? <Preloader/> : <ProfileInfo profile={props.profile} /> } */}
-      <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus} isAuth={props.isAuth} authorizedUserId={props.authorizedUserId}/>
+      <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus} isAuth={props.isAuth} authorizedUserId={props.authorizedUserId} userId={props.userId} savePhoto={props.savePhoto}/>
       <MyPostsContainer />
 
 
