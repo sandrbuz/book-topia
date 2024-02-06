@@ -49,6 +49,8 @@ export const savePhoto = (file) => async (dispatch) => {
     if (response.data.resultCode === 0) {
         dispatch(savePhotoSuccess(response.data.data.photos)) //response.data.data
     }
+   window.location.reload();
+
 }
 
 let initialState = {

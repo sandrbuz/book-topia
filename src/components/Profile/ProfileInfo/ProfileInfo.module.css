@@ -1,3 +1,6 @@
+
+
+
 .profImgHead {
    width: 100%;
    height: 300px;
@@ -11,6 +14,7 @@
 .descriptionBlock {
    display: flex;
    align-items: center;
+
    padding: 20px;
 }
 
@@ -22,6 +26,7 @@
 .infoWrapper {
    /* text-transform: capitalize; */
    /*for first capital letter*/
+
    padding: 20px;
    display: inline-block;
    max-width: 300px;
@@ -42,6 +47,9 @@
 .changeStatus img {
    max-width: 17px;
    max-height: 17px;
+}
+
+.uploadPhotoButton {
 }
 
 
