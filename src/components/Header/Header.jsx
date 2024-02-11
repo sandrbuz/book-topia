@@ -8,6 +8,11 @@ import Preloader from '../common/Preloader/Preloader';
 import logoutIcon from '../../assets/images/logoutIcon.png'
 
 const Header = (props) => {
+
+    // if (!props.profile) {
+    //     return <Preloader />
+    // }
+
     return (
         <header className={s.header}>
                 <img className={s.logo} src={Logo} />

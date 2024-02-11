@@ -8,6 +8,8 @@ import ProfileStatusWithHooks from "./ProfileStatusWithHooks"
 
 
 const ProfileInfo = (props) => {
+  
+
     const fileInputRef = useRef(null);
 
     if (!props.profile) {
@@ -24,6 +26,7 @@ const ProfileInfo = (props) => {
 
     return (
         <div >
+
             <div>
                 <img className={styles.profImgHead} src='https://sun9-29.userapi.com/impg/Jm54e_dISR1Mlp2HX7S6zIok9wwT7b3Xj1rjfw/gM0XGJEOTGk.jpg?size=734x269&quality=95&sign=fec643879817896f2451a7317537bd7b&type=album' />
             </div>

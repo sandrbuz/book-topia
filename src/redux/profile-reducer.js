@@ -1,4 +1,5 @@
 import { profileAPI, usersAPI } from "../api/api";
+import { setAuthUserAvatar } from "./auth-reducer";
 
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
@@ -41,16 +42,15 @@ export const getStatus = (userId) => async (dispatch) => {
 export const updateStatus = (status) => async (dispatch) => {
     let response = await profileAPI.updateStatus(status)
     if (response.data.resultCode === 0) {
-        dispatch(setStatus(status)) //response.data.data
+        dispatch(setStatus(status)) 
     }
 }
 export const savePhoto = (file) => async (dispatch) => {
     let response = await profileAPI.savePhoto(file)
     if (response.data.resultCode === 0) {
-        dispatch(savePhotoSuccess(response.data.data.photos)) //response.data.data
+        dispatch(savePhotoSuccess(response.data.data.photos)) 
+        dispatch(setAuthUserAvatar(response.data.data.photos.small)) //so that when you change your avatar to profile, the thumbnail in the header changes immediately
     }
-   window.location.reload();
-
 }
 
 let initialState = {
