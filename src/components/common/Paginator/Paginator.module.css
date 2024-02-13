@@ -2,24 +2,15 @@
     padding: 20px;
 }
 
-.btnPaggination {
+.btnPaggination{
     border: 1px solid black;
     padding: 2px;
     margin: 2px;
-}
-
-.btnPaggination:active {
-    background-color: #7EA7D8;
 }
 .currPage {
     font-weight: bold;
     border: 2px solid black;
 }
-.hide {
-    display: none;
-}
-
-.visible {
-    display: inline;
-    /* display: unset; */ 
-} 
+/* .btnPaggination{
+    margin: 2px;
+} */
