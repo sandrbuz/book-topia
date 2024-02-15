@@ -37,7 +37,7 @@ const ProfileStatus = React.memo((props) => {
             }
 
             
-            {(props.isAuth && props.userId == undefined) && <span onClick={activateEditMode} className={styles.changeStatus}><img src={changeIcon} alt="change" /></span>}
+            {(props.isAuth && (props.userId == undefined || props.userId == props.authorizedUserId)) && <span onClick={activateEditMode} className={styles.changeStatus}><img src={changeIcon} alt="change" /></span>}
         </div>
     )
 

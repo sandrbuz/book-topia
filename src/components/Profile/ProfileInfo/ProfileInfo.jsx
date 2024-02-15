@@ -41,7 +41,7 @@ const ProfileInfo = (props) => {
                 </div>
             </div>
             <input type={"file"} onChange={onMainPhotoSelected} style={{ display: 'none' }} ref={fileInputRef} />
-            {(props.isAuth && props.userId == undefined) && <button onClick={handleButtonClick} className={styles.uploadPhotoButton}>upload</button>}
+            {(props.isAuth && (props.userId == undefined || props.userId == props.authorizedUserId)) && <button onClick={handleButtonClick} className={styles.uploadPhotoButton}>upload</button>}
             <div className={styles.status}>
                 <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} isAuth={props.isAuth} authorizedUserId={props.authorizedUserId} userId={props.userId} />
             </div>

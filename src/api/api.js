@@ -13,8 +13,8 @@ export const axiosInstance = axios.create({
 
 
 export const usersAPI = {
-    getUsers(currentPage = 1, pageSize = 10) {
-        return axiosInstance.get(`users?page=${currentPage}&count=${pageSize}`)
+    getUsers(currentPage = 1, pageSize = 10, searchedUser = "") {
+        return axiosInstance.get(`users?page=${currentPage}&count=${pageSize}&term=${searchedUser}`)
             .then(response => { return response.data })
     },
     follow(userId) {

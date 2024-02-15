@@ -26,3 +26,6 @@ export const getFollowingInProgress = (state) => {
 export const getIsAuth = (state) => {
    return state.auth.isAuth
 }
+export const getSearchedUserName = (state) => {
+   return state.usersPage.searchedUserName
+}

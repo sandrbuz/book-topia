@@ -3,6 +3,7 @@ import { authAPI, usersAPI } from "../api/api";
 import { stopSubmit } from "redux-form";
 
 
+
 const SET_AUTH_USER_DATA = 'SET_AUTH_USER_DATA';
 const SET_AUTH_USER_AVATAR = 'SET_AUTH_USER_AVATAR';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
@@ -69,8 +70,7 @@ export const logout = () => async (dispatch) => {
                 dispatch(setAuthUserData(null, null, null, false))
             }
             //window.location.reload(); //added by myself
-            window.location.href = "/login"; //added by myself
-
+            //window.location.href = "/login"; //added by myself
 }
 
 let initialState = {

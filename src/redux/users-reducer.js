@@ -7,6 +7,7 @@ const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS';
+const SET_SEARCHED_USER_NAME = 'SET_SEARCHED_USER_NAME';
 
 export const followSuccess = (userId) => {
     return {
@@ -44,12 +45,18 @@ export const toggleFollowingProgress = (isFetching, userId) => {
         type: TOGGLE_IS_FOLLOWING_PROGRESS, isFetching, userId
     }
 }
+export const setSearchedUserName = (searchedUserName) => {
+    return {
+        type: SET_SEARCHED_USER_NAME, searchedUserName
+    }
+}
 //thunk creators
-export const requestUsers = (page, pageSize) => {
+export const requestUsers = (page, pageSize, searchedUser) => {
     return async (dispatch) => {
         dispatch(toggleIsFetching(true));
-        // dispatch(setCurrentPage(currentPage));
-        let response = await usersAPI.getUsers(page, pageSize)
+        dispatch(setSearchedUserName(searchedUser));
+        // dispatch(setCurrentPage(page));
+        let response = await usersAPI.getUsers(page, pageSize, searchedUser)
         return dispatch(setUsers(response.items)),
             dispatch(setTotalUsersCount(response.totalCount)),
             dispatch(toggleIsFetching(false))
@@ -88,6 +95,7 @@ let initialState = {
     currentPage: 1,
     isFetching: false,
     followingInProgress: [],
+    searchedUserName: ''
     // fake: 10
 }
 
@@ -174,9 +182,11 @@ const usersReducer = (state = initialState, action) => {
                     ? [...state.followingInProgress, action.userId]
                     : state.followingInProgress.filter(id => id != action.userId)
             }
-
-
-
+        case SET_SEARCHED_USER_NAME:
+            return {
+                ...state,
+                searchedUserName: action.searchedUserName
+            }
         default:
             return state
     }

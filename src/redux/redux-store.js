@@ -20,6 +20,6 @@ let reducers = combineReducers({
 
 let store = createStore(reducers,applyMiddleware(thunkMiddleware));
 
-window.store = store;
+window._store_ = store; //was window.store = store; 91 lesson
 
 export default store;
