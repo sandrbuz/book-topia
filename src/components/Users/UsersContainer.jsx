@@ -9,10 +9,12 @@ import { usersAPI } from '../../api/api';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
 import { getCurrentPage, getFollowingInProgress, getIsAuth, getIsFetching, getName, getPageSize, getTotalUsersCount, getUsers, getSearchedUserName } from '../../redux/users-selectors';
-
+import { useState } from 'react';
 
 
 class UsersContainer extends React.Component {
+
+
 
     // constructor(props){
     //     super(props)
@@ -20,8 +22,9 @@ class UsersContainer extends React.Component {
     // }
 
     componentDidMount() {
-        if (this.props.users.length === 0) { this.props.requestUsers(this.props.currentPage, this.props.pageSize, this.props.searchedUserName); }
-
+        if (this.props.users.length === 0 && this.props.searchedUserName){} //optional (so that during transitions the preloader is not shown again)
+        else if (this.props.users.length === 0) { this.props.requestUsers(this.props.currentPage, this.props.pageSize, this.props.searchedUserName) }
+          
         // this.props.toggleIsFetching(true);
         // usersAPI.requestUsers(this.props.currentPage, this.props.pageSize).then(data => {
         //         return this.props.setUsers(data.items),
@@ -46,21 +49,11 @@ class UsersContainer extends React.Component {
 
     onSearchUser = async (values) => {
         await this.props.setCurrentPage(1);
-        this.props.requestUsers(this.props.currentPage, this.props.pageSize, values.searchedUserName);
-        //this.props.setSearchedUserName(values.searchedUserName) // moved this to thunkCreator "requestUsers"
+        this.props.requestUsers(this.props.currentPage, this.props.pageSize, values); //values.searchedUserName
     }
 
 
 
-
-    // requestUsers() {
-    //     if(this.props.users.length === 0){
-    //         axios.get('https://social-network.samuraijs.com/api/1.0/users')
-
-    //         .then(response => this.props.setUsers(response.data.items))
-
-    //      }
-    // }
 
     render() {
         return (<>
@@ -79,6 +72,7 @@ class UsersContainer extends React.Component {
                 isAuth={this.props.isAuth}
                 setSearchedUserName={this.props.setSearchedUserName}
                 onSearchUser={this.onSearchUser}
+
             />
         </>
         )
