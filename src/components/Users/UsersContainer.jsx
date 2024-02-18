@@ -8,7 +8,7 @@ import Users from './Users';
 import { usersAPI } from '../../api/api';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
-import { getCurrentPage, getFollowingInProgress, getIsAuth, getIsFetching, getName, getPageSize, getTotalUsersCount, getUsers, getSearchedUserName } from '../../redux/users-selectors';
+import { getCurrentPage, getFollowingInProgress, getIsAuth, getIsFetching, getName, getPageSize, getTotalUsersCount, getUsers, getSearchedUserName, getIsReceivedResponse} from '../../redux/users-selectors';
 import { useState } from 'react';
 
 
@@ -49,7 +49,7 @@ class UsersContainer extends React.Component {
 
     onSearchUser = async (values) => {
         await this.props.setCurrentPage(1);
-        this.props.requestUsers(this.props.currentPage, this.props.pageSize, values); //values.searchedUserName
+        this.props.requestUsers(this.props.currentPage, this.props.pageSize, values); //values.searchedUserName with redux-form
     }
 
 
@@ -72,7 +72,7 @@ class UsersContainer extends React.Component {
                 isAuth={this.props.isAuth}
                 setSearchedUserName={this.props.setSearchedUserName}
                 onSearchUser={this.onSearchUser}
-
+                isReceivedResponse={this.props.isReceivedResponse}
             />
         </>
         )
@@ -89,7 +89,8 @@ const mapStateToProps = (state) => {
         isFetching: getIsFetching(state),
         followingInProgress: getFollowingInProgress(state),
         isAuth: getIsAuth(state),
-        searchedUserName: getSearchedUserName(state)
+        searchedUserName: getSearchedUserName(state),
+        isReceivedResponse: getIsReceivedResponse(state)
     }
 }
 // const mapDispatchToProps = (dispatch) => {

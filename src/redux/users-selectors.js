@@ -29,3 +29,7 @@ export const getIsAuth = (state) => {
 export const getSearchedUserName = (state) => {
    return state.usersPage.searchedUserName
 }
+export const getIsReceivedResponse = (state) => {
+   return state.usersPage.isReceivedResponse
+}
+

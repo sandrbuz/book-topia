@@ -8,6 +8,8 @@ const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
 const TOGGLE_IS_FOLLOWING_PROGRESS = 'TOGGLE_IS_FOLLOWING_PROGRESS';
 const SET_SEARCHED_USER_NAME = 'SET_SEARCHED_USER_NAME';
+const SET_IS_RECIEVED_RESPONSE = 'SET_IS_RECIEVED_RESPONSE';
+
 
 export const followSuccess = (userId) => {
     return {
@@ -50,6 +52,11 @@ export const setSearchedUserName = (searchedUserName) => {
         type: SET_SEARCHED_USER_NAME, searchedUserName
     }
 }
+export const setIsReceivedResponse = (isReceivedResponse) => {
+    return {
+        type: SET_IS_RECIEVED_RESPONSE, isReceivedResponse
+    }
+}
 //thunk creators
 export const requestUsers = (page, pageSize, searchedUser) => {
     return async (dispatch) => {
@@ -59,6 +66,7 @@ export const requestUsers = (page, pageSize, searchedUser) => {
         let response = await usersAPI.getUsers(page, pageSize, searchedUser)
         return dispatch(setUsers(response.items)),
             dispatch(setTotalUsersCount(response.totalCount)),
+            dispatch(setIsReceivedResponse(true)),
             dispatch(toggleIsFetching(false))
     }
 }
@@ -95,7 +103,8 @@ let initialState = {
     currentPage: 1,
     isFetching: false,
     followingInProgress: [],
-    searchedUserName: ''
+    searchedUserName: '',
+    isReceivedResponse: false
     // fake: 10
 }
 
@@ -186,6 +195,11 @@ const usersReducer = (state = initialState, action) => {
             return {
                 ...state,
                 searchedUserName: action.searchedUserName
+            }
+        case SET_IS_RECIEVED_RESPONSE:
+            return {
+                ...state,
+                isReceivedResponse: action.isReceivedResponse
             }
         default:
             return state

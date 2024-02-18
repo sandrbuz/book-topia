@@ -9,8 +9,7 @@ import { useEffect } from 'react';
 
 
 const Users = ({ currentPage, totalUsersCount, pageSize, onPageChanged, ...props }) => {
-
-    //--------------------------------------------------------------------
+    //-------------------------------------------------------------------- simple submitting with debounce
     // const debouncedSearch = useCallback(
     //     debounce((values) => {
     //       props.onSearchUser(values);
@@ -21,11 +20,11 @@ const Users = ({ currentPage, totalUsersCount, pageSize, onPageChanged, ...props
     //   const onSearchUser = (values) => {
     //     debouncedSearch(values);
     //   };
-    // -------------------------------------------------------------------
+    // ------------------------------------------------------------------- simple submitting
     //   let onSearchUser = (values) => { 
     //     props.onSearchUser(values)                for redux-form
     //  }
-    // -------------------------------------------------------------------for search
+    // -------------------------------------------------------------------for search (during transitions the text in the input will be lost)
     // const [typingTimer, setTypingTimer] = useState(null);
     // const doneTypingInterval = 500; //Adjust as needed
     // const [inputValue, setInputValue] = useState('');
@@ -54,8 +53,15 @@ const Users = ({ currentPage, totalUsersCount, pageSize, onPageChanged, ...props
     });
 
     useEffect(() => {
+        const handleBeforeUnload = (event) => {
+            // Clear input value from local storage before unloading the page
+            localStorage.removeItem('searchInputValue');
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
         return () => {
-            // Cleanup function to clear typing timer
+            window.removeEventListener('beforeunload', handleBeforeUnload);
             clearTimeout(typingTimer);
         };
     }, [typingTimer]);
@@ -66,25 +72,23 @@ const Users = ({ currentPage, totalUsersCount, pageSize, onPageChanged, ...props
         setTypingTimer(timer);
         setInputValue(event.target.value);
     };
-   
+
     const doneTyping = (value) => {
         localStorage.setItem('searchInputValue', value); // Store input value in local storage
-        console.log(value)
         props.onSearchUser(value);
     };
 
+    //if(totalUsersCount === 0) {return null} //removes "no such user" when loading the application, but also removes the preloader on the users page when loading the application
+
+
     return (
         <div className={styles.wrapper}>
-            <input
-                type="text"
-                value={inputValue}
-                onChange={handleInputChange}
-                placeholder="search user"
-            />
+            <input type="text" value={inputValue} onChange={handleInputChange} placeholder="search user" />
             {/* <SearchUsersFormReduxForm onSubmit={onSearchUser}/> */}
-            {!props.users.length && <div>no such user</div>}
+            {(props.users.length === 0 && props.isReceivedResponse) && <div>no such user</div>}
+
             {props.isFetching && <Preloader />}
-            <div>
+            <div className={styles.usersItems}>
                 {props.users.map(u => <User user={u}
                     followingInProgress={props.followingInProgress}
                     key={u.id}
@@ -94,6 +98,7 @@ const Users = ({ currentPage, totalUsersCount, pageSize, onPageChanged, ...props
                 />)}
             </div>
             <Paginator currentPage={currentPage} onPageChanged={onPageChanged} totalUsersCount={totalUsersCount} pageSize={pageSize} />
+
         </div>
     )
 
@@ -103,6 +108,7 @@ const Users = ({ currentPage, totalUsersCount, pageSize, onPageChanged, ...props
 //     return (
 //         <form onSubmit={props.handleSubmit} className={styles.addNewMessage}>
 //             <Field name="searchedUserName" component={"textarea"} placeholder='Enter user name' />
+//             <button type="submit">search</button>
 //         </form>
 //     )
 // }
