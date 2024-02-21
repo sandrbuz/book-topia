@@ -3,7 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 // import DialogItem from './DialogItem/DialogItem.jsx';
 // import Message from './Message/Message.jsx';
-import { sendMessageActionCreator} from '../../redux/dialogs-reducer';
+import { sendMessageDimychActionCreator, sendMessageAndreyActionCreator, sendMessageSvetaActionCreator, sendMessageSashaActionCreator,sendMessageViktorActionCreator,sendMessageValeraActionCreator} from '../../redux/dialogs-reducer';
 import Dialogs from './Dialogs';
 // import StoreContext from '../../StoreContext';
 import { connect } from 'react-redux';
@@ -81,18 +81,37 @@ import { compose } from 'redux';
 let mapStateToProps = (state) => {    
 return{
     dialogs: state.dialogsPage.dialogs,
-    messages: state.dialogsPage.messages,
-    isAuth: state.auth.isAuth //not necessary (available in withRedirect hoc)
-
+    isAuth: state.auth.isAuth, //not necessary (available in withRedirect hoc)
+    messagesDimych: state.dialogsPage.messagesDimych,
+    messagesAndrey: state.dialogsPage.messagesAndrey,
+    messagesSveta: state.dialogsPage.messagesSveta,
+    messagesSasha: state.dialogsPage.messagesSasha,
+    messagesViktor: state.dialogsPage.messagesViktor,
+    messagesValera: state.dialogsPage.messagesValera,
 }
 
 }
 let mapDispatchToProps = (dispatch) => {    
  return {
-    sendMessage: (newMessageText) => {
-        dispatch(sendMessageActionCreator(newMessageText));
-
+    sendMessageDimych: (newMessageText) => {
+        dispatch(sendMessageDimychActionCreator(newMessageText));
+    },
+    sendMessageAndrey: (newMessageText) => {
+        dispatch(sendMessageAndreyActionCreator(newMessageText));
+    },
+    sendMessageSveta: (newMessageText) => {
+        dispatch(sendMessageSvetaActionCreator(newMessageText));
+    },
+    sendMessageSasha: (newMessageText) => {
+        dispatch(sendMessageSashaActionCreator(newMessageText));
+    },
+    sendMessageViktor: (newMessageText) => {
+        dispatch(sendMessageViktorActionCreator(newMessageText));
+    },
+    sendMessageValera: (newMessageText) => {
+        dispatch(sendMessageValeraActionCreator(newMessageText));
     }
+
  }
 }
 

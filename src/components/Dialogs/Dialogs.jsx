@@ -6,79 +6,94 @@ import Message from './Message/Message.jsx';
 import { Field, reduxForm } from 'redux-form';
 import { Textarea } from '../common/FormsControls/FormsControls.js';
 import { required, maxLengthCreator } from '../../utils/validators/validators.js';
-
-// let dialogs = [
-//     {name: 'Dimych', id: 1},
-//     {name: 'Andrey', id: 2},
-//     {name: 'Sveta', id: 3},
-//     {name: 'Sasha', id: 4},
-//     {name: 'Viktor', id: 5},
-//     {name: 'Valera', id: 6},
-//    ];
-
-// let dialogsElements = dialogs.map(d => <DialogItem name={d.name} id={d.id}/>);
-
-// let messages = [
-//     {message: 'Hi'},
-//     {message: 'How is your mood'},
-//     {message: 'Yo'},
-//     {message: 'Yo'},
-//     {message: 'Yo'},
-// ]; 
-
-// let messagesElements = messages.map(m => <Message message={m.message}/>);
-
-
+import { Routes, Route } from "react-router-dom";
+import { useMatch } from 'react-router-dom';
 
 
 
 const Dialogs = (props) => {
     let dialogsElements = props.dialogs.map(d => <DialogItem imgURL={d.imgURL} key={d.id} name={d.name} id={d.id} />);
 
-    let messagesElements = props.messages.map(m => <Message whose={m.whoseMess} key={m.id} message={m.message} id={m.id} />);
+    let messagesDimych = props.messagesDimych.map(m => <Message whose={m.whoseMess} key={m.id} message={m.message} id={m.id} />);
+    let messagesAndrey = props.messagesAndrey.map(m => <Message whose={m.whoseMess} key={m.id} message={m.message} id={m.id} />);
+    let messagesSveta = props.messagesSveta.map(m => <Message whose={m.whoseMess} key={m.id} message={m.message} id={m.id} />);
+    let messagesSasha = props.messagesSasha.map(m => <Message whose={m.whoseMess} key={m.id} message={m.message} id={m.id} />);
+    let messagesViktor = props.messagesViktor.map(m => <Message whose={m.whoseMess} key={m.id} message={m.message} id={m.id} />);
+    let messagesValera = props.messagesValera.map(m => <Message whose={m.whoseMess} key={m.id} message={m.message} id={m.id} />);
 
 
-    let addNewMessage = (values) => {   // instead onSubmit
-        props.sendMessage(values.newMessageBody);
+    let addNewMessageDimych = (values) => {
+        props.sendMessageDimych(values.newMessageBody);
+    }
+    let addNewMessageAndrey = (values) => {
+        props.sendMessageAndrey(values.newMessageBody);
+    }
+    let addNewMessageSveta = (values) => {
+        props.sendMessageSveta(values.newMessageBody);
+    }
+    let addNewMessageSasha = (values) => {
+        props.sendMessageSasha(values.newMessageBody);
+    }
+    let addNewMessageViktor = (values) => {
+        props.sendMessageViktor(values.newMessageBody);
+    }
+    let addNewMessageValera = (values) => {
+        props.sendMessageValera(values.newMessageBody);
     }
 
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
                 {dialogsElements}
-                {/* {dialogsElements} */}
-                {/* <DialogItem name={dialogs[0].name} id={dialogs[0].id}/>
-                <DialogItem name={dialogs[1].name} id={dialogs[1].id}/>
-                <DialogItem name={dialogs[2].name} id={dialogs[2].id}/>
-                <DialogItem name={dialogs[3].name} id={dialogs[3].id}/>
-                <DialogItem name={dialogs[4].name} id={dialogs[4].id}/>
-                <DialogItem name={dialogs[5].name} id={dialogs[5].id}/> */}
             </div>
 
-            <div className={s.messages}>
-                {messagesElements}
-                {/* {messagesElements} */}
-                {/* <Message message={messages0[0].message}/>
-                <Message message={messages0[1].message}/>
-                <Message message={messages0[2].message}/>
-                <Message message={messages0[3].message}/>
-            <Message message={messages0[4].message}/> */}
+            <div>
+                <Routes>
+                    <Route path="/" element={<div className={s.messages} >{messagesDimych}
+                        <NewMessageReduxForm key={1}   onSubmit={addNewMessageDimych} /></div>} />
+                    <Route path="/1" element={<div className={s.messages} >{messagesDimych}
+                        <NewMessageReduxForm key={2}   onSubmit={addNewMessageDimych} /></div>} />
+                    <Route path="/2" element={<div className={s.messages} >{messagesAndrey}
+                        <NewMessageReduxForm key={3}   onSubmit={addNewMessageAndrey} /></div>} />
+                    <Route path="/3" element={<div className={s.messages} >{messagesSveta}
+                        <NewMessageReduxForm key={4}   onSubmit={addNewMessageSveta} /></div>} />
+                    <Route path="/4" element={<div className={s.messages} >{messagesSasha}
+                        <NewMessageReduxForm key={5}  onSubmit={addNewMessageSasha} /></div>} />
+                    <Route path="/5" element={<div className={s.messages} >{messagesViktor}
+                        <NewMessageReduxForm key={6}   onSubmit={addNewMessageViktor} /></div>} />
+                    <Route path="/6" element={<div className={s.messages} >{messagesValera}
+                        <NewMessageReduxForm key={7}   onSubmit={addNewMessageValera} /></div>} />
+                </Routes>
+
             </div>
-            <NewMessageReduxForm onSubmit={addNewMessage} />
+
         </div>
 
     )
 }
-const maxLength50 = maxLengthCreator(50); 
+const maxLength50 = maxLengthCreator(50);
 
 const AddMessageForm = (props) => {
     return (
         <form onSubmit={props.handleSubmit} className={s.addNewMessage}>
-            <Field name="newMessageBody" component={Textarea} placeholder='Enter your message' validate={[required, maxLength50]}/>
+            <Field name="newMessageBody" component={Textarea} placeholder='Enter your message' validate={[required, maxLength50]} />
             <button type={"submit"}>Send message</button>
         </form>
     )
 }
+
+
+
 const NewMessageReduxForm = reduxForm({ form: "newMessage" })(AddMessageForm)
+
+// const NewMessageReduxForm = (props) => {
+//     const FormComponent = reduxForm({ form: props.formName })(AddMessageForm);
+
+//     return <FormComponent onSubmit={props.onSubmit} />;
+// }
+
+
+
+
 
 export default Dialogs;
