@@ -8,7 +8,7 @@ const Preloader = (props) => {
 return(
     // <div className={styles.preloader}>loading</div>
     <div>
-        <img alt="preloader"  style={{ width: props.width }} className={styles.preloader} src={preloaderMultiColor}/>
+        <img alt="preloader"  style={props.customStyles} className={styles.preloader} src={preloaderMultiColor}/>
     </div>
     )
 }

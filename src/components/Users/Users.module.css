@@ -1,5 +1,22 @@
+.wrapper{
+    text-align: center;
+}
+
+.searchInput{
+    width: 300px;
+    margin: 40px 0;
+    border: 1px solid #7EA7D8;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 15px;
+}
+
+.searchInput:focus{
+    outline: none;
+}
 .usersItems{
-    /* display: flex;
-    flex-wrap: wrap;  */
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center;
 }
 

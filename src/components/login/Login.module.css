@@ -10,6 +10,10 @@
 
 }
 
+.loginBody h1 {
+    margin-bottom: 10px;
+}
+
 @media (max-width: 480px){
     .loginWrapper{
         margin-bottom: 20px;

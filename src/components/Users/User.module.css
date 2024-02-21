@@ -1,9 +1,53 @@
+.userItemWrapper {
+    display: flex;
+    width: 300px;
+    padding: 20px;
+    margin: 10px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0px 0px 9px 0.1px rgba(0,0,0,0.12);
+
+}
+
 .userPhoto {
     width: 100px;
     height: 100px;
     border-radius: 50%;
 }
 
-.userWrapper {
-   padding: 20px;
+.userImageWrapper {
+}
+
+.btnAndNameWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    margin-left: 15px;
+}
+
+.userNameWrapper{
+    margin-bottom: 7px;
+    width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 90%;
+}
+.followButtonWrapper{
+
+}
+.button{
+    border: none;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 5px;
+}
+.followButton{
+    background-color: #7EA7D8;
+    color: white;
+}
+.unfollowButton{
+    background-color: gold;
+    color: rgb(0, 0, 0);
 }
