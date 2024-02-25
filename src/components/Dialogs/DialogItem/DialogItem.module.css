@@ -3,14 +3,19 @@
     /* color: black; */
     display: flex;
     align-items: center;
-    margin-bottom: 5px;
-}
-.dialog a {
+    border-bottom: 1px solid #a7a6a6;
+    padding: 5px 0 5px 5px;
     text-decoration: none;
+    border-radius: 10px 0 0 10px;
+   /* margin: 0px 0 0 5px; */
+
+}
+.dialog p {
     margin-left: 4px;
 }
 .active {
-    color: #7EA7D8;
+    background-color: #EAEAEA;
+    color: rgb(0, 0, 0);
 }
 
 .dialogLink{

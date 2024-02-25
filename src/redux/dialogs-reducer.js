@@ -53,7 +53,7 @@ let initialState = {
         { message: "i'm fine, thanks", whoseMess: "s.right", id: 3, key: 3 },
         { message: 'Yo', whoseMess: "s.left", id: 4, key: 4 },
         { message: "I'm glad to hear you", whoseMess: "s.right", id: 5, key: 5 },
-        { message: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus, ab? Rerum quibusdam doloribus doloremque non.", whoseMess: "s.left", id: 6, key: 6 },
+        { message: "Rerum quibusdam doloribus doloremque non.", whoseMess: "s.left", id: 6, key: 6 },
     ],
 
     messagesAndrey: [
