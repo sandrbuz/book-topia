@@ -6,7 +6,7 @@ import { stopSubmit } from "redux-form";
 
 const SET_AUTH_USER_DATA = 'SET_AUTH_USER_DATA';
 const SET_AUTH_USER_AVATAR = 'SET_AUTH_USER_AVATAR';
-const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING';
+const TOGGLE_IS_FETCHING_HEADER = 'TOGGLE_IS_FETCHING_HEADER';
 const SET_IS_AUTH_FALSE = 'SET_IS_AUTH_FALSE';
 
 export const setAuthUserData = (id, email, login, isAuth) => {
@@ -21,9 +21,9 @@ export const setAuthUserAvatar = (avatar) => {
         avatar
     }
 }
-export const toggleIsFetching = (isFetching) => {
+export const toggleIsFetchingHeader = (isFetching) => {
     return {
-        type: TOGGLE_IS_FETCHING, isFetching
+        type: TOGGLE_IS_FETCHING_HEADER, isFetching
     }
 }
 // export const setIsAuthFalse = (isAuth) => {
@@ -33,7 +33,7 @@ export const toggleIsFetching = (isFetching) => {
 // }
 // thunk creators
 export const getAuthUserData = () => async (dispatch) => {
-    dispatch(toggleIsFetching(true));
+    dispatch(toggleIsFetchingHeader(true));
     let response = await authAPI.me()
     
             if (response.resultCode === 0) {
@@ -44,10 +44,10 @@ export const getAuthUserData = () => async (dispatch) => {
                 
                 dispatch(setAuthUserAvatar(data.photos.small))
                     
-                dispatch(toggleIsFetching(false))
+                dispatch(toggleIsFetchingHeader(false))
             } //else {dispatch(setIsAuthFalse(false))}
         
-    dispatch(toggleIsFetching(false))
+    dispatch(toggleIsFetchingHeader(false))
     // dispatch(toggleIsFetching(false))
 }
 export const login = (email, password, rememberMe) => async (dispatch) => {
@@ -80,7 +80,7 @@ let initialState = {
     isAuth: false, //can be changed to true
     // isFetching: false 
     avatarSmall: null,
-    isFetching: false
+    isFetchingHeader: false
 }
 
 const authReducer = (state = initialState, action) => {
@@ -98,10 +98,10 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 avatarSmall: action.avatar
             };
-        case TOGGLE_IS_FETCHING:
+        case TOGGLE_IS_FETCHING_HEADER:
             return {
                 ...state,
-                isFetching: action.isFetching
+                isFetchingHeader: action.isFetching
             }
         // case SET_IS_AUTH_FALSE:
         //     return {

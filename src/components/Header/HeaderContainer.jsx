@@ -48,7 +48,7 @@ const mapStateToProps = (state) => {
         login: state.auth.login,
         // email: state.auth.email
         avatarSmall: state.auth.avatarSmall,
-        isFetching: state.auth.isFetching
+        isFetchingHeader: state.auth.isFetchingHeader
     }
 }
 
