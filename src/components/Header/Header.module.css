@@ -72,4 +72,12 @@
 /* .avaAndLogin img{
 max-width: 40px;
 } */
+@media (max-width: 350px) {
+  .miniLogin{
+    display: none;
+  }
+  .miniAvatar{
+    margin-right: 3px;
+  }
+}
 

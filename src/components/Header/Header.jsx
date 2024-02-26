@@ -23,7 +23,7 @@ const Header = (props) => {
                 <h1 className={s.logoText}>BookTopia</h1>
                 <div className={s.loginBlock}>
                     { props.isFetching && <Preloader customStyles={customStyles}/>}
-                    {props.isAuth ? <div className={ s.avaAndLogin}><img className={s.miniAvatar}  src={props.avatarSmall ? props.avatarSmall : defaultUserAva}/>  <span> {props.login}</span><img className={s.logoutImg} onClick={props.logout} src={logoutIcon} alt='logoutIcon'/></div>  : <NavLink to='/login'><u>Login</u></NavLink>}
+                    {props.isAuth ? <div className={ s.avaAndLogin}><img className={s.miniAvatar}  src={props.avatarSmall ? props.avatarSmall : defaultUserAva}/>  <span className={s.miniLogin}> {props.login}</span><img className={s.logoutImg} onClick={props.logout} src={logoutIcon} alt='logoutIcon'/></div>  : <NavLink to='/login'><u>Login</u></NavLink>}
                 </div>
         </header>
     )

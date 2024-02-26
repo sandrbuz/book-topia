@@ -10,15 +10,27 @@ import { Routes, Route } from "react-router-dom";
 import sendIcon from "../../assets/images/sendIcon.png"
 import { useEffect } from 'react';
 import { reset } from 'redux-form';
+import { useRef } from 'react';
 
 
 const Dialogs = (props) => {
+    const messagesWrappers = useRef([]);
+
+    const scrollToBottom = () => {
+        messagesWrappers.current.forEach(wrapper => {
+            if (wrapper) {
+                wrapper.scrollTop = wrapper.scrollHeight;
+            }
+        });
+    }
+
 
     const navigate = useNavigate();
 
     useEffect(() => {
         // Navigate to the first NavLink when the component mounts
         navigate(`/dialogs/1`);
+        scrollToBottom()
     }, []);
 
 
@@ -33,34 +45,36 @@ const Dialogs = (props) => {
     let messagesValera = props.messagesValera.map(m => <Message whose={m.whoseMess} key={m.id} message={m.message} id={m.id} />);
 
 
-    let addNewMessageDimych = (values) => {
-        props.sendMessageDimych(values.newMessageBody);
-        props.dispatch(reset('Dima'));
+    let addNewMessageDimych = async (values) => {
+        await props.sendMessageDimych(values.newMessageBody);
+        await props.dispatch(reset('Dima'));
+        scrollToBottom();
     }
-    let addNewMessageAndrey = (values) => {
-        props.sendMessageAndrey(values.newMessageBody);
-        props.dispatch(reset('Andrey'));
+    let addNewMessageAndrey = async (values) => {
+        await props.sendMessageAndrey(values.newMessageBody);
+        await props.dispatch(reset('Andrey'));
+        scrollToBottom();
 
     }
-    let addNewMessageSveta = (values) => {
-        props.sendMessageSveta(values.newMessageBody);
-        props.dispatch(reset('Sveta'));
-
+    let addNewMessageSveta = async (values) => {
+        await props.sendMessageSveta(values.newMessageBody);
+        await props.dispatch(reset('Sveta'));
+        scrollToBottom();
     }
-    let addNewMessageSasha = (values) => {
-        props.sendMessageSasha(values.newMessageBody);
-        props.dispatch(reset('Sasha'));
-
+    let addNewMessageSasha = async (values) => {
+        await props.sendMessageSasha(values.newMessageBody);
+        await props.dispatch(reset('Sasha'));
+        scrollToBottom();
     }
-    let addNewMessageViktor = (values) => {
-        props.sendMessageViktor(values.newMessageBody);
-        props.dispatch(reset('Viktor'));
-
+    let addNewMessageViktor = async (values) => {
+        await props.sendMessageViktor(values.newMessageBody);
+        await props.dispatch(reset('Viktor'));
+        scrollToBottom();
     }
-    let addNewMessageValera = (values) => {
-        props.sendMessageValera(values.newMessageBody);
-        props.dispatch(reset('Valera'));
-
+    let addNewMessageValera = async (values) => {
+        await props.sendMessageValera(values.newMessageBody);
+        await props.dispatch(reset('Valera'));
+        scrollToBottom();
     }
 
 
@@ -72,37 +86,37 @@ const Dialogs = (props) => {
             <Routes>
                 <Route path="/" element={
                     <div className={s.chat} >
-                        {messagesDimych}
+                        <div className={s.messagesWrapper} ref={ref => messagesWrappers.current.push(ref)}>{messagesDimych}</div>
                         <NewMessageReduxForm formName={"Dima"} key={1} onSubmit={addNewMessageDimych} />
                     </div>} />
                 <Route path="/1" element={
                     <div className={s.chat} >
-                        {messagesDimych}
+                        <div className={s.messagesWrapper} ref={ref => messagesWrappers.current.push(ref)}>{messagesDimych}</div>
                         <NewMessageReduxForm formName={"Dima"} key={2} onSubmit={addNewMessageDimych} />
                     </div>} />
                 <Route path="/2" element={
                     <div className={s.chat} >
-                        {messagesAndrey}
+                        <div className={s.messagesWrapper} ref={ref => messagesWrappers.current.push(ref)}>{messagesAndrey}</div>
                         <NewMessageReduxForm formName={"Andrey"} key={3} onSubmit={addNewMessageAndrey} />
                     </div>} />
                 <Route path="/3" element={
                     <div className={s.chat} >
-                        {messagesSveta}
+                        <div className={s.messagesWrapper} ref={ref => messagesWrappers.current.push(ref)}>{messagesSveta}</div>
                         <NewMessageReduxForm formName={"Sveta"} key={4} onSubmit={addNewMessageSveta} />
                     </div>} />
                 <Route path="/4" element={
                     <div className={s.chat} >
-                        {messagesSasha}
+                        <div className={s.messagesWrapper} ref={ref => messagesWrappers.current.push(ref)}>{messagesSasha}</div>
                         <NewMessageReduxForm formName={"Sasha"} key={5} onSubmit={addNewMessageSasha} />
                     </div>} />
                 <Route path="/5" element={
                     <div className={s.chat} >
-                        {messagesViktor}
+                        <div className={s.messagesWrapper} ref={ref => messagesWrappers.current.push(ref)}>{messagesViktor}</div>
                         <NewMessageReduxForm formName={"Viktor"} key={6} onSubmit={addNewMessageViktor} />
                     </div>} />
                 <Route path="/6" element={
                     <div className={s.chat} >
-                        {messagesViktor}
+                        <div className={s.messagesWrapper} ref={ref => messagesWrappers.current.push(ref)}>{messagesViktor}</div>
                         <NewMessageReduxForm formName={"Valera"} key={7} onSubmit={addNewMessageValera} />
                     </div>} />
             </Routes>
