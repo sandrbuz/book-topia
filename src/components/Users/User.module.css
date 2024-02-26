@@ -51,3 +51,13 @@
     background-color: gold;
     color: rgb(0, 0, 0);
 }
+
+
+@media (max-width: 340px) {
+    .userItemWrapper{
+        width: 260px;
+    }
+    .userNameWrapper{
+        width: 100px;
+    }
+}
