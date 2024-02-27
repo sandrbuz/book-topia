@@ -125,11 +125,23 @@ const Dialogs = (props) => {
     )
 }
 
+const validate = values => {
+    const errors = {};
+    if (!values.newMessageBody || values.newMessageBody.trim() === '') {
+    //   errors.newMessageBody = 'Message is required';
+    }
+    return errors;
+  };
+
 const AddMessageForm = (props) => {
+    const { handleSubmit, pristine, submitting} = props;
+
+
+
     return (
         <form onSubmit={props.handleSubmit} className={s.addNewMessage}>
             <Field className={s.field} name="newMessageBody" component={Textarea} placeholder='Enter your message' />
-            <button className={s.button} type={"submit"}><img src={sendIcon} /></button>
+            <button className={s.button} type={"submit"} disabled={pristine || submitting}><img src={sendIcon} /></button>
         </form>
     )
 }
@@ -139,7 +151,7 @@ const AddMessageForm = (props) => {
 // const NewMessageReduxForm = reduxForm({ form: "newMessage", destroyOnUnmount: false })(AddMessageForm)
 
 const NewMessageReduxForm = (props) => {
-    const FormComponent = reduxForm({ form: props.formName, destroyOnUnmount: false })(AddMessageForm);
+    const FormComponent = reduxForm({ form: props.formName, destroyOnUnmount: false})(AddMessageForm);
     return <FormComponent onSubmit={(values) => props.onSubmit(values, props.dispatch)} />;
 }
 
