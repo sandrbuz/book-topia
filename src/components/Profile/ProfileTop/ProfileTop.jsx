@@ -1,13 +1,12 @@
 import React, { useRef } from "react";
-import styles from "./ProfileInfo.module.css";
+import styles from "./ProfileTop.module.css";
 import defaultUserImg from '../../../assets/images/userImg.png'
 import Preloader from "../../common/Preloader/Preloader";
-import ProfileStatus from "./ProfileStatus";
 import ProfileStatusWithHooks from "./ProfileStatusWithHooks"
 
 
 
-const ProfileInfo = (props) => {
+const ProfileTop = (props) => {
   
 
     const fileInputRef = useRef(null);
@@ -37,16 +36,15 @@ const ProfileInfo = (props) => {
                 </div>
                 <div className={styles.infoWrapper}>
                     <div className={styles.fullname}>{props.profile.fullName}</div>
-                    <div className={styles.workStatus}>{props.profile.lookingForAJob ? `Looking for a job 😃` : 'Not looking for a job 😐'}</div>
                 </div>
             </div>
             <input type={"file"} onChange={onMainPhotoSelected} style={{ display: 'none' }} ref={fileInputRef} />
             {(props.isAuth && (props.userId == undefined || props.userId == props.authorizedUserId)) && <button onClick={handleButtonClick} className={styles.uploadPhotoButton}>upload</button>}
-            <div className={styles.status}>
+
                 <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} isAuth={props.isAuth} authorizedUserId={props.authorizedUserId} userId={props.userId} />
-            </div>
+
         </div>
     )
 }
 
-export default ProfileInfo;
+export default ProfileTop;

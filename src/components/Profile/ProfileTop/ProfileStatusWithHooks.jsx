@@ -1,5 +1,5 @@
 import React, { useEffect,memo, useState } from "react";
-import styles from "./ProfileInfo.module.css";
+import styles from "./ProfileStatusWithHooks.module.css";
 import changeIcon from "./../../../assets/images/changeIcon.png"
 import { withRouter } from "../ProfileContainer";
 

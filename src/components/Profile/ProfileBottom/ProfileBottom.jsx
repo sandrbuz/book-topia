@@ -1,5 +1,5 @@
 import React from 'react';
-import s from './MyPosts.module.css'
+import s from './ProfileBottom.module.css'
 import Post from './Post/Post.jsx'
 import { Field } from 'redux-form';
 import { reduxForm } from 'redux-form';
@@ -24,7 +24,7 @@ const AddNewPostForm = (props) => {
 
 const AddNewPostReduxForm = reduxForm({ form: "profile" })(AddNewPostForm)
 
-const MyPosts = (props) => {
+const ProfileBottom = (props) => {
 
   // let posts = [
   //    {id: 1, message: 'Hi, how are you?', likesCount: 12},
@@ -47,7 +47,7 @@ const MyPosts = (props) => {
 
 
   return (
-    <div className={s.postsBlock}>
+    <div>
       <h3>My posts</h3>
       <AddNewPostReduxForm onSubmit={onAddPost} />
       <div className={s.posts}>
@@ -66,7 +66,7 @@ const MyPosts = (props) => {
 
 
 
-export default MyPosts;
+export default ProfileBottom;
 
 
 
