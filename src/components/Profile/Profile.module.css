@@ -1,0 +1,10 @@
+.content {}
+
+.profileTop {
+    border: 1px solid black;
+}
+
+.profileBottom {
+    border: 1px solid black;
+    /* margin-top: 400px; */
+}

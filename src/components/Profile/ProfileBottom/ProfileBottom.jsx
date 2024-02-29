@@ -5,6 +5,7 @@ import { Field } from 'redux-form';
 import { reduxForm } from 'redux-form';
 import { required, maxLengthCreator } from '../../../utils/validators/validators.js';
 import { Textarea } from '../../common/FormsControls/FormsControls.js';
+import ProfileStatusWithHooks from './ProfileStatusWithHooks.jsx'
 
 const maxLength10 = maxLengthCreator(10);
 
@@ -48,6 +49,8 @@ const ProfileBottom = (props) => {
 
   return (
     <div>
+      <div>{props.profile.fullName}</div>
+      <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} isAuth={props.isAuth} authorizedUserId={props.authorizedUserId} userId={props.userId} />
       <h3>My posts</h3>
       <AddNewPostReduxForm onSubmit={onAddPost} />
       <div className={s.posts}>

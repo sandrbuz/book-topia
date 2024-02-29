@@ -9,9 +9,14 @@ import ProfileTop from './ProfileTop/ProfileTop';
 const Profile = (props) => {
   return (
     <div className={s.content}>
+      <div className={s.profileTop}>
+        <ProfileTop profile={props.profile} status={props.status} updateStatus={props.updateStatus} isAuth={props.isAuth} authorizedUserId={props.authorizedUserId} userId={props.userId} savePhoto={props.savePhoto} />
+      </div>
+      <div className={s.profileBottom}>
+        <ProfileBottomContainer userId={props.userId} />
+      </div>
 
-      <ProfileTop profile={props.profile} status={props.status} updateStatus={props.updateStatus} isAuth={props.isAuth} authorizedUserId={props.authorizedUserId} userId={props.userId} savePhoto={props.savePhoto}/>
-      <ProfileBottomContainer userId={props.userId}/>
+
     </div>
   )
 

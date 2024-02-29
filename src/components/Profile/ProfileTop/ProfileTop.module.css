@@ -1,44 +1,49 @@
-
-
-
-.profImgHead {
+.profileTop {
+   border-bottom: 1px solid black;
    width: 100%;
-   height: 300px;
+   min-height: 360px;
 }
+
+
+.coverImg{
+   background-color: black;
+   width: 98%;
+   height: 300px;
+   border-radius: 10px 10px 0 0;
+   position: relative;
+}
+.profileImageWrapper{
+  position: absolute;
+  bottom: 54%;
+  left: 5%;
+}
+
+
+
 
 .profileImage {
-   max-width: 200px;
+   max-width: 220px;
    border-radius: 100px;
-}
-
-.descriptionBlock {
-   display: flex;
-   align-items: center;
-
-   padding: 20px;
-}
-
-.profileImageWrapper {
-   display: inline-block;
+   border: 8px solid #EAEAEA;
    max-width: 200px;
+   position: relative;
 }
 
-.infoWrapper {
-   /* text-transform: capitalize; */
-   /*for first capital letter*/
-
-   padding: 20px;
-   display: inline-block;
-   max-width: 300px;
+.uploadPhotoButton{
+   background-color: #C4C4C4;
+   border-radius: 50%;
+   border: none;
+   padding: 5px 5px 3px 5px;
+   width: 35px;
+   height: 35px;
+   position: absolute;
+   top: 42%;
+   right: -6%;
+}
+.uploadPhotoIcon{
+   max-width: 20px;
 }
 
-
-
-
-
-
-.uploadPhotoButton {
-}
 
 
 
@@ -48,7 +53,5 @@
       align-items: flex-start;
    }
 
-   .infoWrapper {
-      margin-top: 20px;
-   }
+
 }
