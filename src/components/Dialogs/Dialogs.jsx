@@ -77,7 +77,6 @@ const Dialogs = (props) => {
         scrollToBottom();
     }
 
-
     return (
         <div className={s.dialogs}>
             <div className={s.users}>
