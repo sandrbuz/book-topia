@@ -1,3 +1,7 @@
+.statusLeft{
+   font-weight: 500;
+}
+
 .changeStatus img {
     max-width: 17px;
     max-height: 17px;

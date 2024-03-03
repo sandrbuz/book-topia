@@ -1,5 +1,6 @@
 import { profileAPI, usersAPI } from "../api/api";
 import { setAuthUserAvatar } from "./auth-reducer";
+import newPostImg from "./../assets/images/newPostImg.jpg"
 
 const ADD_POST = 'ADD-POST';
 const SET_USER_PROFILE = 'SET_USER_PROFILE';
@@ -55,10 +56,10 @@ export const savePhoto = (file) => async (dispatch) => {
 
 let initialState = {
     posts: [
-        { id: 1, message: 'Hi, how are you?'},
-        { id: 2, message: 'It\'s my first page'},
-        { id: 3, message: 'Blabla'},
-        { id: 4, message: 'Blabla'},
+        { id: 1, message: 'Hi, how are you?', thumbnail: "https://img.audiomania.ru/images/content/Avatar2.jpg"},
+        { id: 2, message: 'It\'s my first page', thumbnail: "https://vibirai.ru/image/964470.jpg"},
+        { id: 3, message: 'Blabla', thumbnail: "https://masterpiecer-images.s3.yandex.net/5ea0a1226dba11ee8461363fac71b015:upscaled"},
+        { id: 4, message: 'Blabla', thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbvP5IRQVvmbIYB57VXE8aENzgdymWgnMp7A&usqp=CAU"},
     ],
     profile: null,
     status: ''
@@ -77,7 +78,8 @@ const profileReducer = (state = initialState, action) => {
                 // id: 5,
                 message: action.newPostText,
                 likesCount: 0,
-                key: state.posts[state.posts.length - 1].id + 1
+                key: state.posts[state.posts.length - 1].id + 1,
+                thumbnail: newPostImg
             };
             // stateCopy.posts = [...state.posts];
             // stateCopy.posts.push(newPost);   //add a post
