@@ -28,7 +28,7 @@ const ProfileStatus = React.memo((props) => {
 
     return (
         <div>
-            <span><b>My status: </b></span>
+            <span><b>status: </b></span>
             {!editMode &&
                     <span onDoubleClick={props.isAuth && props.userId == undefined ? activateEditMode : null}>{props.status || "-----"}  </span>
             }

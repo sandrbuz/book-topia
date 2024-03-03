@@ -25,8 +25,9 @@ const AddNewPostForm = (props) => {
 
 const AddNewPostReduxForm = reduxForm({ form: "profile" })(AddNewPostForm)
 
+
 const ProfileBottom = (props) => {
-  let postsElements = props.posts.map(p => <Post message={p.message} likesCount={p.likesCount} id={p.id} key={p.id} />) //!
+  let postsElements = props.posts.map(p => <Post message={p.message}  id={p.id} key={p.id} />) //!
 
   let onAddPost = (values) => {
     props.addPost(values.newPostText)
@@ -34,9 +35,8 @@ const ProfileBottom = (props) => {
 
   return (
     <>
-      <div>{props.profile?.fullName}</div>
+      <div className={s.userName}>{props.profile?.fullName}</div>
       <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} isAuth={props.isAuth} authorizedUserId={props.authorizedUserId} userId={props.userId} />
-      <h3>My posts</h3>
       <AddNewPostReduxForm onSubmit={onAddPost} />
       <div className={s.posts}>
         {postsElements}
@@ -56,21 +56,3 @@ export default ProfileBottom;
 
 
 
-let a = {
-  name: 'Sasha',
-  age: 25,
-  skills: {
-    js: 5,
-    ts: 4
-  }
-}
-
-let b = a;
-
-console.log(b === a, "тренеровка в файле MyPosts 46 урок")
-
-console.log(b.skills === a.skills)
-
-let c = { ...a };
-
-console.log(c === a)

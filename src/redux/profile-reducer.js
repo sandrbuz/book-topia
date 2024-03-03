@@ -55,10 +55,10 @@ export const savePhoto = (file) => async (dispatch) => {
 
 let initialState = {
     posts: [
-        { id: 1, message: 'Hi, how are you?', likesCount: 12 },
-        { id: 2, message: 'It\'s my first page', likesCount: 11 },
-        { id: 3, message: 'Blabla', likesCount: 10 },
-        { id: 4, message: 'Blabla', likesCount: 1 },
+        { id: 1, message: 'Hi, how are you?'},
+        { id: 2, message: 'It\'s my first page'},
+        { id: 3, message: 'Blabla'},
+        { id: 4, message: 'Blabla'},
     ],
     profile: null,
     status: ''
