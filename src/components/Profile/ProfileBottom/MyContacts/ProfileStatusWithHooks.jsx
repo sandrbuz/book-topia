@@ -28,16 +28,18 @@ const ProfileStatus = React.memo((props) => {
 
     return (
         <div className={styles.status}>
-            <span className={styles.statusLeft}>status: </span>
+            <span className={styles.statusLeft}>Status:&nbsp;</span>
+
+           
             {!editMode &&
                 <span className={styles.statusBody} onDoubleClick={props.isAuth && props.userId == undefined ? activateEditMode : null}>{props.status || "-----"}  </span>
             }
-            {editMode &&
-                <input onChange={onStatusChange} autoFocus={true} onBlur={deactivateEditMode} value={status} type="text" />
-            }
+             {editMode &&
+                <input className={styles.input} onChange={onStatusChange} autoFocus={true} onBlur={deactivateEditMode} value={status} type="text" maxLength="25" title="Maximum 20 characters allowed" pattern=".{1,24}"/>
+             }
+            
 
-
-            {(props.isAuth && (props.userId == undefined || props.userId == props.authorizedUserId)) && <span onClick={activateEditMode} className={styles.changeStatus}><img src={changeIcon} alt="change" /></span>}
+            {(!editMode && props.isAuth && (props.userId == undefined || props.userId == props.authorizedUserId)) && <span onClick={activateEditMode} className={styles.changeStatus}><img src={changeIcon} alt="change" /></span>}
         </div>
     )
 

@@ -1,26 +1,35 @@
-.status{
-    margin-top: 20px;
-    border: 1px solid black;
-    /* max-width: 230px; */
-    /* word-wrap: break-word; */
-}
-.statusBody{
-   /* max-width: 100px;
-   word-wrap: break-word; */
-   /* position: relative; */
+.status {
+   margin-top: 20px;
+   max-width: 250px;
+   /* word-wrap: break-word; */
+   word-break: break-all;
+
+   text-align: center;
+
 }
 
-.statusLeft{
+.statusBody {
+
+}
+
+.statusLeft {
    font-weight: 500;
 }
 
+.input{
+   max-width: 150px;
+   outline: none;
+}
+input:invalid {
+   border: 1px solid red;
+}
+
 .changeStatus img {
-    max-width: 17px;
-    max-height: 17px;
-    margin-bottom: -2px;
- }
- .changeStatus {
-    cursor: pointer;
-    /* position: absolute; */
- }
- 
+   max-width: 17px;
+   max-height: 17px;
+   margin-bottom: -2px;
+}
+
+.changeStatus {
+   cursor: pointer;
+}
