@@ -1,2 +1,11 @@
-
+.profileBottom {
+    /* border: 1px solid black; */
+    margin-top: 60px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 350px 2fr;
+    grid-template-areas: "c p";
+    /* margin-left: auto;
+    margin-right: auto; */
+}
 

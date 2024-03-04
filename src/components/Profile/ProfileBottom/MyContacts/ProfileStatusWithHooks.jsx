@@ -1,4 +1,4 @@
-import React, { useEffect,memo, useState } from "react";
+import React, { useEffect, memo, useState } from "react";
 import styles from "./ProfileStatusWithHooks.module.css";
 import changeIcon from "./../../../../assets/images/changeIcon.png"
 import { withRouter } from "../../ProfileContainer";
@@ -27,16 +27,16 @@ const ProfileStatus = React.memo((props) => {
 
 
     return (
-        <div>
+        <div className={styles.status}>
             <span className={styles.statusLeft}>status: </span>
             {!editMode &&
-                    <span onDoubleClick={props.isAuth && props.userId == undefined ? activateEditMode : null}>{props.status || "-----"}  </span>
+                <span className={styles.statusBody} onDoubleClick={props.isAuth && props.userId == undefined ? activateEditMode : null}>{props.status || "-----"}  </span>
             }
-            {editMode && 
-                    <input onChange={onStatusChange} autoFocus={true} onBlur={deactivateEditMode} value={status}type="text" />
+            {editMode &&
+                <input onChange={onStatusChange} autoFocus={true} onBlur={deactivateEditMode} value={status} type="text" />
             }
 
-            
+
             {(props.isAuth && (props.userId == undefined || props.userId == props.authorizedUserId)) && <span onClick={activateEditMode} className={styles.changeStatus}><img src={changeIcon} alt="change" /></span>}
         </div>
     )

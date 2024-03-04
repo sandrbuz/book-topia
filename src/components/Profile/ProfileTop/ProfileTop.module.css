@@ -11,7 +11,8 @@
 .profileImageWrapper{
   position: absolute;
   bottom: -60px;
-  left: 5%;
+  left: 70px;
+  /* left: 5%; */
 }
 
 .profileImage {

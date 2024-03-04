@@ -1,3 +1,15 @@
+.status{
+    margin-top: 20px;
+    border: 1px solid black;
+    /* max-width: 230px; */
+    /* word-wrap: break-word; */
+}
+.statusBody{
+   /* max-width: 100px;
+   word-wrap: break-word; */
+   /* position: relative; */
+}
+
 .statusLeft{
    font-weight: 500;
 }
@@ -5,8 +17,10 @@
 .changeStatus img {
     max-width: 17px;
     max-height: 17px;
+    margin-bottom: -2px;
  }
  .changeStatus {
     cursor: pointer;
+    /* position: absolute; */
  }
  

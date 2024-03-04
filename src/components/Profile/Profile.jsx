@@ -8,9 +8,7 @@ const Profile = (props) => {
   return (
     <>
       <ProfileTop profile={props.profile} status={props.status} updateStatus={props.updateStatus} isAuth={props.isAuth} authorizedUserId={props.authorizedUserId} userId={props.userId} savePhoto={props.savePhoto} />
-      <div className={s.profileBottom}>
-        <ProfileBottomContainer userId={props.userId} />
-      </div>
+      <ProfileBottomContainer userId={props.userId} />
     </>
   )
 

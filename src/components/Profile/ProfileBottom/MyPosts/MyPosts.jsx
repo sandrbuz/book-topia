@@ -6,18 +6,14 @@ import { maxLengthCreator, required } from "../../../../utils/validators/validat
 import { Textarea } from "../../../common/FormsControls/FormsControls";
 import Post from "./Post/Post";
 
-const maxLength10 = maxLengthCreator(10);
+const maxLength15 = maxLengthCreator(15);
 
 const AddNewPostForm = (props) => {
   return (
-    <form onSubmit={props.handleSubmit}>
-      <div>
-        <Field name="newPostText" component={Textarea} placeholder='Post message'
-        validate={[required, maxLength10]} />
-      </div>
-      <div>
-        <button type="submit">Add post</button>
-      </div>
+    <form className={s.form} onSubmit={props.handleSubmit}>
+        <Field className={s.field} name="newPostText" component={Textarea} placeholder='Post message'
+        validate={[required, maxLength15]} />
+        <button className={s.btn} type="submit">Add</button>
     </form>
   )
 }
@@ -27,12 +23,12 @@ const AddNewPostReduxForm = reduxForm({ form: "profile" })(AddNewPostForm)
 const MyPosts = (props) => {
     let postsElements = props.posts.map(p => <Post thumbnail={p.thumbnail} message={p.message}  id={p.id} key={p.id} />) 
     return (
-        <>
+        <div className={s.myPosts}>
             <AddNewPostReduxForm onSubmit={props.onAddPost} />
             <div className={s.posts}>
                 {postsElements}
             </div>
-        </>
+        </div>
     )
 }
 
