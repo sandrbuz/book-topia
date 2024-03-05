@@ -11,12 +11,15 @@ const ProfileBottom = (props) => {
   let onAddPost = (values) => {
     props.addPost(values.newPostText)
   }
+  let onDeletePost = (postId) => {
+    props.deletePost(postId)
+  }
 
   return (
     <div className={s.profileBottom}>
       <MyContacts {...props}/>
-      <MyPosts  onAddPost={onAddPost} {...props}/>
-    </div>
+      <MyPosts onDeletePost={onDeletePost}  onAddPost={onAddPost} {...props}/>
+    </div> 
   )
 }
 

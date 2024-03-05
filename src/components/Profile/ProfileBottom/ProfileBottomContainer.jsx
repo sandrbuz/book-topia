@@ -1,5 +1,5 @@
 import React from 'react';
-import { addPost, updateStatus, savePhoto} from '../../../redux/profile-reducer';
+import { addPost, updateStatus, savePhoto, deletePost} from '../../../redux/profile-reducer';
 import ProfileBottom from './ProfileBottom';
 import { connect } from 'react-redux';
 
@@ -22,6 +22,7 @@ let mapStateToProps = (state) => {
 
 export default connect(mapStateToProps,{
    addPost,
+   deletePost,
    updateStatus,
    savePhoto
 })(ProfileBottomContainer)

@@ -5,6 +5,7 @@ import { Field } from "redux-form";
 import { maxLengthCreator, required } from "../../../../utils/validators/validators";
 import { Textarea } from "../../../common/FormsControls/FormsControls";
 import Post from "./Post/Post";
+import Preloader from "../../../common/Preloader/Preloader";
 
 const maxLength15 = maxLengthCreator(15);
 
@@ -20,8 +21,15 @@ const AddNewPostForm = (props) => {
 
 const AddNewPostReduxForm = reduxForm({ form: "profile" })(AddNewPostForm)
 
+
+
 const MyPosts = (props) => {
-    let postsElements = props.posts.map(p => <Post thumbnail={p.thumbnail} message={p.message}  id={p.id} key={p.id} />) 
+    let onDeletePost = (postId) => {
+        props.onDeletePost(postId)
+    }
+
+
+    let postsElements = props.posts.map(p => <Post onDeletePost={() => onDeletePost(p.id)} thumbnail={p.thumbnail} message={p.message}  id={p.id} key={p.id} />) 
     return (
         <div className={s.myPosts}>
             <AddNewPostReduxForm onSubmit={props.onAddPost} />
