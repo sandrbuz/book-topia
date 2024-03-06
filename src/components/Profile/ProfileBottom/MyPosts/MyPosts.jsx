@@ -55,9 +55,9 @@ const MyPosts = (props) => {
     return (
         <div className={s.myPosts}>
             <AddNewPostReduxForm onSubmit={onAddPost} />
-            <div className={s.posts} ref={postsRef}>
+            <ul className={s.posts} ref={postsRef}>
                 {postsElements}
-            </div>
+            </ul>
         </div>
     )
 }
