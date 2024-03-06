@@ -28,4 +28,5 @@
 .deleteIcon{
     max-width: 17px;
     max-height: 17px;
+    cursor: pointer;
 }

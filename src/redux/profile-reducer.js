@@ -66,6 +66,8 @@ let initialState = {
         { id: 2, message: 'It\'s my first page', thumbnail: "https://vibirai.ru/image/964470.jpg" },
         { id: 3, message: 'Blabla', thumbnail: "https://masterpiecer-images.s3.yandex.net/5ea0a1226dba11ee8461363fac71b015:upscaled" },
         { id: 4, message: 'Blabla', thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbvP5IRQVvmbIYB57VXE8aENzgdymWgnMp7A&usqp=CAU" },
+        { id: 5, message: 'Blabla', thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbvP5IRQVvmbIYB57VXE8aENzgdymWgnMp7A&usqp=CAU" },
+        { id: 6, message: 'Blabla', thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbvP5IRQVvmbIYB57VXE8aENzgdymWgnMp7A&usqp=CAU" },
     ],
     profile: null,
     status: ''
@@ -91,7 +93,6 @@ const profileReducer = (state = initialState, action) => {
                 newPostText: ""
             }
         case DELETE_POST:
-            console.log(action.postId)
             return {
                 ...state,
                 posts: state.posts.filter(p => p.id !== action.postId)

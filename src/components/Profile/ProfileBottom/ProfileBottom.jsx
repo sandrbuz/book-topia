@@ -8,17 +8,15 @@ import MyContacts from './MyContacts/MyContacts.jsx';
 
 const ProfileBottom = (props) => {
 
-  let onAddPost = (values) => {
-    props.addPost(values.newPostText)
-  }
-  let onDeletePost = (postId) => {
-    props.deletePost(postId)
-  }
+  // let onAddPost = (values) => {
+  //   props.addPost(values.newPostText)
+  // }
+
 
   return (
     <div className={s.profileBottom}>
       <MyContacts {...props}/>
-      <MyPosts onDeletePost={onDeletePost}  onAddPost={onAddPost} {...props}/>
+      <MyPosts onDeletePost={props.deletePost}  onAddPost={props.addPost} {...props}/>
     </div> 
   )
 }
