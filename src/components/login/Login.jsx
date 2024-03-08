@@ -13,11 +13,10 @@ const LoginForm = ({ handleSubmit, error }) => {
   //  if(props.isAuth===true){return <Navigate to='/profile'/>}
   return (
     <form onSubmit={handleSubmit}>
-
-      {createField("Email", "email", [required], Input)}
-      {createField("Password", "password", [required], Input, { type: "password" })}
-      {createField(null, "rememberMe", [], Input, { type: "checkbox" }, "remember me")}
-      {error && <div className={styles.formSummaryError}>
+      <div className={styles2.loginInput}>{createField("Email", "email", [required], Input)}</div>
+      <div className={styles2.passwordInput}>{createField("Password", "password", [required], Input, { type: "password" })}</div>
+      <div className={styles2.checkbox}>{createField(null, "rememberMe", [], Input, { type: "checkbox" }, "remember me")}</div>
+      {error && <div className={styles2.formSummaryError}>
         {error}
       </div>}
       <div>

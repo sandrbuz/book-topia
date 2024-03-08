@@ -2,11 +2,11 @@
     /* text-align: center;
     margin-top: 70px; */
 }
-    
 
-.loginBody{
+
+.loginBody {
     /* align-items: center; */
-/* text-align: center; */
+    /* text-align: center; */
 
 }
 
@@ -14,9 +14,70 @@
     margin-bottom: 10px;
 }
 
-@media (max-width: 480px){
-    .loginWrapper{
+.loginBody form {
+    position: relative;
+}
+
+
+.loginInput {
+    position: relative;
+    margin-bottom: 6px;
+}
+
+.loginBody form .loginInput span {   /* for error message*/
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 13px;
+    top: 75%;
+}
+
+.passwordInput {
+    position: relative;
+}
+
+
+.loginBody form .passwordInput span {  /* for error message*/
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 13px;
+    top: 75%;
+
+}
+
+/* .loginBody form div div span { 
+    outline: none;
+    border: none;
+    /* color: black !important; 
+} */
+
+
+
+
+.checkbox {
+    /* margin-top: 8px; */
+}
+
+.formSummaryError {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    /* bottom: 31%; */
+    /* right: 45%; */
+    bottom: 21.5%;
+    /* right: 10%; */
+    color: red;
+    white-space: nowrap;
+}
+
+
+
+@media (max-width: 480px) {
+    .loginWrapper {
         margin-bottom: 20px;
     }
 }
-

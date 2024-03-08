@@ -1,15 +1,22 @@
 .formControl.error input,
 .formControl.error textarea {
     border: solid red 1px;
+    outline: none;
+}
+
+.formControl input:focus{
+    outline: none;
 }
 
 .formControl.error span {
     color: red;
+    outline: none;
+    /* position: absolute; */
 }
 
 .formSummaryError {
-    border: red 1px solid;
-    padding: 5px;
+    /* border: red 1px solid; */
+    /* padding: 5px; */
     color: red;
 }
 
