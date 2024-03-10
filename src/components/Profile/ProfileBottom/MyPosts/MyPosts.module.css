@@ -190,3 +190,9 @@
   background: -webkit-linear-gradient(90deg, rgba(0, 0, 0, 0.35), transparent);
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.35), transparent);
 } */
+
+@media (max-width: 900px) {
+  .myPosts{
+    margin-top: 30px;
+  }
+}
