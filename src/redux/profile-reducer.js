@@ -80,17 +80,17 @@ const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         //debugger; //в devtools f11 войти в метод
         case ADD_POST:
+            const maxId = state.posts.reduce((max, post) => Math.max(post.id, max), 0);
             let newPost = {
-                id: state.posts[state.posts.length - 1].id + 1,
+                id: maxId+1,
                 message: action.newPostText,
                 likesCount: 0,
-                key: state.posts[state.posts.length - 1].id + 1,
+                key: maxId+1,
                 thumbnail: newPostImg
             };
             return {
                 ...state,
-                posts: [...state.posts, newPost],
-                newPostText: ""
+                posts: [newPost,...state.posts]
             }
         case DELETE_POST:
             return {

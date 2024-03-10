@@ -52,9 +52,9 @@ const MyPosts = (props) => {
     //     };
     let onDeletePost = async (postId) => {
         await props.deletePost(postId)
-        if (postsRef.current) {
-            postsRef.current.scrollTop = -postsRef.current.scrollHeight;
-        }
+        // if (postsRef.current) {
+        //     postsRef.current.scrollTop = -postsRef.current.scrollHeight;
+        // }
     }
     let onAddPost = async (values) => {
         await props.onAddPost(values.newPostText);
