@@ -14,4 +14,8 @@
 
 }
 
-.friends {}
+@media (max-width: 800px) {
+    .head {
+        font-size: 25px;
+    }
+}

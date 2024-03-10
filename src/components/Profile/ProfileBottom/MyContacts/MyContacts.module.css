@@ -29,3 +29,11 @@
     margin: 0 5px;
     cursor: pointer;
  }
+
+
+
+ @media (max-width: 900px) {
+   .myContacts{
+      border: none;
+   }
+ }
