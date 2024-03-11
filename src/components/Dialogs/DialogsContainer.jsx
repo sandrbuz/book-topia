@@ -1,4 +1,4 @@
-import { sendMessageDimychActionCreator, sendMessageAndreyActionCreator, sendMessageSvetaActionCreator, sendMessageSashaActionCreator,sendMessageViktorActionCreator,sendMessageValeraActionCreator} from '../../redux/dialogs-reducer';
+import {sendMessageActionCreator} from '../../redux/dialogs-reducer';
 import Dialogs from './Dialogs';
 import { connect } from 'react-redux';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
@@ -19,23 +19,8 @@ return{
 }
 let mapDispatchToProps = (dispatch) => {    
  return {
-    sendMessageDimych: (newMessageText) => {
-        dispatch(sendMessageDimychActionCreator(newMessageText));
-    },
-    sendMessageAndrey: (newMessageText) => {
-        dispatch(sendMessageAndreyActionCreator(newMessageText));
-    },
-    sendMessageSveta: (newMessageText) => {
-        dispatch(sendMessageSvetaActionCreator(newMessageText));
-    },
-    sendMessageSasha: (newMessageText) => {
-        dispatch(sendMessageSashaActionCreator(newMessageText));
-    },
-    sendMessageViktor: (newMessageText) => {
-        dispatch(sendMessageViktorActionCreator(newMessageText));
-    },
-    sendMessageValera: (newMessageText) => {
-        dispatch(sendMessageValeraActionCreator(newMessageText));
+    sendMessage: (newMessageText,formName) => {
+        dispatch(sendMessageActionCreator(newMessageText,formName));
     }
 
  }

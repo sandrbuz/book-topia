@@ -28,10 +28,12 @@ const Dialogs = (props) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        // Navigate to the first NavLink when the component mounts
         navigate(`/dialogs/1`);
         scrollToBottom()
     }, []);
+    // useEffect(() => {
+    //     scrollToBottom()
+    // });
 
 
 
@@ -44,38 +46,29 @@ const Dialogs = (props) => {
     let messagesViktor = props.messagesViktor.map(m => <Message whose={m.whoseMess} key={m.id} message={m.message} id={m.id} />);
     let messagesValera = props.messagesValera.map(m => <Message whose={m.whoseMess} key={m.id} message={m.message} id={m.id} />);
 
+   let sendMessage = async (values, formName) => {
+       await props.sendMessage(values.newMessageBody,formName)
+       await props.dispatch(reset(formName));
+       scrollToBottom();
+   }
 
-    let addNewMessageDimych = async (values) => {
-        await props.sendMessageDimych(values.newMessageBody);
-        await props.dispatch(reset('Dima'));
-        scrollToBottom();
-    }
-    let addNewMessageAndrey = async (values) => {
-        await props.sendMessageAndrey(values.newMessageBody);
-        await props.dispatch(reset('Andrey'));
-        scrollToBottom();
+//   let testArr = props.testArr.map(ar => <div>1</div>)
 
-    }
-    let addNewMessageSveta = async (values) => {
-        await props.sendMessageSveta(values.newMessageBody);
-        await props.dispatch(reset('Sveta'));
-        scrollToBottom();
-    }
-    let addNewMessageSasha = async (values) => {
-        await props.sendMessageSasha(values.newMessageBody);
-        await props.dispatch(reset('Sasha'));
-        scrollToBottom();
-    }
-    let addNewMessageViktor = async (values) => {
-        await props.sendMessageViktor(values.newMessageBody);
-        await props.dispatch(reset('Viktor'));
-        scrollToBottom();
-    }
-    let addNewMessageValera = async (values) => {
-        await props.sendMessageValera(values.newMessageBody);
-        await props.dispatch(reset('Valera'));
-        scrollToBottom();
-    }
+    let chats = [
+        { path: "/1", whoseMessages: messagesDimych, formName: "Dima", key: 1},
+        { path: "/2", whoseMessages: messagesAndrey, formName: "Andrey", key: 2},
+        { path: "/3", whoseMessages: messagesSveta, formName: "Sveta", key: 3},
+        { path: "/4", whoseMessages: messagesSasha, formName: "Sasha", key: 4},
+        { path: "/5", whoseMessages: messagesViktor, formName: "Viktor", key: 5},
+        { path: "/6", whoseMessages: messagesValera, formName: "Valera", key: 6},
+    ]
+    .map(chat => <Route key={chat.key} path={chat.path} element={
+        <div className={s.chat} >
+            <div className={s.messagesWrapper} ref={ref => messagesWrappers.current.push(ref)}>{chat.whoseMessages}</div>
+            <NewMessageReduxForm id={chat.key} key={chat.key} formName={chat.formName} onSubmit={sendMessage} />
+        </div>} />)
+
+
 
     return (
         <div className={s.dialogs}>
@@ -83,41 +76,7 @@ const Dialogs = (props) => {
                 {dialogsElements}
             </div>
             <Routes>
-                <Route path="/" element={
-                    <div className={s.chat} >
-                        <div className={s.messagesWrapper} ref={ref => messagesWrappers.current.push(ref)}>{messagesDimych}</div>
-                        <NewMessageReduxForm formName={"Dima"} key={1} onSubmit={addNewMessageDimych} />
-                    </div>} />
-                <Route path="/1" element={
-                    <div className={s.chat} >
-                        <div className={s.messagesWrapper} ref={ref => messagesWrappers.current.push(ref)}>{messagesDimych}</div>
-                        <NewMessageReduxForm formName={"Dima"} key={2} onSubmit={addNewMessageDimych} />
-                    </div>} />
-                <Route path="/2" element={
-                    <div className={s.chat} >
-                        <div className={s.messagesWrapper} ref={ref => messagesWrappers.current.push(ref)}>{messagesAndrey}</div>
-                        <NewMessageReduxForm formName={"Andrey"} key={3} onSubmit={addNewMessageAndrey} />
-                    </div>} />
-                <Route path="/3" element={
-                    <div className={s.chat} >
-                        <div className={s.messagesWrapper} ref={ref => messagesWrappers.current.push(ref)}>{messagesSveta}</div>
-                        <NewMessageReduxForm formName={"Sveta"} key={4} onSubmit={addNewMessageSveta} />
-                    </div>} />
-                <Route path="/4" element={
-                    <div className={s.chat} >
-                        <div className={s.messagesWrapper} ref={ref => messagesWrappers.current.push(ref)}>{messagesSasha}</div>
-                        <NewMessageReduxForm formName={"Sasha"} key={5} onSubmit={addNewMessageSasha} />
-                    </div>} />
-                <Route path="/5" element={
-                    <div className={s.chat} >
-                        <div className={s.messagesWrapper} ref={ref => messagesWrappers.current.push(ref)}>{messagesViktor}</div>
-                        <NewMessageReduxForm formName={"Viktor"} key={6} onSubmit={addNewMessageViktor} />
-                    </div>} />
-                <Route path="/6" element={
-                    <div className={s.chat} >
-                        <div className={s.messagesWrapper} ref={ref => messagesWrappers.current.push(ref)}>{messagesViktor}</div>
-                        <NewMessageReduxForm formName={"Valera"} key={7} onSubmit={addNewMessageValera} />
-                    </div>} />
+                {chats}
             </Routes>
         </div>
 
@@ -127,13 +86,13 @@ const Dialogs = (props) => {
 const validate = values => {
     const errors = {};
     if (!values.newMessageBody || values.newMessageBody.trim() === '') {
-    //   errors.newMessageBody = 'Message is required';
+        //   errors.newMessageBody = 'Message is required';
     }
     return errors;
-  };
+};
 
 const AddMessageForm = (props) => {
-    const { handleSubmit, pristine, submitting} = props;
+    const { handleSubmit, pristine, submitting } = props;
 
 
 
@@ -150,8 +109,12 @@ const AddMessageForm = (props) => {
 // const NewMessageReduxForm = reduxForm({ form: "newMessage", destroyOnUnmount: false })(AddMessageForm)
 
 const NewMessageReduxForm = (props) => {
-    const FormComponent = reduxForm({ form: props.formName, destroyOnUnmount: false})(AddMessageForm);
-    return <FormComponent onSubmit={(values) => props.onSubmit(values, props.dispatch)} />;
+    const FormComponent = reduxForm({ form: props.formName, destroyOnUnmount: false })(AddMessageForm);
+    const handleSubmit = (values) => {
+        props.onSubmit(values, props.formName);
+    };
+    return <FormComponent onSubmit={handleSubmit} />;
+    // return <FormComponent onSubmit={(values) => props.onSubmit(values, props.dispatch)} />;
 }
 
 
@@ -159,3 +122,20 @@ const NewMessageReduxForm = (props) => {
 
 
 export default Dialogs;
+
+
+
+
+// let arr = (name) => {
+//    let messagesValera = "val"
+//    let messageSasha = "Sa"
+//    let messageSveta = "Sve"
+
+   
+
+
+//    return console.log(messages{name})
+
+// }
+
+// arr("Valera")

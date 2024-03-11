@@ -1,9 +1,8 @@
 import React from 'react';
 import { NavLink, Navigate } from 'react-router-dom';
 import s from './Navbar.module.css'
-
-// import { useNavigate } from 'react-router-dom'; (60 lesson)
-// import { useEffect } from 'react';(60 lesson)
+import { useNavigate } from 'react-router-dom'; 
+import { useEffect } from 'react';
 
 
 const Navbar = (props) => {
@@ -11,13 +10,13 @@ const Navbar = (props) => {
 //  _______________________________________________________________ We check if the current path is the root path ('/') using window.location.pathname. If it is, we programmatically navigate to the /profile path using navigate('/profile')(60 lesson).
 // (in your own words, if path = 'http://localhost:3000/' , then profile NavLink is automatically clicked)
 
-// const navigate = useNavigate();
+const navigate = useNavigate();
 
-//   useEffect(() => {
-//     if (window.location.pathname === '/') {
-//       navigate('/profile');
-//     }
-//   }, [navigate]);
+  useEffect(() => {
+    if (window.location.pathname === '/') {
+      navigate('/profile');
+    }
+  }, [navigate]);
 // _______________________________________________________________
 
   

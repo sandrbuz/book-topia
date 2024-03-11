@@ -1,41 +1,14 @@
 
-const SEND_MESSAGE_DIMYCH = 'SEND-SEND_MESSAGE_DIMYCH';
-const SEND_MESSAGE_ANDREY = 'SEND-SEND_MESSAGE_ANDREY';
-const SEND_MESSAGE_SVETA = 'SEND-SEND_MESSAGE_SVETA';
-const SEND_MESSAGE_SASHA = 'SEND-SEND_MESSAGE_SASHA';
-const SEND_MESSAGE_VIKTOR = 'SEND-SEND_MESSAGE_VIKTOR';
-const SEND_MESSAGE_VALERA = 'SEND-SEND_MESSAGE_VALERA';
+const SEND_MESSAGE = 'SEND_MESSAGE';
 
-export const sendMessageDimychActionCreator = (newMessageText) => {
+
+export const sendMessageActionCreator = (newMessageText, formName) => {
     return {
-        type: SEND_MESSAGE_DIMYCH, newMessageText
+        type: SEND_MESSAGE, newMessageText, formName
     }
 }
-export const sendMessageAndreyActionCreator = (newMessageText) => {
-    return {
-        type: SEND_MESSAGE_ANDREY, newMessageText
-    }
-}
-export const sendMessageSvetaActionCreator = (newMessageText) => {
-    return {
-        type: SEND_MESSAGE_SVETA, newMessageText
-    }
-}
-export const sendMessageSashaActionCreator = (newMessageText) => {
-    return {
-        type: SEND_MESSAGE_SASHA, newMessageText
-    }
-}
-export const sendMessageViktorActionCreator = (newMessageText) => {
-    return {
-        type: SEND_MESSAGE_VIKTOR, newMessageText
-    }
-}
-export const sendMessageValeraActionCreator = (newMessageText) => {
-    return {
-        type: SEND_MESSAGE_VALERA, newMessageText
-    }
-}
+
+
 
 
 let initialState = {
@@ -73,128 +46,117 @@ let initialState = {
         { message: "Absolutely. Take care!", whoseMess: "s.left", id: 10, key: 10 },
     ],
     messagesSveta: [
-        { message: 'Good morning!', whoseMess: 's.right', id: 1, key: 1},
-        { message: 'Morning! How did you sleep?', whoseMess: "s.left", id: 2, key: 2},
+        { message: 'Good morning!', whoseMess: 's.right', id: 1, key: 1 },
+        { message: 'Morning! How did you sleep?', whoseMess: "s.left", id: 2, key: 2 },
         { message: "Not too bad, thanks for asking.", whoseMess: "s.right", id: 3, key: 3 },
-        { message: 'I had a bit of trouble falling asleep.', whoseMess: "s.left", id: 4, key: 4},
-        { message: "Maybe try some relaxation techniques before bed.", whoseMess: "s.right", id: 5, key: 5},
-        { message: "Yeah, I'll give that a shot tonight.", whoseMess: "s.left", id: 6, key: 6},
-        { message: 'Let me know if it helps.', whoseMess: 's.right', id: 7, key: 7},
-        { message: 'Will do. Thanks!', whoseMess: "s.left", id: 8, key: 8},
-        { message: "No problem. Have a great day!", whoseMess: "s.right", id: 9, key: 9},
-        { message: "You too!", whoseMess: "s.left", id: 10, key: 10},
-      ],
-      messagesSasha: [
-        { message: 'Hey, how\'s it going?', whoseMess: 's.right', id: 1, key: 1},
-        { message: "Hey! I'm doing well, thanks.", whoseMess: "s.left", id: 2, key: 2},
+        { message: 'I had a bit of trouble falling asleep.', whoseMess: "s.left", id: 4, key: 4 },
+        { message: "Maybe try some relaxation techniques before bed.", whoseMess: "s.right", id: 5, key: 5 },
+        { message: "Yeah, I'll give that a shot tonight.", whoseMess: "s.left", id: 6, key: 6 },
+        { message: 'Let me know if it helps.', whoseMess: 's.right', id: 7, key: 7 },
+        { message: 'Will do. Thanks!', whoseMess: "s.left", id: 8, key: 8 },
+        { message: "No problem. Have a great day!", whoseMess: "s.right", id: 9, key: 9 },
+        { message: "You too!", whoseMess: "s.left", id: 10, key: 10 },
+    ],
+    messagesSasha: [
+        { message: 'Hey, how\'s it going?', whoseMess: 's.right', id: 1, key: 1 },
+        { message: "Hey! I'm doing well, thanks.", whoseMess: "s.left", id: 2, key: 2 },
         { message: "That's good to hear.", whoseMess: "s.right", id: 3, key: 3 },
-        { message: 'What about you?', whoseMess: "s.left", id: 4, key: 4},
-        { message: "I'm just relaxing at home.", whoseMess: "s.right", id: 5, key: 5},
-        { message: "Sounds nice. Anything planned for today?", whoseMess: "s.left", id: 6, key: 6},
-        { message: 'Not really, just taking it easy.', whoseMess: 's.right', id: 7, key: 7},
-        { message: 'That sounds like a good day.', whoseMess: "s.left", id: 8, key: 8},
-        { message: "Yeah, I need some downtime.", whoseMess: "s.right", id: 9, key: 9},
-        { message: "Absolutely. Enjoy!", whoseMess: "s.left", id: 10, key: 10},
-      ],
-      messagesViktor: [
-        { message: 'Hi there!', whoseMess: 's.right', id: 1, key: 1},
-        { message: 'Hello! How are you?', whoseMess: "s.left", id: 2, key: 2},
+        { message: 'What about you?', whoseMess: "s.left", id: 4, key: 4 },
+        { message: "I'm just relaxing at home.", whoseMess: "s.right", id: 5, key: 5 },
+        { message: "Sounds nice. Anything planned for today?", whoseMess: "s.left", id: 6, key: 6 },
+        { message: 'Not really, just taking it easy.', whoseMess: 's.right', id: 7, key: 7 },
+        { message: 'That sounds like a good day.', whoseMess: "s.left", id: 8, key: 8 },
+        { message: "Yeah, I need some downtime.", whoseMess: "s.right", id: 9, key: 9 },
+        { message: "Absolutely. Enjoy!", whoseMess: "s.left", id: 10, key: 10 },
+    ],
+    messagesViktor: [
+        { message: 'Hi there!', whoseMess: 's.right', id: 1, key: 1 },
+        { message: 'Hello! How are you?', whoseMess: "s.left", id: 2, key: 2 },
         { message: "I'm doing great, thanks.", whoseMess: "s.right", id: 3, key: 3 },
-        { message: 'That\'s good to hear.', whoseMess: "s.left", id: 4, key: 4},
-        { message: "What about you?", whoseMess: "s.right", id: 5, key: 5},
-        { message: "I'm alright, just busy with work.", whoseMess: "s.left", id: 6, key: 6},
-        { message: 'I hope you\'re not too stressed.', whoseMess: 's.right', id: 7, key: 7},
-        { message: 'I manage.', whoseMess: "s.left", id: 8, key: 8},
-        { message: "Well, take breaks when you can.", whoseMess: "s.right", id: 9, key: 9},
-        { message: "Thanks, I will.", whoseMess: "s.left", id: 10, key: 10},
-      ],
-      messagesValera: [
-        { message: 'Hey, how have you been?', whoseMess: 's.right', id: 1, key: 1},
-        { message: "Hey! It's been a while.", whoseMess: "s.left", id: 2, key: 2},
+        { message: 'That\'s good to hear.', whoseMess: "s.left", id: 4, key: 4 },
+        { message: "What about you?", whoseMess: "s.right", id: 5, key: 5 },
+        { message: "I'm alright, just busy with work.", whoseMess: "s.left", id: 6, key: 6 },
+        { message: 'I hope you\'re not too stressed.', whoseMess: 's.right', id: 7, key: 7 },
+        { message: 'I manage.', whoseMess: "s.left", id: 8, key: 8 },
+        { message: "Well, take breaks when you can.", whoseMess: "s.right", id: 9, key: 9 },
+        { message: "Thanks, I will.", whoseMess: "s.left", id: 10, key: 10 },
+    ],
+    messagesValera: [
+        { message: 'Hey, how have you been?', whoseMess: 's.right', id: 1, key: 1 },
+        { message: "Hey! It's been a while.", whoseMess: "s.left", id: 2, key: 2 },
         { message: "Yeah, I've been busy lately.", whoseMess: "s.right", id: 3, key: 3 },
-        { message: 'I can relate. Work has been hectic.', whoseMess: "s.left", id: 4, key: 4},
-        { message: "Hopefully, things calm down soon.", whoseMess: "s.right", id: 5, key: 5},
-        { message: "I'm keeping my fingers crossed.", whoseMess: "s.left", id: 6, key: 6},
-        { message: 'Let me know if you need any help.', whoseMess: 's.right', id: 7, key: 7},
-        { message: 'Thanks, I appreciate it.', whoseMess: "s.left", id: 8, key: 8},
-        { message: "No problem. We're in this together.", whoseMess: "s.right", id: 9, key: 9},
-        { message: "That's reassuring.", whoseMess: "s.left", id: 10, key: 10},
-      ]
+        { message: 'I can relate. Work has been hectic.', whoseMess: "s.left", id: 4, key: 4 },
+        { message: "Hopefully, things calm down soon.", whoseMess: "s.right", id: 5, key: 5 },
+        { message: "I'm keeping my fingers crossed.", whoseMess: "s.left", id: 6, key: 6 },
+        { message: 'Let me know if you need any help.', whoseMess: 's.right', id: 7, key: 7 },
+        { message: 'Thanks, I appreciate it.', whoseMess: "s.left", id: 8, key: 8 },
+        { message: "No problem. We're in this together.", whoseMess: "s.right", id: 9, key: 9 },
+        { message: "That's reassuring.", whoseMess: "s.left", id: 10, key: 10 },
+    ],
+    // chats: []
 }
 
+// initialState.chats =  [
+//     { path: "/1", whoseMessages: initialState.messagesDimych, formName: "Dima", key: 1},
+//     { path: "/2", whoseMessages: initialState.messagesAndrey, formName: "Andrey", key: 2},
+//     { path: "/3", whoseMessages: initialState.messagesSveta, formName: "Sveta", key: 3},
+//     { path: "/4", whoseMessages: initialState.messagesSasha, formName: "Sasha", key: 4},
+//     { path: "/5", whoseMessages: initialState.messagesViktor, formName: "Viktor", key: 5},
+//     { path: "/6", whoseMessages: initialState.messagesValera, formName: "Valera", key: 6},
+// ]
+
+
 const dialogsReducer = (state = initialState, action) => {
-
-    // let stateCopy = { ...state };
-
-
     switch (action.type) {
-        case SEND_MESSAGE_DIMYCH:
-            let newMessageDimych = {
+        case SEND_MESSAGE:
+            const messagesLookup = {
+                "Dima": state.messagesDimych,
+                "Andrey": state.messagesAndrey,
+                "Sveta": state.messagesSveta,
+                "Sasha": state.messagesSasha,
+                "Viktor": state.messagesViktor,
+                "Valera": state.messagesValera
+            };
+            let messages = messagesLookup[action.formName]
+            let newMessage = {
                 message: action.newMessageText,
                 whoseMess: "s.right",
-                id: state.messagesDimych[state.messagesDimych.length - 1].id + 1,
-                key: state.messagesDimych[state.messagesDimych.length - 1].id + 1
-            };
-            return {
-                ...state,
-                messagesDimych: [...state.messagesDimych, newMessageDimych]
-            };
-        case SEND_MESSAGE_ANDREY:
-            let newMessageAndrey = {
-                message: action.newMessageText,
-                whoseMess: "s.right",
-                id: state.messagesAndrey[state.messagesAndrey.length - 1].id + 1,
-                key: state.messagesAndrey[state.messagesAndrey.length - 1].id + 1
-            };
-            return {
-                ...state,
-                messagesAndrey: [...state.messagesAndrey, newMessageAndrey]
-            };
-        case SEND_MESSAGE_SVETA:
-            let newMessageSveta = {
-                message: action.newMessageText,
-                whoseMess: "s.right",
-                id: state.messagesSveta[state.messagesSveta.length - 1].id + 1,
-                key: state.messagesSveta[state.messagesSveta.length - 1].id + 1
-            };
-            return {
-                ...state,
-                messagesSveta: [...state.messagesSveta, newMessageSveta]
-            };
-        case SEND_MESSAGE_SASHA:
-            let newMessageSasha = {
-                message: action.newMessageText,
-                whoseMess: "s.right",
-                id: state.messagesSasha[state.messagesSasha.length - 1].id + 1,
-                key: state.messagesSasha[state.messagesSasha.length - 1].id + 1
-            };
-            return {
-                ...state,
-                messagesSasha: [...state.messagesSasha, newMessageSasha]
-            };
-        case SEND_MESSAGE_VIKTOR:
-            let newMessageViktor = {
-                message: action.newMessageText,
-                whoseMess: "s.right",
-                id: state.messagesViktor[state.messagesViktor.length - 1].id + 1,
-                key: state.messagesViktor[state.messagesViktor.length - 1].id + 1
-            };
-            return {
-                ...state,
-                messagesViktor: [...state.messagesViktor, newMessageViktor]
-            };
-        case SEND_MESSAGE_VALERA:
-            let newMessageValera = {
-                message: action.newMessageText,
-                whoseMess: "s.right",
-                id: state.messagesValera[state.messagesValera.length - 1].id + 1,
-                key: state.messagesValera[state.messagesValera.length - 1].id + 1
-            };
-            return {
-                ...state,
-                messagesValera: [...state.messagesViktor, newMessageValera]
+                id: messages.length + 1,
+                key: messages.length + 1
             };
 
+            switch (action.formName) {
+                case "Dima":
+                    return {
+                        ...state,
+                        messagesDimych: [...state.messagesDimych, newMessage]
+                    };
+                case "Andrey":
+                    return {
+                        ...state,
+                        messagesAndrey: [...state.messagesAndrey, newMessage]
+                    };
+                case "Sveta":
+                    return {
+                        ...state,
+                        messagesSveta: [...state.messagesSveta, newMessage]
+                    };
+                case "Sasha":
+                    return {
+                        ...state,
+                        messagesSasha: [...state.messagesSasha, newMessage]
+                    };
+                case "Viktor":
+                    return {
+                        ...state,
+                        messagesViktor: [...state.messagesViktor, newMessage]
+                    };
+                case "Valera":
+                    return {
+                        ...state,
+                        messagesValera: [...state.messagesValera, newMessage]
+                    };
+            }
         default: return state;
 
     }
