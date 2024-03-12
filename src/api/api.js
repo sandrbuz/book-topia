@@ -24,10 +24,6 @@ export const usersAPI = {
     unfollow(userId) {
         return axiosInstance.delete(`follow/${userId}`)
             .then(response => { return response.data })
-    },
-    getProfile(userId) {
-        console.warn('Obsolete method.Please profileApi object')
-        return profileAPI.getProfile(userId)
     }
 }
 

@@ -1,4 +1,4 @@
-import { profileAPI, usersAPI } from "../api/api";
+import { profileAPI } from "../api/api";
 import { setAuthUserAvatar } from "./auth-reducer";
 import newPostImg from "./../assets/images/newPostImg.jpg"
 
@@ -36,7 +36,7 @@ export const savePhotoSuccess = (photos) => {
 // thunk creators
 export const getUserProfile = (userId) => async (dispatch) => {
     if (userId) {
-        let response = await usersAPI.getProfile(userId)
+        let response = await profileAPI.getProfile(userId)
         dispatch(setUserProfile(response))
     }
 }

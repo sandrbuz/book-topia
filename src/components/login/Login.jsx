@@ -13,8 +13,8 @@ const LoginForm = ({ handleSubmit, error }) => {
   //  if(props.isAuth===true){return <Navigate to='/profile'/>}
   return (
     <form onSubmit={handleSubmit}>
-      <div className={styles2.loginInput}>{createField("Email", "email", [required], Input)}</div>
-      <div className={styles2.passwordInput}>{createField("Password", "password", [required], Input, { type: "password" })}</div>
+      <div className={styles2.loginInput}>{createField("Email", "email", [required], Input, { type: "email", autoComplete: "username" })}</div>
+      <div className={styles2.passwordInput}>{createField("Password", "password", [required], Input, { type: "password", autoComplete: "current-password" })}</div>
       <div className={styles2.checkbox}>{createField(null, "rememberMe", [], Input, { type: "checkbox" }, "remember me")}</div>
       {error && <div className={styles2.formSummaryError}>
         {error}

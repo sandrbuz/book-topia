@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { authAPI, usersAPI } from "../api/api";
+import { authAPI, profileAPI } from "../api/api";
 import { stopSubmit } from "redux-form";
 
 
@@ -40,7 +40,7 @@ export const getAuthUserData = () => async (dispatch) => {
                 let { id, email, login } = response.data;
                 dispatch(setAuthUserData(id, email, login, true))
                 // request for additional data (for user photo)
-                let data = await usersAPI.getProfile(id)
+                let data = await profileAPI.getProfile(id)
                 
                 dispatch(setAuthUserAvatar(data.photos.small))
                     
