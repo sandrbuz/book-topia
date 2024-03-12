@@ -1,4 +1,3 @@
-
 const SEND_MESSAGE = 'SEND_MESSAGE';
 
 
@@ -32,7 +31,6 @@ let initialState = {
         { message: " doloribus doloremque non.", whoseMess: "s.right", id: 9, key: 9 },
         { message: "Rerum quibusdam doloribus doloremque non.", whoseMess: "s.left", id: 10, key: 10 },
     ],
-
     messagesAndrey: [
         { message: 'Hey there!', whoseMess: 's.right', id: 1, key: 1 },
         { message: 'What are you up to?', whoseMess: "s.left", id: 2, key: 2 },
@@ -93,7 +91,7 @@ let initialState = {
         { message: "No problem. We're in this together.", whoseMess: "s.right", id: 9, key: 9 },
         { message: "That's reassuring.", whoseMess: "s.left", id: 10, key: 10 },
     ],
-    // chats: []
+    // chats: [],
 }
 
 // initialState.chats =  [
@@ -108,6 +106,7 @@ let initialState = {
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
+    
         case SEND_MESSAGE:
             const messagesLookup = {
                 "Dima": state.messagesDimych,
