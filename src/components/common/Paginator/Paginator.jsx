@@ -17,9 +17,6 @@ const Paginator = ({ totalUsersCount, pageSize, currentPage, onPageChanged }) =>
     }
     return (
         <div className={styles.btnsWrapper}>
-            {/* solution as in lesson 55 */}
-            {/* {pages.map(p => <span onClick={()=>{this.onPageChanged(p)}} className={this.props.currentPage == p && styles.currPage} key={p}>{p}</span>)} */}
-            {/* modified solution */}
             {pages.map(p => {
                 if (p === 1 || p === pagesCount || p === currentPage || (p >= currentPage - 5 && p <= currentPage + 5)) {
                     return <span
@@ -31,15 +28,10 @@ const Paginator = ({ totalUsersCount, pageSize, currentPage, onPageChanged }) =>
                     </span>
                 }
             })}
-
-            {/* {currentPage < pages.length && <span>...</span>} */}
         </div>
     )
 }
 
 export default Paginator;
-
-
-//(p === pagesCount && currentPage < pagesCount - 5) ? <span>{p}</span> : <span>{p}</span>
 
 

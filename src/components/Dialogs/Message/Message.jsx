@@ -4,16 +4,16 @@ import s from './Message.module.css';
 
 let Message = (props) => {
 
-    let messageClassName = "";
+    let whoseMsg = "";
   
     if (props.whose === "s.right") {
-      messageClassName = s.right;
+      whoseMsg = s.right;
     } else if (props.whose === "s.left") {
-      messageClassName = s.left;
+      whoseMsg = s.left;
     }
 
     return (
-        <div className={`${messageClassName} ${s.item}`}>{props.message}</div>
+        <div className={`${whoseMsg} ${s.item}`}>{props.message}</div>
     )
 }
 

@@ -13,7 +13,7 @@ const User = ({ user, followingInProgress, unfollow, follow, ...props }) => {
                 <NavLink to={'/profile/' + u.id}><img src={u.photos.small != null ? u.photos.small : userImg} className={styles.userPhoto} /></NavLink>
             </span>
             <span className={styles.btnAndNameWrapper}>
-                <div className={styles.userNameWrapper}>{u.name}</div>
+                <div className={styles.userNameWrapper}><NavLink to={'/profile/' + u.id} className={styles.link}>{u.name}</NavLink></div>
                 <div className={styles.followButtonWrapper}>
                     {u.followed
                         ? <button className={`${styles.button} ${styles.unfollowButton}`} disabled={followingInProgress.some(id => id === u.id)} onClick={() => {

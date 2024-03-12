@@ -1,7 +1,6 @@
 import React from 'react';
 import s from './Header.module.css';
 import Logo from '../../assets/images/Logo.svg';
-import Logo2 from '../../assets/images/Logo2.svg'
 import { NavLink } from 'react-router-dom';
 import defaultUserAva from '../../assets/images/userImg.png';
 import Preloader from '../common/Preloader/Preloader';

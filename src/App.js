@@ -2,21 +2,16 @@ import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar/Navbar';
 import DialogsContainer from './components/Dialogs/DialogsContainer';
-import News from "./components/News/News";
-import Music from "./components/Music/Music";
-import Settings from "./components/Settings/Settings";
 import { Route, Routes, useParams, useLocation, useNavigate } from 'react-router-dom';
 import NavFriendsContainer from './components/NavFriends/NavFriendsContainer';
 import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import LoginPage from './components/login/Login';
-import { getAuthUserData } from './redux/auth-reducer';
 import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { initializeApp } from './redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
-import { Navigate } from 'react-router-dom';
 import LoginFooter from './components/LoginFooter/LoginFooter';
 
 
@@ -47,13 +42,13 @@ class App extends React.Component {
     if (!this.props.initialized) {
       return <Preloader />
     }
-    
 
 
-    let appWrapperContentStyle = (this.props.router.location.pathname === "/login") ? { textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center'} : {}
+
+    // let appWrapperContentStyle = (this.props.router.location.pathname === "/login") ? { textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' } : {}
 
 
-    
+
 
 
 
@@ -65,7 +60,7 @@ class App extends React.Component {
         <Navbar />
 
 
-        <div className="app-wrapper-content" style={appWrapperContentStyle}>
+        <div className="app-wrapper-content" >
           <Routes>
             {/* <Route path="/" element={<Navigate to='/profile' /> }/> 
             <Route path="/profile" element={<ProfileContainer />} /> */}
@@ -85,10 +80,6 @@ class App extends React.Component {
             //addMessage={props.addMessage} 
             //updateNewMessageText={props.updateNewMessageText}
             />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/music" element={<Music />} />
-            <Route path="/settings" element={<Settings />} />
-            <Route path="/settings" element={<Settings />} />
             <Route path="/users" element={<UsersContainer />} />
             <Route path="*" element={<h2>Not found</h2>} />
             <Route path="/login" element={<LoginPage />} />
@@ -97,7 +88,7 @@ class App extends React.Component {
           </Routes>
         </div>
         <NavFriendsContainer /> {/* used to be invested in navbar */}
-        <LoginFooter/>
+        <LoginFooter />
       </div>
       // </BrowserRouter>
     );

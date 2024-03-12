@@ -17,6 +17,10 @@
 
 .userImageWrapper {
 }
+.link{
+    text-decoration: none;
+    color: black;
+}
 
 .btnAndNameWrapper {
     display: flex;
