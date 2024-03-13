@@ -1,49 +1,37 @@
-
-.app-wrapper{
-  /* max-width: 1300px; */
-  /* margin: 0 auto; */
+.app-wrapper {
   margin: 10px;
   display: grid;
-
-  grid-template-areas: 
-  "h h"
-  "n c"
-  "f c"
-  "f foo"
+  grid-template-areas:
+    "h h"
+    "n c"
+    "f c"
+    "f foo"
   ;
   grid-template-rows: 60px auto 1fr auto;
   grid-template-columns: 2fr 10fr;
-  /* grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr; */
   grid-gap: 10px;
   max-width: 1200px;
 }
-.app-wrapper-content{
+
+.app-wrapper-content {
   grid-area: c;
   background-color: #EAEAEA;
   border-radius: 10px;
   position: relative;
 }
 
-@media (max-width: 480px){
-  .app-wrapper{
-    max-width: 480px; 
-
-    grid-template-areas: 
-    "h"
-    "n" 
-    "f" /*удалить при исправлении навбара */
-    "c"
-    "foo"
-
+@media (max-width: 480px) {
+  .app-wrapper {
+    max-width: 480px;
+    grid-template-areas:
+      "h"
+      "n"
+      "f"
+      "c"
+      "foo"
     ;
-    /* grid-template-rows: 60px 1fr;
-    grid-template-columns: 2fr 10fr; */
-    grid-template-rows:60px  1fr ;
+    grid-template-rows: 60px 1fr;
     grid-template-columns: 1fr;
     grid-gap: 10px;
   }
 }
-
-
-

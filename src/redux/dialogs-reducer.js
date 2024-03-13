@@ -88,23 +88,11 @@ let initialState = {
         { message: 'Thanks, I appreciate it.', whoseMess: "s.left", id: 8, key: 8 },
         { message: "No problem. We're in this together.", whoseMess: "s.right", id: 9, key: 9 },
         { message: "That's reassuring.", whoseMess: "s.left", id: 10, key: 10 },
-    ],
-    // chats: [],
+    ]
 }
-
-// initialState.chats =  [
-//     { path: "/1", whoseMessages: initialState.messagesDimych, formName: "Dima", key: 1},
-//     { path: "/2", whoseMessages: initialState.messagesAndrey, formName: "Andrey", key: 2},
-//     { path: "/3", whoseMessages: initialState.messagesSveta, formName: "Sveta", key: 3},
-//     { path: "/4", whoseMessages: initialState.messagesSasha, formName: "Sasha", key: 4},
-//     { path: "/5", whoseMessages: initialState.messagesViktor, formName: "Viktor", key: 5},
-//     { path: "/6", whoseMessages: initialState.messagesValera, formName: "Valera", key: 6},
-// ]
-
 
 const dialogsReducer = (state = initialState, action) => {
     switch (action.type) {
-    
         case SEND_MESSAGE:
             const messagesLookup = {
                 "Dima": state.messagesDimych,
@@ -121,7 +109,6 @@ const dialogsReducer = (state = initialState, action) => {
                 id: messages.length + 1,
                 key: messages.length + 1
             };
-
             switch (action.formName) {
                 case "Dima":
                     return {
@@ -155,7 +142,6 @@ const dialogsReducer = (state = initialState, action) => {
                     };
             }
         default: return state;
-
     }
 }
 export default dialogsReducer;

@@ -5,7 +5,7 @@ import { Field } from "redux-form";
 import { maxLengthCreator, required } from "../../../../utils/validators/validators";
 import { Textarea } from "../../../common/FormsControls/FormsControls";
 import Post from "./Post/Post";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import { reset } from 'redux-form';
 import { useDispatch } from "react-redux";
 
@@ -31,29 +31,9 @@ const AddNewPostReduxForm = reduxForm({ form: "profile", destroyOnUnmount: false
 const MyPosts = (props) => {
     const dispatch = useDispatch();
     const postsRef = useRef(null);
-    // const wrapper = useRef(null);
-    // const content = useRef(null);
-    // const shadowTop = useRef(null);
-    // const shadowBottom = useRef(null);
-    // const contentScrollHeight = content.scrollHeight - wrapper.offsetHeight;
 
-    //     let [shadowTopOpacity,setShadowTopOpacity] = useState(0);
-    //     let [shadowBottomOpacity,setShadowBottomOpacity] = useState(null);
-
-    //     const handleScroll = () => {
-    //         var currentScroll = content.scrollTop / contentScrollHeight;
-    //         setShadowTopOpacity(currentScroll.toString());
-    //         setShadowBottomOpacity(1 - currentScroll.toString());
-    //         console.log(contentScrollHeight)
-
-    //         // shadowTop.style.opacity = currentScroll;
-    //         // shadowBottom.style.opacity = 1 - currentScroll;
-    //     };
     let onDeletePost = async (postId) => {
         await props.deletePost(postId)
-        // if (postsRef.current) {
-        //     postsRef.current.scrollTop = -postsRef.current.scrollHeight;
-        // }
     }
     let onAddPost = async (values) => {
         await props.onAddPost(values.newPostText);
@@ -71,21 +51,15 @@ const MyPosts = (props) => {
 
 
 
-
     let postsElements = props.posts.map(p => <Post onDeletePost={() => onDeletePost(p.id)} thumbnail={p.thumbnail} message={p.message} id={p.id} key={p.id} />)
+
     return (
         <div className={s.myPosts}>
-             <AddNewPostReduxForm onSubmit={onAddPost} />
-            {/* <div className={s.wrapper} > */}
-            {/* <div style={{ opacity: shadowTopOpacity}} ref={shadowTop} className={`${s.shadow} ${s.shadowTop}`}></div>
-                <div style={{ opacity: shadowBottomOpacity}} ref={shadowBottom} className={`${s.shadow} ${s.shadowBottom}`}></div> */}
+            <AddNewPostReduxForm onSubmit={onAddPost} />
             <div ref={postsRef}
-                //  onScroll={handleScroll} 
                 className={s.content}>
                 {postsElements}
             </div>
-
-            {/* </div> */}
         </div>
     )
 }

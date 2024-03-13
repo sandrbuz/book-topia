@@ -21,6 +21,6 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 let store = createStore(reducers,composeEnhancers(applyMiddleware(thunkMiddleware)));
 
-window._store_ = store; //was window.store = store; 91 lesson
+window._store_ = store;
 
 export default store;

@@ -1,18 +1,13 @@
 .right{
-    /* text-align: right; */
     align-self: flex-end;
     background-color: #a4c4eb;
 
 }
 .left{
-    /* text-align: left; */
     align-self: flex-start;
     background-color: white;
-
 }
-
 .item{
-    /* max-width: 500px; */
     font-size: 14px;
     padding: 8px 10px;
     margin: 7px 0;

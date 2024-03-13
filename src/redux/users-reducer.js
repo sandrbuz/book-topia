@@ -13,7 +13,6 @@ const SET_IS_RECIEVED_RESPONSE = 'SET_IS_RECIEVED_RESPONSE';
 
 export const followSuccess = (userId) => {
     return {
-        // type: FOLLOW, userId: userId
         type: FOLLOW, userId
     }
 }
@@ -62,7 +61,6 @@ export const requestUsers = (page, pageSize, searchedUser) => {
     return async (dispatch) => {
         dispatch(toggleIsFetching(true));
         dispatch(setSearchedUserName(searchedUser));
-        // dispatch(setCurrentPage(page));
         let response = await usersAPI.getUsers(page, pageSize, searchedUser)
         return dispatch(setUsers(response.items)),
             dispatch(setTotalUsersCount(response.totalCount)),
@@ -81,7 +79,7 @@ export const follow = (userId, isAuth) => {
 
     }
 }
-export const unfollow = (userId,isAuth) => {
+export const unfollow = (userId, isAuth) => {
     return async (dispatch) => {
         if (isAuth) {
             dispatch(toggleFollowingProgress(true, userId))
@@ -101,21 +99,12 @@ let initialState = {
     followingInProgress: [],
     searchedUserName: '',
     isReceivedResponse: false
-    // fake: 10
 }
 
 const usersReducer = (state = initialState, action) => {
 
-
-
     switch (action.type) {
-        // case "FAKE": return {...state, fake: state.fake + 1}
-
         case FOLLOW:
-
-            // stateCopy.users[action.userId-1].followed = true;
-
-            // return stateCopy
             return {
                 ...state,
                 users: state.users.map(u => {
@@ -130,10 +119,6 @@ const usersReducer = (state = initialState, action) => {
                 })
             }
         case UNFOLLOW:
-
-            // stateCopy.users[action.userId-1].followed = false;
-
-            // return stateCopy
             return {
                 ...state,
                 users: state.users.map(u => {
@@ -149,29 +134,21 @@ const usersReducer = (state = initialState, action) => {
             }
         case SET_USERS:
             return {
-                // ...state, 
-                // users: [...state.users, ...action.users]  //так сказано написать на уроке, но так пользователи дублируются //в комментах к видео (49 урок) также пишут удалить reactStrictMode, но это делать не нужно, так как в дальнейшем исправится само
                 ...state,
                 users: action.users
             }
         case SET_TOTAL_USERS_COUNT:
             return {
-                // ...state, 
-                // users: [...state.users, ...action.users]  //так сказано написать на уроке, но так пользователи дублируются //в комментах к видео (49 урок) также пишут удалить reactStrictMode, но это делать не нужно, так как в дальнейшем исправится само
                 ...state,
                 totalUsersCount: action.count
             }
         case SET_CURRENT_PAGE:
             return {
-                // ...state, 
-                // users: [...state.users, ...action.users]  //так сказано написать на уроке, но так пользователи дублируются //в комментах к видео (49 урок) также пишут удалить reactStrictMode, но это делать не нужно, так как в дальнейшем исправится само
                 ...state,
                 currentPage: action.pageNumber
             }
         case TOGGLE_IS_FETCHING:
             return {
-                // ...state, 
-                // users: [...state.users, ...action.users]  //так сказано написать на уроке, но так пользователи дублируются //в комментах к видео (49 урок) также пишут удалить reactStrictMode, но это делать не нужно, так как в дальнейшем исправится само
                 ...state,
                 isFetching: action.isFetching
             }

@@ -1,24 +1,11 @@
 .loginWrapper {
-    /* text-align: center;
-    margin-top: 70px; */
     min-height: 300px;
     height: 100%;
-    /* position: relative; */
     display: flex;
     flex-direction: column;
     text-align: center;
-     align-items: center;
-    justify-content: center; 
-}
-
-
-.loginBody {
-    /* align-items: center; */
-    /* position: absolute; */
-
-    /* top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%); */
+    align-items: center;
+    justify-content: center;
 }
 
 .loginBody h1 {
@@ -36,7 +23,6 @@
 }
 
 .loginBody form .loginInput span {
-    /* for error message*/
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -51,7 +37,6 @@
 
 
 .loginBody form .passwordInput span {
-    /* for error message*/
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -61,33 +46,15 @@
 
 }
 
-/* .loginBody form div div span { 
-    outline: none;
-    border: none;
-    /* color: black !important; 
-} */
-
-
-
-
-.checkbox {
-    /* margin-top: 8px; */
-}
-
 .formSummaryError {
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
     font-size: 14px;
-    /* bottom: 31%; */
-    /* right: 45%; */
     bottom: 21.5%;
-    /* right: 10%; */
     color: red;
     white-space: nowrap;
 }
-
-
 
 @media (max-width: 480px) {
     .loginWrapper {

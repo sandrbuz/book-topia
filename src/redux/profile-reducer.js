@@ -56,7 +56,7 @@ export const savePhoto = (file) => async (dispatch) => {
     let response = await profileAPI.savePhoto(file)
     if (response.data.resultCode === 0) {
         dispatch(savePhotoSuccess(response.data.data.photos))
-        dispatch(setAuthUserAvatar(response.data.data.photos.small)) //so that when you change your avatar to profile, the thumbnail in the header changes immediately
+        dispatch(setAuthUserAvatar(response.data.data.photos.small)) 
     }
 }
 
@@ -78,7 +78,6 @@ const profileReducer = (state = initialState, action) => {
 
 
     switch (action.type) {
-        //debugger; //в devtools f11 войти в метод
         case ADD_POST:
             const maxId = state.posts.reduce((max, post) => Math.max(post.id, max), 0);
             let newPost = {

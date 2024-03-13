@@ -90,27 +90,12 @@ let store = {
     //     this._callSubscriber(this._state); //redraw the tree
     // },
     dispatch(action) {
-       
-           this._state.profilePage =  profileReducer(this._state.profilePage, action);
-           this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
-           this._state.navbarPage = sidebarReducer(this._state.navbarPage, action)
-
-           this._callSubscriber(this.getState());
-            
-        }
-      
-        
+        this._state.profilePage = profileReducer(this._state.profilePage, action);
+        this._state.dialogsPage = dialogsReducer(this._state.dialogsPage, action);
+        this._state.navbarPage = sidebarReducer(this._state.navbarPage, action)
+        this._callSubscriber(this.getState());
     }
-
-
-//store.addPost = store.addPost.bind(store); //при использовании этого кода, можно использовать слово "this" вместо "store" в наших методах.
-//store.updateNewPostText = store.updateNewPostText.bind(store);
-
-
-
-
-
-
+}
 
 export default store;
-window.store = store; //на всякий случай, что бы если что обратиться глобально 
+window.store = store;

@@ -5,10 +5,10 @@ import s from './Friend.module.css'
 
 const Friend = (props) => {
     return (
-                <NavLink className={s.item}>
-                    <img className={s.friendImg} src={props.imgUrl} alt="thumbnail" />
-                    <div>{props.name}</div>
-                </NavLink>
+        <NavLink className={s.item}>
+            <img className={s.friendImg} src={props.imgUrl} alt="thumbnail" />
+            <div>{props.name}</div>
+        </NavLink>
     )
 }
 

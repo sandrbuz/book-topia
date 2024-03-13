@@ -1,6 +1,5 @@
-.myPosts{
+.myPosts {
   grid-area: p;
-  /* text-align: center; */
   padding: 0 10px;
   display: flex;
   flex-direction: column;
@@ -14,47 +13,44 @@
   left: auto;
 }
 
-
-.form{
+.form {
   max-width: 400px;
-   display: grid;
-   grid-template-columns: 4fr 1fr;
-   grid-template-areas: "f b";
-   margin-left: auto;
-   margin-right: auto;
-   width: 100%;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-areas: "f b";
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
-
 
 .form div {
-  height: 100% ;
+  height: 100%;
   position: relative !important;
 }
+
 .form textarea {
-  height: 40px !important ;
+  height: 40px !important;
 }
+
 .form textarea:focus {
   outline: none !important;
-  /* border: none !important;  */
 }
 
-
-
-.field{
-    grid-area: f;
-    resize: none;
-    width: 94%;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 0 0 10px;
+.field {
+  grid-area: f;
+  resize: none;
+  width: 94%;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 0 0 10px;
 }
-.field::placeholder{
+
+.field::placeholder {
   color: #9B9898;
   font-size: 16px;
 }
 
-
-.btn{
+.btn {
   grid-area: b;
   border: none;
   border-radius: 5px;
@@ -65,32 +61,15 @@
   outline: none;
   cursor: pointer;
 }
-.btn:hover{
-  background-color: #d1d1d1;
 
+.btn:hover {
+  background-color: #d1d1d1;
 }
 
-
-
-/* .posts{                without shadows
-  margin-top: 20px;
-  display: flex;
-  flex-direction: column-reverse;
+.content {
   align-items: center;
-  max-width: 400px;
-  width: 100%;
-  max-height: 282px;
-  min-height: 282px;
-  overflow-y: auto; 
-} */
-
-.content{
-  /* display: flex;
-  flex-direction: column; */
-  align-items: center; 
   margin-top: 20px;
   width: 100%;
-
   max-height: 282px;
   min-height: 282px;
   border-radius: 6px;
@@ -98,100 +77,36 @@
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   overflow-scrolling: touch;
-
   background:
     /* Shadow Cover TOP */
-    linear-gradient(
-      #D9D9D9 30%,
-      rgba(0, 0, 0, 0)
-    ) center top,
-    
+    linear-gradient(#D9D9D9 30%,
+      rgba(0, 0, 0, 0)) center top,
+
     /* Shadow Cover BOTTOM */
-    linear-gradient(
-      rgba(0, 0, 0, 0), 
-      #D9D9D9 70%
-    ) center bottom,
-    
+    linear-gradient(rgba(0, 0, 0, 0),
+      #D9D9D9 70%) center bottom,
+
     /* Shadow TOP */
-    radial-gradient(
-      farthest-side at 50% 0,
+    radial-gradient(farthest-side at 50% 0,
       rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0)
-    ) center top,
-    
+      rgba(0, 0, 0, 0)) center top,
+
     /* Shadow BOTTOM */
-    radial-gradient(
-      farthest-side at 50% 100%,
+    radial-gradient(farthest-side at 50% 100%,
       rgba(0, 0, 0, 0.5),
-      rgba(0, 0, 0, 0)
-    ) center bottom;
-  
+      rgba(0, 0, 0, 0)) center bottom;
+
   background-repeat: no-repeat;
   background-size: 100% 40px, 100% 40px, 100% 14px, 100% 14px;
   background-attachment: local, local, scroll, scroll;
-
-  /* --scrollbarBG: transparent;
-  --thumbBG: #90a4ae;
-
-  scrollbar-width: thin;
-  scrollbar-color: var(--thumbBG) var(--scrollbarBG); */
 }
 
 .content::-webkit-scrollbar {
-  /* width: 6px; */
   display: none;
 }
-/* .content::-webkit-scrollbar-track {
-  background: var(--scrollbarBG);
-}
-.content::-webkit-scrollbar-thumb {
-  background-color: var(--thumbBG);
-  border-radius: 6px;
-  border: 3px solid var(--scrollbarBG);
-} */
-/* 
-
-.wrapper {
-  position: relative;
-  width: 400px;
-  height: 200px;
-  border: 1px solid #D0D0D0;
-  margin-left: auto;
-  margin-right: auto;
-  overflow: hidden;
-  border-radius: 4px;
-}
-
-.content {
-  padding: 10px;
-  height: 200px;
-  overflow-y: scroll;
-}
-
-.shadow {
-  position: absolute;
-  left: 0;
-  z-index: 100;
-  width: 100%;
-  height: 10px;
-  background: red;
-}
-
-.shadowTop {
-  top: 0;
-  background: -webkit-linear-gradient(270deg, rgba(0, 0, 0, 0.35), transparent);
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0.35), transparent);
-  opacity: 0;
-}
-
-.shadowBottom {
-  bottom: 0;
-  background: -webkit-linear-gradient(90deg, rgba(0, 0, 0, 0.35), transparent);
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.35), transparent);
-} */
 
 @media (max-width: 900px) {
-  .myPosts{
+  .myPosts {
     margin-top: 30px;
   }
 }

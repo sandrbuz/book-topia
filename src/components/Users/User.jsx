@@ -15,13 +15,6 @@ const User = ({ user, followingInProgress, unfollow, follow, ...props }) => {
             <span className={styles.btnAndNameWrapper}>
                 <div className={styles.userNameWrapper}><NavLink to={'/profile/' + u.id} className={styles.link}>{u.name}</NavLink></div>
                 <div className={styles.followButtonWrapper}>
-                    {/* {u.followed
-                        ? <button className={`${styles.button} ${styles.unfollowButton}`} disabled={followingInProgress.some(id => id === u.id)} onClick={() => {
-                            unfollow(u.id, props.isAuth)
-                        }}>Unfollow</button>
-                        : <button className={`${styles.button} ${styles.followButton}`} disabled={followingInProgress.some(id => id === u.id)} onClick={() => {
-                            follow(u.id, props.isAuth)
-                        }}>Follow</button>} */}
                         <button className={`${styles.button} ${u.followed ? styles.unfollowButton : styles.followButton}`} onClick={() => {u.followed ? unfollow(u.id, props.isAuth) : follow(u.id, props.isAuth)}} disabled={followingInProgress.some(id => id === u.id)}>{u.followed ? "Unfollow" : "follow"}</button>
                 </div>
             </span>

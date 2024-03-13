@@ -3,7 +3,6 @@ import s from './Dialogs.module.css';
 import { Routes} from "react-router-dom";
 
 
-
 const Dialogs = (props) => {
     return (
         <div className={s.dialogs}>

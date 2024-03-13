@@ -1,14 +1,10 @@
-
 .dialog{
-    /* color: black; */
     display: flex;
     align-items: center;
     border-bottom: 1px solid #a7a6a6;
     padding: 5px 0 5px 5px;
     text-decoration: none;
     border-radius: 10px 0 0 10px;
-   /* margin: 0px 0 0 5px; */
-
 }
 .dialog p {
     margin-left: 4px;
@@ -17,20 +13,16 @@
     background-color: #EAEAEA;
     color: rgb(0, 0, 0);
 }
-
 .notActive{
     color: black;
 }
-
 .dialogAva{
     height: 30px;
     width: 30px;
     border-radius: 100px;
 }
-
 @media (max-width: 570px) {
     .dialog p{
       display: none;
-  
     }
   }

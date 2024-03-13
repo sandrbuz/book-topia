@@ -8,7 +8,6 @@ const Item = ({p,currentPage}) => {
 }
 
 
-
 const Paginator = ({ totalUsersCount, pageSize, currentPage, onPageChanged }) => {
     let pagesCount = Math.ceil(totalUsersCount / pageSize);
     let pages = [];

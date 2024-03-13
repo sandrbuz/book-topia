@@ -37,60 +37,27 @@ class App extends React.Component {
     this.props.initializeApp();
   }
 
-
   render() {
     if (!this.props.initialized) {
       return <Preloader />
     }
 
-
-
-    // let appWrapperContentStyle = (this.props.router.location.pathname === "/login") ? { textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center' } : {}
-
-
-
-
-
-
     return (
-      // <BrowserRouter>
       <div className='app-wrapper' >
-        {/* <Header /> */}
         <HeaderContainer />
         <Navbar />
-
-
         <div className="app-wrapper-content" >
           <Routes>
-            {/* <Route path="/" element={<Navigate to='/profile' /> }/> 
-            <Route path="/profile" element={<ProfileContainer />} /> */}
-            {/* <Route index element={<ProfileContainer />} /> */}   {/*not necessary, since there is a special redirect in the navbar*/}
-
-
-            {/* <Route path="/" element={<Profile stateProfilePage={props.state.profilePage} addPost={props.addPost}/>} /> */}
-            {/* <Route path="/profile/*" element={<ProfileContainer /*store={props.store}*/ /* dispatch={props.dispatch} */ /*stateProfilePage={props.state.profilePage}*/ /*addPost={props.addPost} updateNewPostText={props.updateNewPostText} />} /> */}
             <Route path="/profile/:userId?/" element={<ProfileContainer />} />
-            {/* <Route path="/profile/" element={<ProfileContainer />}>
-            <Route path=":userId" element={<ProfileContainer />} />
-          </Route> */}
-
-            <Route exact path="/dialogs/*" element={<DialogsContainer
-            /*store={props.store}*/
-            // dispatch={props.dispatch} stateDialogsPage={props.state.dialogsPage}  
-            //addMessage={props.addMessage} 
-            //updateNewMessageText={props.updateNewMessageText}
-            />} />
+            <Route exact path="/dialogs/*" element={<DialogsContainer />} />
             <Route path="/users" element={<UsersContainer />} />
             <Route path="*" element={<h2>Not found</h2>} />
             <Route path="/login" element={<LoginPage />} />
-            {/* <Route path="/" element={<ProfileContainer />} /> */}
-            {/* <Route path="/test1" element={<MyTestComp teext="gggg"/>} /> */}
           </Routes>
         </div>
-        <NavFriendsContainer /> {/* used to be invested in navbar */}
+        <NavFriendsContainer />
         <LoginFooter />
       </div>
-      // </BrowserRouter>
     );
   }
 }
@@ -100,7 +67,7 @@ const mapStateToProps = (state) => ({
 })
 
 export default compose(
-  withRouter, //wrapped in WithRouter as in the video. Although I have no problems without it
+  withRouter,
   connect(mapStateToProps, { initializeApp })
 )(App)
 

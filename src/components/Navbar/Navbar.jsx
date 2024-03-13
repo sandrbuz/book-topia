@@ -1,12 +1,10 @@
 import React from 'react';
-import { NavLink, Navigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import s from './Navbar.module.css'
 import { useNavigate } from 'react-router-dom'; 
 import { useEffect } from 'react';
 
-
 const Navbar = (props) => {
-
 
 const navigate = useNavigate();
 

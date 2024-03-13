@@ -8,12 +8,8 @@ import logoutIcon from '../../assets/images/logoutIcon.png'
 
 const Header = (props) => {
 
-    // if (!props.profile) {
-    //     return <Preloader />
-    // }
     let customStyles = {
         width: '50px',
-        // height: '20px',
     };
 
     return (

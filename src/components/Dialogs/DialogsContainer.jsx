@@ -15,9 +15,6 @@ import { useNavigate } from 'react-router-dom';
 import DialogItem from './DialogItem/DialogItem';
 
 
-
-
-
 const DialogsContainer = (props) => {
     const messagesWrappers = useRef([]);
     const navigate = useNavigate();
@@ -39,8 +36,6 @@ const DialogsContainer = (props) => {
             }
         });
     }
-
-
 
     let dialogsElements = props.dialogs.map(d => <DialogItem imgURL={d.imgURL} key={d.id} name={d.name} id={d.id} />);
     const renderMessages = (messages) => messages.map(m => <Message whose={m.whoseMess} key={m.id} message={m.message} id={m.id} />);

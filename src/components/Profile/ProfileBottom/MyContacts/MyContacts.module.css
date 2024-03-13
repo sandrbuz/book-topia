@@ -1,4 +1,4 @@
-.myContacts{
+.myContacts {
    grid-area: c;
    border-right: 1px solid #666262;
    display: flex;
@@ -7,33 +7,28 @@
 }
 
 
-.userName{
-    font-weight: 800;
-    margin-top: 20px;
- }
-
- .talkToMe{
-    font-weight: 700;
-    margin-top: 18px;
-    /* width: 130px; */
-    /* border-top: 1px solid #666262;
-    text-align: center; */
- }
-
- .contactsIcons{
+.userName {
+   font-weight: 800;
    margin-top: 20px;
- }
+}
 
- .socialIcon{
-    max-width: 40px;
-    margin: 0 5px;
-    cursor: pointer;
- }
+.talkToMe {
+   font-weight: 700;
+   margin-top: 18px;
+}
 
+.contactsIcons {
+   margin-top: 20px;
+}
 
+.socialIcon {
+   max-width: 40px;
+   margin: 0 5px;
+   cursor: pointer;
+}
 
- @media (max-width: 900px) {
-   .myContacts{
+@media (max-width: 900px) {
+   .myContacts {
       border: none;
    }
- }
+}

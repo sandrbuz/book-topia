@@ -3,7 +3,6 @@ import Profile from "./Profile";
 import { connect } from "react-redux";
 import { setUserProfile, getUserProfile, getStatus, updateStatus, savePhoto } from "../../redux/profile-reducer";
 import {
-    Navigate,
     useLocation,
     useNavigate,
     useParams,
@@ -29,65 +28,38 @@ export function withRouter(Component) {
 }
 
 class ProfileContainer extends React.Component {
-
-    componentDidMount() {
+    fetchUserProfileAndStatus () {
         let userId = this.props.router.params.userId;
         if (!userId) {
-            userId = this.props.authorizedUserId//2 (Dymich) //29816 my
-            //this.props.router.navigate(`/profile/${userId}`)  //in order to see your profile number in the URL,
-
+            userId = this.props.authorizedUserId
             if (!userId) {
                 this.props.router.navigate('/login')
             }
         }
         this.props.getUserProfile(userId)
         this.props.getStatus(userId);
+    }
 
+    componentDidMount() {
+        this.fetchUserProfileAndStatus()
     }
 
     componentDidUpdate(prevProps) {
-        // this.props.getAuthUserData();
-
         if (this.props.router.params.userId !== prevProps.router.params.userId) {
-            // The code in our componentDidUpdate method is duplicated in componentDidMount, so we can move the repeating logic into a separate function, we can call it fetchUserProfile()
-            let userId = this.props.router.params.userId;
-            if (!userId) {
-                userId = this.props.authorizedUserId //2 (Dymich)
-                //this.props.router.navigate(`/profile/${userId}`)  //in order to see your profile number in the URL,
-                if (!userId) {
-                    this.props.router.navigate('/login')
-                }
-            }
-            this.props.getUserProfile(userId)
-            // usersAPI.getProfile(userId)
-            //     .then(data => {
-            //         return this.props.setUserProfile(data)
-            //     })
-            this.props.getStatus(userId);
-
-
+            this.fetchUserProfileAndStatus()
         }
-
-
     }
 
 
 
     render() {
         return (<>
-            {/* {!this.props.profile ? <Preloader /> : <Profile {...this.props} />} */}
-            {/* {this.props.isAuth===false?<Navigate to='/login'/>:<Profile {...this.props} />} */}
-            <Profile  userId={this.props.router.params.userId} savePhoto={this.props.savePhoto} {...this.props}/>
+            <Profile userId={this.props.router.params.userId} savePhoto={this.props.savePhoto} {...this.props} />
         </>
         )
     }
 
 }
-
-// let authRedirectComponent = (props) => {
-//     if (!props.isAuth) { return <Navigate to='/login' /> }
-//     return <ProfileContainer {...props} />
-// }
 
 const mapStateToProps = (state) => {
     return {
@@ -95,28 +67,8 @@ const mapStateToProps = (state) => {
         status: state.profilePage.status,
         authorizedUserId: state.auth.id,
         isAuth: state.auth.isAuth
-
-
     }
 }
-
-// const mapDispatchToProps = (dispatch) => {
-//     return {
-//         setUserProfile: (profile) => {
-//             dispatch(setUserProfile(profile))
-//         }
-//     }
-// }
-
-// let AuthRedirectComponent = withAuthRedirect(ProfileContainer)
-
-// let WithUrlDataContainerComponent = withRouter(AuthRedirectComponent);
-
-// export default connect(mapStateToProps, {
-//     setUserProfile,
-//     getUserProfile,
-//     getAuthUserData
-// })(WithUrlDataContainerComponent);
 
 export default compose(
     connect(mapStateToProps, {
@@ -128,8 +80,7 @@ export default compose(
         updateStatus,
         savePhoto
     }),
-    withRouter,
-    //withAuthRedirect //it’s not entirely correct if it won’t let you into other profiles if you’re not authorized
+    withRouter
 )(ProfileContainer)
 
 

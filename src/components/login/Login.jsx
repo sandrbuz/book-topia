@@ -10,7 +10,7 @@ import styles2 from "./Login.module.css"
 import { createField } from "../common/FormsControls/FormsControls";
 
 const LoginForm = ({ handleSubmit, error }) => {
-  //  if(props.isAuth===true){return <Navigate to='/profile'/>}
+
   return (
     <form onSubmit={handleSubmit}>
       <div className={styles2.loginInput}>{createField("Email", "email", [required], Input, { type: "email", autoComplete: "username" })}</div>
@@ -29,7 +29,7 @@ const LoginForm = ({ handleSubmit, error }) => {
 const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm);
 
 const Login = (props) => {
-  const onSubmit = (formData) => { //object(formData) with all input values
+  const onSubmit = (formData) => {
     props.login(formData.email, formData.password, formData.rememberMe)
   }
 
@@ -54,6 +54,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-
-// export default connect(mapStateToProps,{})(Login);
 export default connect(mapStateToProps, { login })(Login);
