@@ -1,15 +1,10 @@
 import React from 'react';
-// import UsersAPIComponent from './UsersAPIComponent';
-import finalPropsSelectorFactory from 'react-redux/es/connect/selectorFactory';
 import { follow, unfollow, followSuccess, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching, unfollowSuccess, toggleFollowingProgress, requestUsers, setSearchedUserName } from '../../redux/users-reducer';
 import { connect } from 'react-redux';
-import axios from 'axios';
 import Users from './Users';
-import { usersAPI } from '../../api/api';
-import { withAuthRedirect } from '../../hoc/withAuthRedirect';
 import { compose } from 'redux';
-import { getCurrentPage, getFollowingInProgress, getIsAuth, getIsFetching, getName, getPageSize, getTotalUsersCount, getUsers, getSearchedUserName, getIsReceivedResponse} from '../../redux/users-selectors';
-import { useState } from 'react';
+import { getCurrentPage, getFollowingInProgress, getIsAuth, getIsFetching, getPageSize, getTotalUsersCount, getUsers, getSearchedUserName, getIsReceivedResponse} from '../../redux/users-selectors';
+
 
 
 class UsersContainer extends React.Component {

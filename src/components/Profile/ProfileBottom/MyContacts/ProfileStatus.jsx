@@ -1,7 +1,6 @@
 import React, { useEffect, memo, useState } from "react";
-import styles from "./ProfileStatusWithHooks.module.css";
+import styles from "./ProfileStatus.module.css";
 import changeIcon from "./../../../../assets/images/changeIcon.png"
-import { withRouter } from "../../ProfileContainer";
 
 const ProfileStatus = React.memo((props) => {
 

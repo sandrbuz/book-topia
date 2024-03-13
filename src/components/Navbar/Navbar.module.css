@@ -1,21 +1,25 @@
-.nav{
-    grid-area: n;
-    background-color: #7EA7D8;
-    padding: 20px;  
-    /* height: 200px; */
-    /* align-self: start; */
-    border-radius: 10px;
-  }
-  .links{
-    background-color: #7EA7D8;
-  }
-.item a{ 
+.nav {
+  grid-area: n;
+  background-color: #7EA7D8;
+  padding: 20px;
+  /* height: 200px; */
+  /* align-self: start; */
+  border-radius: 10px;
+}
+
+.links {
+  background-color: #7EA7D8;
+}
+
+.item a {
   color: white;
   text-decoration: none;
 }
+
 .item a.active {
   color: gold;
 }
+
 /* .active{
   color: red;
 } */
@@ -29,6 +33,6 @@
 /* .item a:focus {
   color: gold;
 } */
-.item a:hover{ 
+.item a:hover {
   text-decoration: underline;
 }

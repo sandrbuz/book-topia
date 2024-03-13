@@ -1,4 +1,3 @@
-import { useNavigate } from "react-router-dom";
 import { authAPI, profileAPI } from "../api/api";
 import { stopSubmit } from "redux-form";
 
@@ -7,7 +6,7 @@ import { stopSubmit } from "redux-form";
 const SET_AUTH_USER_DATA = 'SET_AUTH_USER_DATA';
 const SET_AUTH_USER_AVATAR = 'SET_AUTH_USER_AVATAR';
 const TOGGLE_IS_FETCHING_HEADER = 'TOGGLE_IS_FETCHING_HEADER';
-const SET_IS_AUTH_FALSE = 'SET_IS_AUTH_FALSE';
+
 
 export const setAuthUserData = (id, email, login, isAuth) => {
     return {
@@ -26,11 +25,7 @@ export const toggleIsFetchingHeader = (isFetching) => {
         type: TOGGLE_IS_FETCHING_HEADER, isFetching
     }
 }
-// export const setIsAuthFalse = (isAuth) => {
-//     return {
-//         type: SET_IS_AUTH_FALSE, isAuth
-//     }
-// }
+
 // thunk creators
 export const getAuthUserData = () => async (dispatch) => {
     dispatch(toggleIsFetchingHeader(true));
@@ -77,16 +72,14 @@ let initialState = {
     email: null,
     id: null,
     login: null,
-    isAuth: false, //can be changed to true
+    isAuth: false, 
     // isFetching: false 
     avatarSmall: null,
     isFetchingHeader: false
 }
 
 const authReducer = (state = initialState, action) => {
-
     switch (action.type) {
-
         case SET_AUTH_USER_DATA:
             return {
                 ...state,
@@ -103,15 +96,7 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 isFetchingHeader: action.isFetching
             }
-        // case SET_IS_AUTH_FALSE:
-        //     return {
-        //         ...state,
-        //         isAuth: action.isAuth
-        //     }
-
         default: return state;
-
     }
-
 }
 export default authReducer;

@@ -4,14 +4,7 @@ import MyPosts from './MyPosts/MyPosts.jsx';
 import MyContacts from './MyContacts/MyContacts.jsx';
 
 
-
-
 const ProfileBottom = (props) => {
-
-  // let onAddPost = (values) => {
-  //   props.addPost(values.newPostText)
-  // }
-
 
   return (
     <div className={s.profileBottom}>
@@ -20,13 +13,6 @@ const ProfileBottom = (props) => {
     </div> 
   )
 }
-
-
-
-
-
-
-
 
 export default ProfileBottom;
 

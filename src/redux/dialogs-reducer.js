@@ -8,8 +8,6 @@ export const sendMessageActionCreator = (newMessageText, formName) => {
 }
 
 
-
-
 let initialState = {
     dialogs: [
         { name: 'Dimych', id: 1, imgURL: 'https://media.istockphoto.com/id/1227618765/ru/%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F/%D1%87%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D1%87%D0%B5%D1%81%D0%BA%D0%BE%D0%B5-%D0%BB%D0%B8%D1%86%D0%BE-%D0%B0%D0%B2%D0%B0%D1%82%D0%B0%D1%80-%D0%B7%D0%BD%D0%B0%D1%87%D0%BE%D0%BA-%D0%BF%D1%80%D0%BE%D1%84%D0%B8%D0%BB%D1%8C-%D0%B4%D0%BB%D1%8F-%D1%81%D0%BE%D1%86%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B9-%D1%81%D0%B5%D1%82%D0%B8-%D1%87%D0%B5%D0%BB%D0%BE%D0%B2%D0%B5%D0%BA-%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80-%D0%B8%D0%BB%D0%BB%D1%8E%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D0%B8.jpg?s=170667a&w=0&k=20&c=SYxrUKNigAlq2F6Dl-KUTUCAYTCed4ideDPx4QNAP7c=', key: 1 },
@@ -159,6 +157,5 @@ const dialogsReducer = (state = initialState, action) => {
         default: return state;
 
     }
-    // return state;
 }
 export default dialogsReducer;

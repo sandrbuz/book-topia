@@ -5,7 +5,6 @@ import { Field } from "redux-form";
 import { maxLengthCreator, required } from "../../../../utils/validators/validators";
 import { Textarea } from "../../../common/FormsControls/FormsControls";
 import Post from "./Post/Post";
-import Preloader from "../../../common/Preloader/Preloader";
 import { useRef, useEffect, useState } from "react";
 import { reset } from 'redux-form';
 import { useDispatch } from "react-redux";

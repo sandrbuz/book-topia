@@ -15,14 +15,14 @@ const User = ({ user, followingInProgress, unfollow, follow, ...props }) => {
             <span className={styles.btnAndNameWrapper}>
                 <div className={styles.userNameWrapper}><NavLink to={'/profile/' + u.id} className={styles.link}>{u.name}</NavLink></div>
                 <div className={styles.followButtonWrapper}>
-                    {u.followed
+                    {/* {u.followed
                         ? <button className={`${styles.button} ${styles.unfollowButton}`} disabled={followingInProgress.some(id => id === u.id)} onClick={() => {
                             unfollow(u.id, props.isAuth)
                         }}>Unfollow</button>
                         : <button className={`${styles.button} ${styles.followButton}`} disabled={followingInProgress.some(id => id === u.id)} onClick={() => {
                             follow(u.id, props.isAuth)
-                            // TODO: UNITE BUTTONS
-                        }}>Follow</button>}
+                        }}>Follow</button>} */}
+                        <button className={`${styles.button} ${u.followed ? styles.unfollowButton : styles.followButton}`} onClick={() => {u.followed ? unfollow(u.id, props.isAuth) : follow(u.id, props.isAuth)}} disabled={followingInProgress.some(id => id === u.id)}>{u.followed ? "Unfollow" : "follow"}</button>
                 </div>
             </span>
         </div>
@@ -30,13 +30,3 @@ const User = ({ user, followingInProgress, unfollow, follow, ...props }) => {
 
 }
 export default User;
-
-
-
-
-
-{/* learned stopPropagation */ }
-{/* <div onClick={()=>{console.log('container clicked')}} style={{backgroundColor: 'blue'}}>
-                      <button onClick={(e)=>{console.log('btn clicked');
-                    e.stopPropagation();}}>test</button>
-                    </div> */}

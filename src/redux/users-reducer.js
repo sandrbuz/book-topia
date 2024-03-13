@@ -93,11 +93,7 @@ export const unfollow = (userId,isAuth) => {
 }
 
 let initialState = {
-    users: [
-        // { photoUrl: 'https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/44906d04-547a-45ef-a232-1b2e41d6b5df/220x330', id: 1, fullname: 'Dmirty', status: "I am a boss", location: { city: 'Minsk', country: 'Belarus' }, followed: false },
-        //     { photoUrl: 'https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/44906d04-547a-45ef-a232-1b2e41d6b5df/220x330', id: 2, fullname: 'Sasha', status: "I am a boss too", location: { city: 'Moscow', country: 'Russia' }, followed: true },
-        //     { photoUrl: 'https://avatars.mds.yandex.net/get-kinopoisk-image/1599028/44906d04-547a-45ef-a232-1b2e41d6b5df/220x330', id: 3, fullname: 'Andrew', status: "I am a boss too", location: { city: 'Kiev', country: 'Ukraina' }, followed: false },
-    ],
+    users: [],
     pageSize: 15,
     totalUsersCount: 0,
     currentPage: 1,
@@ -109,10 +105,6 @@ let initialState = {
 }
 
 const usersReducer = (state = initialState, action) => {
-
-    // let stateCopy = { ...state };
-    // stateCopy.users = [...state.users];
-
 
 
 
@@ -204,12 +196,5 @@ const usersReducer = (state = initialState, action) => {
         default:
             return state
     }
-
-    //     if(action.type === FOLLOW){
-    //         console.log('follow')
-    //     } else if (action.type === UNFOLLOW) {
-    //         console.log('unfollow')
-    //     } 
-    //  return state;
 }
 export default usersReducer;

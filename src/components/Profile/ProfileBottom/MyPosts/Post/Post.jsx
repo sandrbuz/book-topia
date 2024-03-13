@@ -8,7 +8,7 @@ const Post = (props) => {
     return (
         <div  className={s.post}>
             <div className={s.postInfo}>
-                <img className={s.img} src={props.thumbnail} alt="miniAvatar" />
+                <img className={s.img} src={props.thumbnail} alt="thumbnail" />
                 <div className={s.text}>{props.message}</div>
             </div>
             <img  onClick={props.onDeletePost} className={s.deleteIcon} src={deleteIcon} alt="" />

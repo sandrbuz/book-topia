@@ -64,7 +64,7 @@ class App extends React.Component {
           <Routes>
             {/* <Route path="/" element={<Navigate to='/profile' /> }/> 
             <Route path="/profile" element={<ProfileContainer />} /> */}
-            <Route index element={<ProfileContainer />} />
+            {/* <Route index element={<ProfileContainer />} /> */}   {/*not necessary, since there is a special redirect in the navbar*/}
 
 
             {/* <Route path="/" element={<Profile stateProfilePage={props.state.profilePage} addPost={props.addPost}/>} /> */}

@@ -1,35 +1,22 @@
 import React from "react";
 import Profile from "./Profile";
 import { connect } from "react-redux";
-import axios from "axios";
 import { setUserProfile, getUserProfile, getStatus, updateStatus, savePhoto } from "../../redux/profile-reducer";
-import Preloader from "../common/Preloader/Preloader";
-// import { withRouter } from 'react-router-dom'; 
 import {
     Navigate,
     useLocation,
     useNavigate,
     useParams,
 } from "react-router-dom";
-import { useHistory } from 'react-router-dom'; //now userNavigate instead
-import { profileAPI, usersAPI } from "../../api/api";
-import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { getAuthUserData } from "../../redux/auth-reducer";
 import { compose } from "redux";
 import { setStatus } from "../../redux/profile-reducer";
-// export function withRouter(Children) {
-//     return (props) => {
 
-//         const match = { params: useParams() };
-//         return <Children {...props} match={match} />
-//     }
-// }
 export function withRouter(Component) {
     function ComponentWithRouterProp(props) {
         let location = useLocation();
         let navigate = useNavigate();
         let params = useParams();
-        // let history = useHistory(); 
         return (
             <Component
                 {...props}
@@ -54,10 +41,6 @@ class ProfileContainer extends React.Component {
             }
         }
         this.props.getUserProfile(userId)
-        // usersAPI.getProfile(userId)
-        //     .then(data => {
-        //         return this.props.setUserProfile(data)
-        //     })
         this.props.getStatus(userId);
 
     }

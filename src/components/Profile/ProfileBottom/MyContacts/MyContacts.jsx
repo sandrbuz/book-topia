@@ -1,6 +1,6 @@
 import React from "react";
 import s from "./MyContacts.module.css"
-import ProfileStatusWithHooks from "./ProfileStatusWithHooks"
+import ProfileStatus from "./ProfileStatus"
 import fbIcon from "./../../../../assets/images/fbIcon.png"
 import ghIcon from "./../../../../assets/images/ghIcon.png"
 import inIcon from "./../../../../assets/images/inIcon.png"
@@ -11,7 +11,7 @@ const MyContacts = (props) => {
     return (
         <div className={s.myContacts}>
             <div className={s.userName}>{props.profile?.fullName}</div>
-            <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus} isAuth={props.isAuth} authorizedUserId={props.authorizedUserId} userId={props.userId} />
+            <ProfileStatus status={props.status} updateStatus={props.updateStatus} isAuth={props.isAuth} authorizedUserId={props.authorizedUserId} userId={props.userId} />
             <hr style={{width: "150px", marginTop:"25px"}}/>
             <p  className={s.talkToMe}>Talk to me:</p>
             <div className={s.contactsIcons}>

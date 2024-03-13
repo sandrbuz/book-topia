@@ -16,43 +16,17 @@ import { Provider } from 'react-redux';
 
 
 
-// let posts = [
-//   {id: 1, message: 'Hi, how are you?', likesCount: 12},
-//   {id: 2, message: 'It\'s my first page', likesCount: 11},
-//   {id: 2, message: 'Blabla', likesCount: 10},
-//   {id: 2, message: 'Blabla', likesCount: 1},
-// ];
 
-// let dialogs = [
-//   {name: 'Dimych', id: 1},
-//   {name: 'Andrey', id: 2},
-//   {name: 'Sveta', id: 3},
-//   {name: 'Sasha', id: 4},
-//   {name: 'Viktor', id: 5},
-//   {name: 'Valera', id: 6},
-//  ];
 
-// let messages = [
-//   {message: 'Hi'},
-//   {message: 'How is your mood'},
-//   {message: 'Yo'},
-//   {message: 'Yo'},
-//   {message: 'Yo'},
-// ]; 
-
-// addPost();
 const root = ReactDOM.createRoot(document.getElementById('root')); //in lesson 34, I removed this variable from the rerenderEntireTree function, because in the textarea in the MyPosts file, after entering each letter, the page was reloaded
 
-// setInterval(()=>{
-//    store.dispatch({type: "FAKE"})
-// },1000)
 
 // let rerenderEntireTree = (state) => {
 root.render(
   <React.StrictMode>
     <BrowserRouter >
       <Provider store={store}>
-        <App /*dispatch={store.dispatch.bind(store)}*/ /*state={state}*/ /*store={store}*/ /* addPost={store.addPost.bind(store)} updateNewPostText={store.updateNewPostText.bind(store)} addMessage={store.addMessage.bind(store)} updateNewMessageText={store.updateNewMessageText.bind(store)}*/ />
+        <App/>
       </Provider>
     </BrowserRouter>
   </React.StrictMode>

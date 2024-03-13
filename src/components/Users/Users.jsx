@@ -79,7 +79,7 @@ const Users = ({ currentPage, totalUsersCount, pageSize, onPageChanged, ...props
     };
 
     //if(totalUsersCount === 0) {return null} //removes "no such user" when loading the application, but also removes the preloader on the users page when loading the application
-    let customStyles = { //for Preloader
+    let customStylesForPreloader = { //for Preloader
         position: 'absolute',
         top: '50%',
         left: '50%',
@@ -94,7 +94,7 @@ const Users = ({ currentPage, totalUsersCount, pageSize, onPageChanged, ...props
             {/* <SearchUsersFormReduxForm onSubmit={onSearchUser}/> */}
             {(props.users.length === 0 && props.isReceivedResponse) && <div>no such user</div>}
 
-            {props.isFetching && <Preloader customStyles={customStyles}/>}
+            {props.isFetching && <Preloader customStyles={customStylesForPreloader}/>}
             <div className={styles.usersItems}>
                 {props.users.map(u => <User user={u}
                     followingInProgress={props.followingInProgress}
