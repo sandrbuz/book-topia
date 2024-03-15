@@ -28,7 +28,7 @@ export function withRouter(Component) {
 }
 
 class ProfileContainer extends React.Component {
-    fetchUserProfileAndStatus () {
+    fetchUserProfileAndStatus() {
         let userId = this.props.router.params.userId;
         if (!userId) {
             userId = this.props.authorizedUserId
