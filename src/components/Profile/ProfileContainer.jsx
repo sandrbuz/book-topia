@@ -10,6 +10,7 @@ import {
 import { getAuthUserData } from "../../redux/auth-reducer";
 import { compose } from "redux";
 import { setStatus } from "../../redux/profile-reducer";
+import { useEffect } from "react";
 
 export function withRouter(Component) {
     function ComponentWithRouterProp(props) {
@@ -27,37 +28,35 @@ export function withRouter(Component) {
     return ComponentWithRouterProp;
 }
 
-class ProfileContainer extends React.Component {
-    fetchUserProfileAndStatus() {
-        let userId = this.props.router.params.userId;
+const ProfileContainer = (props) => {
+    const navigate = useNavigate();
+    let fetchUserProfileAndStatus = () =>  {
+        let userId = props.router.params.userId;
         if (!userId) {
-            userId = this.props.authorizedUserId
+            userId = props.authorizedUserId
             if (!userId) {
-                this.props.router.navigate('/login')
+                navigate(`/login`);
             }
         }
-        this.props.getUserProfile(userId)
-        this.props.getStatus(userId);
+        props.getUserProfile(userId)
+        props.getStatus(userId);
     }
 
-    componentDidMount() {
-        this.fetchUserProfileAndStatus()
-    }
-
-    componentDidUpdate(prevProps) {
-        if (this.props.router.params.userId !== prevProps.router.params.userId) {
-            this.fetchUserProfileAndStatus()
-        }
-    }
+    useEffect(()=>{
+        fetchUserProfileAndStatus();
+    },[])
+    useEffect(()=>{
+        fetchUserProfileAndStatus();
+    },[props.router.params.userId])
 
 
 
-    render() {
+
         return (<>
-            <Profile userId={this.props.router.params.userId} savePhoto={this.props.savePhoto} {...this.props} />
+            <Profile userId={props.router.params.userId} savePhoto={props.savePhoto} {...props} />
         </>
         )
-    }
+
 
 }
 
