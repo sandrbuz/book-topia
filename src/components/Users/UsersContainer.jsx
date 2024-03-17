@@ -14,6 +14,13 @@ class UsersContainer extends React.Component {
         else if (this.props.users.length === 0) { this.props.requestUsers(this.props.currentPage, this.props.pageSize, this.props.searchedUserName) }
     }
 
+    // so that when login/logout the component is re-rendered. To change the clickability of buttons.
+    componentDidUpdate(prevProps) {
+        if (prevProps.isAuth !== this.props.isAuth) {
+            this.props.requestUsers(this.props.currentPage, this.props.pageSize, this.props.searchedUserName);
+        }
+    }
+
 
 
     onPageChanged = (pageNumber) => {
