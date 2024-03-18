@@ -1,4 +1,4 @@
-import { sendMessageActionCreator } from '../../redux/dialogs-reducer';
+import { sendMessageActionCreator, setCurrentDialogIdActionCreator } from '../../redux/dialogs-reducer';
 import Dialogs from './Dialogs';
 import { connect } from 'react-redux';
 import { withAuthRedirect } from '../../hoc/withAuthRedirect';
@@ -11,16 +11,20 @@ import { useRef, useEffect } from 'react';
 import { Route } from 'react-router-dom';
 import sendIcon from "../../assets/images/sendIcon.png"
 import { Textarea } from '../common/FormsControls/FormsControls.js';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import DialogItem from './DialogItem/DialogItem';
 
 
 const DialogsContainer = (props) => {
     const messagesWrappers = useRef([]);
     const navigate = useNavigate();
+    const location = useLocation();
+
     useEffect(() => {
-        navigate(`/dialogs/1`);
-    }, []);
+        if (location.pathname === '/dialogs') {
+            navigate('/dialogs/1'); 
+        }
+    });
     useEffect(() => {
         scrollToBottom()
     });
@@ -37,7 +41,7 @@ const DialogsContainer = (props) => {
         });
     }
 
-    let dialogsElements = props.dialogs.map(d => <DialogItem imgURL={d.imgURL} key={d.id} name={d.name} id={d.id} />);
+    let dialogsElements = props.dialogs.map(d => <DialogItem setCurrentDialogId={props.setCurrentDialogId} imgURL={d.imgURL} key={d.id} name={d.name} id={d.id} />);
     const renderMessages = (messages) => messages.map(m => <Message whose={m.whoseMess} key={m.id} message={m.message} id={m.id} />);
     let messagesDimych = renderMessages(props.messagesDimych);
     let messagesAndrey = renderMessages(props.messagesAndrey);
@@ -97,6 +101,9 @@ let mapDispatchToProps = (dispatch) => {
     return {
         sendMessage: (newMessageText, formName) => {
             dispatch(sendMessageActionCreator(newMessageText, formName));
+        },
+        setCurrentDialogId: (id) => {
+            dispatch(setCurrentDialogIdActionCreator(id))
         }
 
     }

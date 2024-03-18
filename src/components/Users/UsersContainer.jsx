@@ -10,8 +10,7 @@ import { getCurrentPage, getFollowingInProgress, getIsAuth, getIsFetching, getPa
 class UsersContainer extends React.Component {
 
     componentDidMount() {
-        if (this.props.users.length === 0 && this.props.searchedUserName){} //optional (so that during transitions the preloader is not shown again)
-        else if (this.props.users.length === 0) { this.props.requestUsers(this.props.currentPage, this.props.pageSize, this.props.searchedUserName) }
+        this.props.requestUsers(this.props.currentPage, this.props.pageSize, this.props.searchedUserName) 
     }
 
     // so that when login/logout the component is re-rendered. To change the clickability of buttons.

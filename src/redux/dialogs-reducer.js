@@ -1,9 +1,15 @@
 const SEND_MESSAGE = 'SEND_MESSAGE';
+const SET_CURRENT_DIALOG_ID = 'SET_CURRENT_DIALOG_ID';
 
 
 export const sendMessageActionCreator = (newMessageText, formName) => {
     return {
         type: SEND_MESSAGE, newMessageText, formName
+    }
+}
+export const setCurrentDialogIdActionCreator = (id) => {
+    return {
+        type: SET_CURRENT_DIALOG_ID, id
     }
 }
 
@@ -88,7 +94,8 @@ let initialState = {
         { message: 'Thanks, I appreciate it.', whoseMess: "s.left", id: 8, key: 8 },
         { message: "No problem. We're in this together.", whoseMess: "s.right", id: 9, key: 9 },
         { message: "That's reassuring.", whoseMess: "s.left", id: 10, key: 10 },
-    ]
+    ],
+    currentDialogId: 1
 }
 
 const dialogsReducer = (state = initialState, action) => {
@@ -141,6 +148,11 @@ const dialogsReducer = (state = initialState, action) => {
                         messagesValera: [...state.messagesValera, newMessage]
                     };
             }
+            case SET_CURRENT_DIALOG_ID:
+                return {
+                    ...state,
+                    currentDialogId: action.id
+                }
         default: return state;
     }
 }
