@@ -59,13 +59,11 @@ export const setIsReceivedResponse = (isReceivedResponse) => {
 //thunk creators
 export const requestUsers = (page, pageSize, searchedUser) => {
     return async (dispatch) => {
-        dispatch(toggleIsFetching(true));
         dispatch(setSearchedUserName(searchedUser));
         let response = await usersAPI.getUsers(page, pageSize, searchedUser)
         return dispatch(setUsers(response.items)),
             dispatch(setTotalUsersCount(response.totalCount)),
-            dispatch(setIsReceivedResponse(true)),
-            dispatch(toggleIsFetching(false))
+            dispatch(setIsReceivedResponse(true))
     }
 }
 export const follow = (userId, isAuth) => {

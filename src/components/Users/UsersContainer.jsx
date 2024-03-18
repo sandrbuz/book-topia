@@ -9,28 +9,43 @@ import { getCurrentPage, getFollowingInProgress, getIsAuth, getIsFetching, getPa
 
 class UsersContainer extends React.Component {
 
-    componentDidMount() {
-        this.props.requestUsers(this.props.currentPage, this.props.pageSize, this.props.searchedUserName) 
+    async componentDidMount() {
+        if (this.props.users.length === 0 && this.props.searchedUserName){}
+        else if (this.props.users.length === 0) {
+            await this.props.toggleIsFetching(true); 
+        } 
+        await this.props.requestUsers(this.props.currentPage, this.props.pageSize, this.props.searchedUserName)
+        await this.props.toggleIsFetching(false); 
     }
 
     // so that when login/logout the component is re-rendered. To change the clickability of buttons.
-    componentDidUpdate(prevProps) {
+    async componentDidUpdate(prevProps) {
         if (prevProps.isAuth !== this.props.isAuth) {
-            this.props.requestUsers(this.props.currentPage, this.props.pageSize, this.props.searchedUserName);
+            await this.props.toggleIsFetching(true)
+            await this.props.requestUsers(this.props.currentPage, this.props.pageSize, this.props.searchedUserName);
+            await this.props.toggleIsFetching(false)
+
         }
     }
 
 
 
-    onPageChanged = (pageNumber) => {
+    onPageChanged = async (pageNumber) => {
         //setCurrentPage can be put in thunk(requestUsers)
-        this.props.setCurrentPage(pageNumber);
-        this.props.requestUsers(pageNumber, this.props.pageSize, this.props.searchedUserName);
+        await this.props.setCurrentPage(pageNumber);
+        await this.props.toggleIsFetching(true)
+        await this.props.requestUsers(pageNumber, this.props.pageSize, this.props.searchedUserName);
+        await this.props.toggleIsFetching(false)
+
+
     }
 
     onSearchUser = async (values) => {
         await this.props.setCurrentPage(1);
-        this.props.requestUsers(this.props.currentPage, this.props.pageSize, values);
+        await this.props.toggleIsFetching(true); 
+        await this.props.requestUsers(this.props.currentPage, this.props.pageSize, values);
+        await this.props.toggleIsFetching(false); 
+
     }
 
 
@@ -87,7 +102,8 @@ export default compose(
         requestUsers,
         follow,
         unfollow,
-        setSearchedUserName
+        setSearchedUserName,
+        toggleIsFetching
 
     })
 )(UsersContainer)
