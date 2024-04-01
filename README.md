@@ -23,6 +23,8 @@ https://github.com/sandrbuz/react-samurai-1.0/assets/58559193/f9f0764b-b353-421d
 - Higher-Order Components (HOCs): Including connect from React Redux, custom HOCs for routing and composition.
 - DAL/BLL/UI Layer Separation: For a clean architecture separating data access, business logic, and presentation.
 - Async/Await & Promises: For handling asynchronous operations.
+## Live Data Integration: 
+- Utilizes real server requests through a well-defined API
 
 # Features
 ## User Profiles: Real avatars loaded from the server, editable status,name specified during registration, and the ability to update avatars directly.
