@@ -8,57 +8,59 @@ const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS';
 
-export const deletePost = (postId) => {
+export const deletePost = (postId: any) => {
     return {
         type: DELETE_POST, postId
     }
 }
-export const addPost = (newPostText) => {
+export const addPost = (newPostText: any) => {
     return {
         type: ADD_POST, newPostText
     }
 }
-export const setUserProfile = (profile) => {
+export const setUserProfile = (profile: any) => {
     return {
         type: SET_USER_PROFILE, profile
     }
 }
-export const setStatus = (status) => {
+export const setStatus = (status: any) => {
     return {
         type: SET_STATUS, status
     }
 }
-export const savePhotoSuccess = (photos) => {
+export const savePhotoSuccess = (photos: any) => {
     return {
         type: SAVE_PHOTO_SUCCESS, photos
     }
 }
 // thunk creators
-export const getUserProfile = (userId) => async (dispatch) => {
+export const getUserProfile = (userId: any) => async (dispatch: any) => {
     if (userId) {
         let response = await profileAPI.getProfile(userId)
         dispatch(setUserProfile(response))
     }
 }
-export const getStatus = (userId) => async (dispatch) => {
+export const getStatus = (userId: any) => async (dispatch: any) => {
     if (userId) {
         let response = await profileAPI.getStatus(userId)
         dispatch(setStatus(response))
     }
 }
-export const updateStatus = (status) => async (dispatch) => {
+export const updateStatus = (status: any) => async (dispatch: any) => {
     let response = await profileAPI.updateStatus(status)
     if (response.data.resultCode === 0) {
         dispatch(setStatus(status))
     }
 }
-export const savePhoto = (file) => async (dispatch) => {
+export const savePhoto = (file: any) => async (dispatch: any) => {
     let response = await profileAPI.savePhoto(file)
     if (response.data.resultCode === 0) {
         dispatch(savePhotoSuccess(response.data.data.photos))
         dispatch(setAuthUserAvatar(response.data.data.photos.small)) 
     }
 }
+
+type ProfileType = Object | null;
 
 let initialState = {
     posts: [
@@ -69,12 +71,12 @@ let initialState = {
         { id: 5, message: 'Blabla', thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbvP5IRQVvmbIYB57VXE8aENzgdymWgnMp7A&usqp=CAU" },
         { id: 6, message: 'Blabla', thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbvP5IRQVvmbIYB57VXE8aENzgdymWgnMp7A&usqp=CAU" },
     ],
-    profile: null,
+    profile:  null as ProfileType,
     status: ''
 
 }
 
-const profileReducer = (state = initialState, action) => {
+const profileReducer = (state = initialState, action: any) => {
 
 
     switch (action.type) {
@@ -111,8 +113,7 @@ const profileReducer = (state = initialState, action) => {
             return {
                 ...state,
                 profile: { ...state.profile, photos: action.photos },
-            }
-
+            };
 
         default: return state
     }
