@@ -3,7 +3,7 @@ import ProfileBottomContainer from './ProfileBottom/ProfileBottomContainer';
 import s from './Profile.module.css'
 import ProfileTop from './ProfileTop/ProfileTop';
 
-const Profile = (props) => {
+const Profile = (props: any) => {
 
   return (
     <>

@@ -1,6 +1,7 @@
 import { profileAPI } from "../api/api";
 import { setAuthUserAvatar } from "./auth-reducer";
 import newPostImg from "./../assets/images/newPostImg.jpg"
+import { ProfileType } from "../types/types";
 
 const ADD_POST = 'ADD_POST';
 const DELETE_POST = 'DELETE_POST';
@@ -8,7 +9,12 @@ const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS';
 
-export const deletePost = (postId: any) => {
+type deletePostActionType = {
+    type: typeof DELETE_POST,
+    postId: number
+}
+
+export const deletePost = (postId: number):deletePostActionType => {
     return {
         type: DELETE_POST, postId
     }
@@ -60,7 +66,7 @@ export const savePhoto = (file: any) => async (dispatch: any) => {
     }
 }
 
-type ProfileType = Object | null;
+type postType = { id: number; message: string; thumbnail: string }
 
 let initialState = {
     posts: [
@@ -70,13 +76,15 @@ let initialState = {
         { id: 4, message: 'Blabla', thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbvP5IRQVvmbIYB57VXE8aENzgdymWgnMp7A&usqp=CAU" },
         { id: 5, message: 'Blabla', thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbvP5IRQVvmbIYB57VXE8aENzgdymWgnMp7A&usqp=CAU" },
         { id: 6, message: 'Blabla', thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbvP5IRQVvmbIYB57VXE8aENzgdymWgnMp7A&usqp=CAU" },
-    ],
-    profile:  null as ProfileType,
-    status: ''
+    ] as Array<postType>, //or postType[]
 
+    profile:  null as ProfileType | null,   //as Object | null
+    status: '' as string
 }
 
-const profileReducer = (state = initialState, action: any) => {
+export type initialStateType = typeof initialState;
+
+const profileReducer = (state = initialState, action: any):initialStateType => {
 
 
     switch (action.type) {
@@ -110,10 +118,13 @@ const profileReducer = (state = initialState, action: any) => {
                 status: action.status,
             };
         case SAVE_PHOTO_SUCCESS:
-            return {
-                ...state,
-                profile: { ...state.profile, photos: action.photos },
-            };
+            if (state.profile) {
+                return {
+                    ...state,
+                    profile: { ...state.profile, photos: action.photos }
+                };
+            }
+            return state; // If profile is null, return the current state (4 lesson of samurai 2.0)
 
         default: return state
     }
