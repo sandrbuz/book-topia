@@ -12,6 +12,9 @@ import { compose } from "redux";
 import { setStatus } from "../../redux/profile-reducer";
 import { useEffect } from "react";
 
+
+let some1 = 111;
+
 export function withRouter(Component) {
     function ComponentWithRouterProp(props) {
         let location = useLocation();

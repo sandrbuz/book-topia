@@ -2,6 +2,7 @@ import { profileAPI } from "../api/api";
 import { setAuthUserAvatar } from "./auth-reducer";
 import newPostImg from "./../assets/images/newPostImg.jpg"
 import { ProfileType } from "../types/types";
+import { ThunkAction } from "redux-thunk";
 
 const ADD_POST = 'ADD_POST';
 const DELETE_POST = 'DELETE_POST';
@@ -9,38 +10,67 @@ const SET_USER_PROFILE = 'SET_USER_PROFILE';
 const SET_STATUS = 'SET_STATUS';
 const SAVE_PHOTO_SUCCESS = 'SAVE_PHOTO_SUCCESS';
 
-type deletePostActionType = {
+
+type ActionTypes = DeletePostActionType | AddPostActionType | SetUserProfileActionType | SetStatusActionType | SavePhotoSuccessActionType
+
+type DeletePostActionType = {
     type: typeof DELETE_POST,
     postId: number
 }
-
-export const deletePost = (postId: number):deletePostActionType => {
+export const deletePost = (postId: number):DeletePostActionType => {
     return {
         type: DELETE_POST, postId
     }
 }
-export const addPost = (newPostText: any) => {
+
+type AddPostActionType = {
+    type: typeof ADD_POST,
+    newPostText: string
+}
+
+export const addPost = (newPostText: AddPostActionType) => {
     return {
         type: ADD_POST, newPostText
     }
 }
-export const setUserProfile = (profile: any) => {
+
+type SetUserProfileActionType = {
+    type: typeof SET_USER_PROFILE,
+    profile: ProfileType
+}
+
+export const setUserProfile = (profile: SetUserProfileActionType) => {
     return {
         type: SET_USER_PROFILE, profile
     }
 }
-export const setStatus = (status: any) => {
+
+type SetStatusActionType = {
+    type: typeof SET_STATUS,
+    status: string
+}
+
+export const setStatus = (status: SetStatusActionType) => {
     return {
         type: SET_STATUS, status
     }
 }
-export const savePhotoSuccess = (photos: any) => {
+
+type SavePhotoSuccessActionType = {
+    type: typeof SAVE_PHOTO_SUCCESS,
+    photos: {
+        small: string
+        large: string
+    }
+}
+
+export const savePhotoSuccess = (photos: SavePhotoSuccessActionType) => {
     return {
         type: SAVE_PHOTO_SUCCESS, photos
     }
 }
 // thunk creators
-export const getUserProfile = (userId: any) => async (dispatch: any) => {
+export const getUserProfile = (userId: any):ThunkAction<void, any, unknown, ActionTypes> => async (dispatch: any) => {
     if (userId) {
         let response = await profileAPI.getProfile(userId)
         dispatch(setUserProfile(response))
@@ -52,7 +82,7 @@ export const getStatus = (userId: any) => async (dispatch: any) => {
         dispatch(setStatus(response))
     }
 }
-export const updateStatus = (status: any) => async (dispatch: any) => {
+export const updateStatus = (status: any) => async (dispatch: any, getState: any) => {
     let response = await profileAPI.updateStatus(status)
     if (response.data.resultCode === 0) {
         dispatch(setStatus(status))
