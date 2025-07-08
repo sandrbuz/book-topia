@@ -1,6 +1,6 @@
 ## 🌐 Live Demo
 
-**[Try it online →]([https://vue-form-generatorr.netlify.app/](https://book-topia.netlify.app/profile)/)**
+**[Try it online →](https://book-topia.netlify.app/)**
 
 # demo video:
 
